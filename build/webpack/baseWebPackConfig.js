@@ -77,7 +77,7 @@ export function getBaseWebPackConfig(env, argv) {
   };
 
   config.resolve = {
-    extensions: ['.scss', '.js', '.jsx', '.tsx', '.ts'],
+    extensions: ['.scss', '.ts', '.tsx', '.js', '.jsx'],
     plugins: [
       new tsConfigPathPlugin(), // This is the third final piece to using tsConfig as a source of truth for path aliases, it tells webpack to use it to resolve aliases in our actual code during compilation.
     ],

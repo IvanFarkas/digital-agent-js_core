@@ -110,6 +110,9 @@
       "path": "../" /* this project to the one at the root dir */
     }
   ],
-  "include": ["./**/*.ts"],
-  "exclude": ["../node_modules", "../dist", "./core/**/*.js"]
+  "include": [
+    "./**/*.ts",
+    "./**/*.js"
+  ],
+  "exclude": ["../node_modules", "../dist"]
 }
