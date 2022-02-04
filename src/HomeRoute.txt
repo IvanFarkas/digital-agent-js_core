@@ -1,0 +1,160 @@
+import React, {useState, useEffect} from 'react';
+import 'assets/scss/styles.scss';
+import {Startup} from '../../Startup';
+
+// TODO: Make sure that initialization sequence is same to JS version
+const startup = new Startup();
+
+export const HomeRoute = (): React.ReactElement => {
+  let currenTab = 1;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.debug(`setTimeout()`);
+
+      setLukeText(
+        () => `<speak>
+  <amazon:domain name="conversational">
+    Hello, my name is Luke.
+    I used to only be a host inside Amazon Sumerian, but now you can use me in other Javascript runtime environments like three js and Babylon js.
+    Right now, <mark name='{"feature":"PointOfInterestFeature","method":"setTargetByName","args":["chargaze"]}'/> my friend and I here are in three js.
+  </amazon:domain>
+</speak>`
+      );
+      setAlienText(
+        () => `<speak>
+  Hi there!
+  As you can see I'm set up to be a host too, although I don't use the same type of skeleton as any of the original Amazon Sumerian hosts.
+  With open source hosts, you can apply host functionality to any custom animated character you'd like.
+  I'm excited to see what kinds of interesting host characters you'll bring to life!
+</speak>`
+      );
+      console.debug(`setTimeout()`);
+
+      console.debug('Startup');
+      startup.initialize();
+      // startup.initializeUX();
+    }, 100);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  const [toggleState, setToggleState] = useState(1);
+  const toggleTab = (index: number) => {
+    currenTab = index;
+    console.debug(`tab: ${currenTab}`);
+    setToggleState(index);
+  };
+  const getActiveClass = (index: number, className: string) => (toggleState === index ? className : '');
+  const [lukeText, setLukeText] = useState<string>();
+  const [alienText, setAlienText] = useState<string>();
+  const lukeTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setLukeText(event.target.value);
+  };
+  const alienTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setAlienText(event.target.value);
+  };
+
+  const [selectedOption, setSelectedOption] = useState<string>();
+  const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+    console.debug(`emote: ${selectedOption}`);
+  };
+
+  const [clickedButton, setClickedButton] = useState('');
+  const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const button: HTMLButtonElement = event.currentTarget;
+    setClickedButton(button.name);
+    console.debug(`button: ${button.name}, ${button.id}, clickedButton: ${clickedButton}`);
+
+    switch (button.id) {
+      case 'play':
+        break;
+
+      case 'pause':
+        break;
+
+      case 'resume':
+        break;
+
+      case 'stop':
+        break;
+
+      case 'gestures':
+        break;
+
+      case 'playEmote':
+        // console.debug(`emote: ${selectedOption}`);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  return (
+    <div>
+      <div id="loadScreen">
+        <div id="loader"></div>
+      </div>
+
+      <div id="textToSpeech">
+        <div className="container">
+          <ul className="tab-list">
+            <li id="Luke" className={`tab ${getActiveClass(1, 'active-tab')}`} onClick={() => toggleTab(1)}>
+              Luke
+            </li>
+            <li id="Alien" className={`tab ${getActiveClass(2, 'active-tab')}`} onClick={() => toggleTab(2)}>
+              Alien
+            </li>
+          </ul>
+          <div className="content-container">
+            <div className={`content ${getActiveClass(1, 'active-content')}`}>
+              <textarea className="textEntry Luke" value={lukeText} onChange={lukeTextAreaChange} />
+            </div>
+            <div className={`content ${getActiveClass(2, 'active-content')}`}>
+              <textarea className="textEntry Alien" value={alienText} onChange={alienTextAreaChange} />
+            </div>
+          </div>
+        </div>
+
+        <form>
+          <div>
+            <button id="play" className="button" name="Play" title="Play" onClick={buttonHandler}>
+              Play
+            </button>
+            <button id="pause" className="button" name="Pause" title="Pause" onClick={buttonHandler}>
+              Pause
+            </button>
+            <button id="resume" className="button" name="Resume" title="Resume" onClick={buttonHandler}>
+              Resume
+            </button>
+            <button id="stop" className="button" name="Stop" title="Stop" onClick={buttonHandler}>
+              Stop
+            </button>
+          </div>
+
+          <div>
+            <button id="gestures" className="button" name="Generate Gestures" title="Generate Gestures" onClick={buttonHandler}>
+              Generate Gestures
+            </button>
+          </div>
+
+          <div>
+            <select id="emotes" className="gestures" onChange={selectChange}></select>
+          </div>
+
+          <div>
+            <button id="playEmote" className="button" name="Play Emote" title="Play Emote" onClick={buttonHandler}>
+              Play Emote
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
