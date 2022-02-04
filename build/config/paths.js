@@ -8,8 +8,8 @@ class paths {
     // this.srcIndexEntry = path.join(this.src, 'index.tsx');
     this.srcIndexEntry = path.join(this.src, 'App.ts');
 
-    this.srcCore = path.join(this.src, 'components', 'core');
-    this.srcThreeJs = path.join(this.src, 'components', 'three');
+    this.srcCore = path.join(this.src, 'core');
+    this.srcThreeJs = path.join(this.src, 'three.js');
     this.srcScss = path.join(this.src, 'assets', 'scss');
     this.srcScssEntry = path.join(this.srcScss, 'app.scss');
     this.srcScssVendorEntry = path.join(this.srcScss, 'vendor.scss');
