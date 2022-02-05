@@ -1,14 +1,14 @@
-import { AbstractHostFeature } from '@core/AbstractHostFeature';
-import { Utils } from '@core/Utils';
-import { QueueState } from '@core/animpack/state/QueueState';
-import { FreeBlendState } from '@core/animpack/state/FreeBlendState';
-import { Blend1dState } from '@core/animpack/state/Blend1dState';
-import { Blend2dState } from '@core/animpack/state/Blend2dState';
-import { SingleState } from '@core/animpack/state/SingleState';
-import { RandomAnimationState } from '@core/animpack/state/RandomAnimationState';
-import { AnimationLayer, LayerBlendModes } from '@core/animpack/AnimationLayer';
-import { Deferred } from '@core/Deferred';
-import { HostObject } from '@core/HostObject';
+import { AbstractHostFeature } from '../../core/AbstractHostFeature';
+import { Utils } from '../../core/Utils';
+import { QueueState } from '../../core/animpack/state/QueueState';
+import { FreeBlendState } from '../../core/animpack/state/FreeBlendState';
+import { Blend1dState } from '../../core/animpack/state/Blend1dState';
+import { Blend2dState } from '../../core/animpack/state/Blend2dState';
+import { SingleState } from '../../core/animpack/state/SingleState';
+import { RandomAnimationState } from '../../core/animpack/state/RandomAnimationState';
+import { AnimationLayer, LayerBlendModes } from '../../core/animpack/AnimationLayer';
+import { Deferred } from '../../core/Deferred';
+import { HostObject } from '../../core/HostObject';
 
 /**
  * Enum for animation state classes.

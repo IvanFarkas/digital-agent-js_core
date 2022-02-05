@@ -1,7 +1,7 @@
-import { Deferred } from '@core/Deferred';
-import { MathUtils } from '@core/MathUtils';
-import { AbstractState } from '@core/animpack/state/AbstractState';
-import { StateContainerInterface } from '@core/animpack/state/StateContainerInterface';
+import { Deferred } from '../../../core/Deferred';
+import { MathUtils } from '../../../core/MathUtils';
+import { AbstractState } from '../../../core/animpack/state/AbstractState';
+import { StateContainerInterface } from '../../../core/animpack/state/StateContainerInterface';
 
 /**
  * Base class for a state that blends a collection of {@link AbstractState}.

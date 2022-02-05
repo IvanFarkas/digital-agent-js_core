@@ -1,4 +1,4 @@
-import { AbstractSpeech } from '@core/awspack/AbstractSpeech';
+import { AbstractSpeech } from '../../core/awspack/AbstractSpeech';
 
 /**
  * The built-in class for asynchronous Promises.

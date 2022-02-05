@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import { ManagedAnimationLayerInterface } from '@core/animpack/ManagedAnimationLayerInterface';
-import { AnimationTypes } from '@core/animpack/AnimationFeature';
-import { SSMLSpeechmarkInterface } from '@core/awspack/SSMLSpeechmarkInterface';
-import { HostObject } from '@core/HostObject';
-import { AbstractHostFeature } from '@core/AbstractHostFeature';
-import { Quadratic } from '@core/animpack/Easing';
-import { MathUtils } from '@core/MathUtils';
-import { Utils } from '@core/Utils';
+import { ManagedAnimationLayerInterface } from '../core/animpack/ManagedAnimationLayerInterface';
+import { AnimationTypes } from '../core/animpack/AnimationFeature';
+import { SSMLSpeechmarkInterface } from '../core/awspack/SSMLSpeechmarkInterface';
+import { HostObject } from '../core/HostObject';
+import { AbstractHostFeature } from '../core/AbstractHostFeature';
+import { Quadratic } from '../core/animpack/Easing';
+import { MathUtils } from '../core/MathUtils';
+import { Utils } from '../core/Utils';
 
 /**
  * Enum for axis directions.

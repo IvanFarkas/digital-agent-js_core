@@ -1,7 +1,7 @@
-import { Messenger } from '@core/Messenger';
-import { AbstractHostFeature } from '@core/AbstractHostFeature';
-import { Deferred } from '@core/Deferred';
-import { Utils } from '@core/Utils';
+import { Messenger } from '../core/Messenger';
+import { AbstractHostFeature } from '../core/AbstractHostFeature';
+import { Deferred } from '../core/Deferred';
+import { Utils } from '../core/Utils';
 
 /**
  * Object that manages access to all Host features. Contains a reference to engine-specific visuals if applicable.

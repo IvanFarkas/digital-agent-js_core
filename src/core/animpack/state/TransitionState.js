@@ -1,5 +1,5 @@
-import { Deferred } from '@core/Deferred';
-import { AbstractState } from '@core/animpack/state/AbstractState';
+import { Deferred } from '../../../core/Deferred';
+import { AbstractState } from '../../../core/animpack/state/AbstractState';
 
 /**
  * Class for smooth transitioning between states on an animation layer.

@@ -15,15 +15,15 @@ import Polly from 'aws-sdk/clients/polly';
 import {Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener} from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-import {HostObject} from '@app/HostObject';
-import {TextToSpeechFeature} from '@app/awspack/TextToSpeechFeature';
-import {PointOfInterestFeature} from '@app/PointOfInterestFeature';
-import {AnimationFeature} from '@app/animpack/AnimationFeature';
-import {AnimationTypes} from '@core/animpack/AnimationFeature';
-import {LayerBlendModes} from '@core/animpack/AnimationLayer';
-import {Quadratic} from '@core/animpack/Easing';
-import {GestureFeature} from '@core/GestureFeature';
-import {LipsyncFeature} from '@core/LipsyncFeature';
+import {HostObject} from './three.js/HostObject';
+import {TextToSpeechFeature} from './three.js/awspack/TextToSpeechFeature';
+import {PointOfInterestFeature} from './three.js/PointOfInterestFeature';
+import {AnimationFeature} from './three.js/animpack/AnimationFeature';
+import {AnimationTypes} from './core/animpack/AnimationFeature';
+import {LayerBlendModes} from './core/animpack/AnimationLayer';
+import {Quadratic} from './core/animpack/Easing';
+import {GestureFeature} from './core/GestureFeature';
+import {LipsyncFeature} from './core/LipsyncFeature';
 
 interface ICharacter {
   name: string;

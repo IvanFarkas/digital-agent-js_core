@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { FeatureDependentInterface } from '@core/FeatureDependentInterface';
+import { FeatureDependentInterface } from '../../core/FeatureDependentInterface';
 
 /**
  * Class factory interface for features that are dependent on the TextToSpeechFeature

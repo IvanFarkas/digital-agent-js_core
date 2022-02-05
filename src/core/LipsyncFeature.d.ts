@@ -1,9 +1,9 @@
-import {HostObject} from '@core/HostObject';
-import {MathUtils} from '@core/MathUtils';
-import {Quadratic} from '@core/animpack/Easing';
-import {ManagedAnimationLayerInterface} from '@core/animpack/ManagedAnimationLayerInterface';
-import {TextToSpeechFeatureDependentInterface} from '@core/awspack/TextToSpeechFeatureDependentInterface';
-import {AbstractHostFeature} from '@core/AbstractHostFeature';
+import {HostObject} from 'core/HostObject';
+import {MathUtils} from 'core/MathUtils';
+import {Quadratic} from 'core/animpack/Easing';
+import {ManagedAnimationLayerInterface} from 'core/animpack/ManagedAnimationLayerInterface';
+import {TextToSpeechFeatureDependentInterface} from 'core/awspack/TextToSpeechFeatureDependentInterface';
+import {AbstractHostFeature} from 'core/AbstractHostFeature';
 
 /**
  * Default mapping of Polly viseme names to animation options objects.

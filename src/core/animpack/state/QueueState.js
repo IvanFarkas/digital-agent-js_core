@@ -1,6 +1,6 @@
-import { AbstractState } from '@core/animpack/state/AbstractState';
-import { AnimationPlayerInterface } from '@core/animpack/AnimationPlayerInterface';
-import { StateContainerInterface } from '@core/animpack/state/StateContainerInterface';
+import { AbstractState } from '../../../core/animpack/state/AbstractState';
+import { AnimationPlayerInterface } from '../../../core/animpack/AnimationPlayerInterface';
+import { StateContainerInterface } from '../../../core/animpack/state/StateContainerInterface';
 
 /**
  * Class for playing an ordered array of animation states in sequence.

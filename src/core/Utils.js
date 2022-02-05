@@ -1,4 +1,4 @@
-import { Deferred } from '@core/Deferred';
+import { Deferred } from '../core/Deferred';
 
 /**
  * A collection of useful generic functions.
