@@ -13,7 +13,7 @@ import {AbstractSpeech} from '@core/awspack/AbstractSpeech';
  * @property {any} _audio - Audio.
  * @property {boolean} _audioFinished - Is audio Finished.
  */
-export class Speech extends AbstractSpeech {
+export declare class Speech extends AbstractSpeech {
   // TODO: Make private, add getters
   public _audio: any;
   private _audioFinished: boolean;

@@ -3,7 +3,7 @@
  *
  * @hideconstructor
  */
-export class MathUtils {
+export declare class MathUtils {
   /**
    * Convert the given angle from radians to degrees.
    *

@@ -5,7 +5,7 @@ import {AbstractBlendState} from '@core/animpack/state/AbstractBlendState';
  *
  * @extends AbstractBlendState
  */
-export class FreeBlendState extends AbstractBlendState {
+export declare class FreeBlendState extends AbstractBlendState {
   /**
    * @constructor
    *

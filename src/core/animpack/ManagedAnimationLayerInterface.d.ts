@@ -22,7 +22,7 @@ import {HostObject} from '@core/HostObject';
  * @property {number} [DEFAULT_LAYER_OPTIONS.blendTime=0.5] - Default time in seconds to use when executing {@link AnimationLayer.setBlendWeight}.
  * @property {Object} [DEFAULT_LAYER_OPTIONS.animations={}] - Maps animation names to default options objects to use for managed animations.
  */
-export class ManagedAnimationLayerInterface extends AnimationFeatureDependentInterface {
+export declare class ManagedAnimationLayerInterface extends AnimationFeatureDependentInterface {
   /**
    * Start tracking keeping track of whether a layer with the given name is present on the host.
    *

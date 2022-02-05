@@ -12,7 +12,7 @@ import {Utils} from '@core/Utils';
  *
  * @property {number} _playInterval - Play Interval.
  */
-export class RandomAnimationState extends AnimationPlayerInterface.Mixin(StateContainerInterface.Mixin(AbstractState)) {
+export declare class RandomAnimationState extends AnimationPlayerInterface.Mixin(StateContainerInterface.Mixin(AbstractState)) {
   // TODO: Fix P2. Make properties starting with '_' private
   public _playInterval: number;
 

@@ -23,7 +23,7 @@ import {TextToSpeechFeature} from '@core/awspack/TextToSpeechFeature';
  * @property {any} value - Value.
  * @property {any} done - Done.
  */
-export class AbstractSpeech {
+export declare class AbstractSpeech {
   // TODO: Is this really abstract?
   // export abstract class AbstractSpeech {
   // TODO: Make private, add getters

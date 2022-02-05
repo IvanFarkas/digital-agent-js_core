@@ -5,7 +5,7 @@ import {Utils} from '@core/Utils';
  *
  * @hideconstructor
  */
-export class TextToSpeechUtils {
+export declare class TextToSpeechUtils {
   /**
    * Returns a new string with SSML marks inserted based on matches between the input string and the input map. The word matches are case-insensitive. Words within existing SSML tags will not be affected. Input text will be surrounded by <speak></speak> tags if needed.
    *

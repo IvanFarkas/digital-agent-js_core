@@ -10,7 +10,7 @@ import {AbstractTextToSpeechFeature} from '@core/awspack/AbstractTextToSpeechFea
  * @property {Function} _audioContext - Audio Context.
  * @property {any} loop - Loop.
  */
-export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
+export declare class TextToSpeechFeature extends AbstractTextToSpeechFeature {
   private _enabled: boolean;
   private _audioContext: any;
   public loop: any;

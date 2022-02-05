@@ -16,7 +16,7 @@ import {AnimationUtils} from '@core/animpack/AnimationUtils';
  * @property {number[][]} _triangles - Triangles. {indices: number[][]; edges: number[][][];}[]
  * @property {Function} _phaseLeadState - Phase Lead State fn.
  */
-export class Blend2dState extends AbstractBlendState {
+export declare class Blend2dState extends AbstractBlendState {
   // TODO: Make them private, add getters
   public _blendValueX: number;
   public _blendValueY: number;

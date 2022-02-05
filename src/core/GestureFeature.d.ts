@@ -6,7 +6,7 @@ import {AbstractHostFeature} from '@core/AbstractHostFeature';
 import {Deferred} from '@core/Deferred';
 import {Utils} from '@core/Utils';
 
-export const DefaultGestureWords: {
+export declare const DefaultGestureWords: {
   big: string[];
   heart: string[];
   in: string[];
@@ -32,7 +32,7 @@ export const DefaultGestureWords: {
  * @property {number} minimumInterval - The minimum amount of time in seconds that must elapse before another gesture can be played.
  * @property {string} currentGesture - Current Gesture.
  */
-export class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterface.Mixin, ManagedAnimationLayerInterface.Mixin) {
+export declare class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterface.Mixin, ManagedAnimationLayerInterface.Mixin) {
   public holdTime: number;
   public minimumInterval: number;
 

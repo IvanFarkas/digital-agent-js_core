@@ -13,7 +13,7 @@ import {AnimationUtils} from '@core/animpack/AnimationUtils';
  * @property {boolean} _forceNoThresholdDupes - Force No Threshold Dupes.
  * @property {Function} _phaseLeadState - Phase Lead State.
  */
-export class Blend1dState extends AbstractBlendState {
+export declare class Blend1dState extends AbstractBlendState {
   // TODO: Make them private, add getters
   public _blendValue: number;
   public _thresholds: any[];

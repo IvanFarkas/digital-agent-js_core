@@ -11,7 +11,7 @@ import {StateContainerInterface} from '@core/animpack/state/StateContainerInterf
  * @property {number} _internalWeight - Internal Weight. TODO: Make it private
  * @property {string} name - Name of the state to return the weight from.
  */
-export class AbstractBlendState extends StateContainerInterface.Mixin(AbstractState) {
+export declare class AbstractBlendState extends StateContainerInterface.Mixin(AbstractState) {
   /**
    * @constructor
    *

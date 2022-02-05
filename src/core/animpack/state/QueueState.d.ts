@@ -19,7 +19,7 @@ import {Deferred} from '@core/Deferred';
  * @property {string} currentAnimation - currentAnimation.
  * @property {any} value - value.
  */
-export class QueueState extends AnimationPlayerInterface.Mixin(StateContainerInterface.Mixin(AbstractState)) {
+export declare class QueueState extends AnimationPlayerInterface.Mixin(StateContainerInterface.Mixin(AbstractState)) {
   // TODO: Fix P2. Make properties starting with '_' private
   public _queue: IterableIterator<string>;
   public _done: boolean;

@@ -15,7 +15,7 @@ import {AnimationUtils} from '@core/animpack/AnimationUtils';
  * @property {any} _playCallbacks - Play Callbacks. {onFinish: fn, onError: fn, onCancel: fn}
  * @property {string} name - Name for the animation state. Names must be unique for the container the state is applied to and should be validated at the container level. If no name is given it will default to the constructor name.
  */
-export class AbstractState {
+export declare class AbstractState {
   // TODO: Fix P2
   // export abstract class AbstractState {
   // TODO: Fix P2. Make properties starting with '_' private

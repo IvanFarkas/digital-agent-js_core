@@ -15,7 +15,7 @@ import {FeatureDependentInterface} from '@core/FeatureDependentInterface';
  * @property {string} [EVENT_DEPENDENCIES.AnimationFeature.removeAnimation='_onAnimationRemoved'] - The name of the method that will be executed when AnimationFeature removeAnimation events are emitted.
  * @property {string} [EVENT_DEPENDENCIES.AnimationFeature.renameAnimation='_onAnimationRenamed'] - The name of the method that will be executed when AnimationFeature renameAnimation events are emitted.
  */
-export class AnimationFeatureDependentInterface extends FeatureDependentInterface {
+export declare class AnimationFeatureDependentInterface extends FeatureDependentInterface {
   /**
    * Executed when animation layer added events are caught.
    *
