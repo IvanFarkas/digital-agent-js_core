@@ -1,4 +1,4 @@
-import { Utils } from '@core/Utils';
+import { Utils } from '../../core/Utils';
 
 /**
  * A collection of useful text-to-speech functions.

@@ -1,10 +1,11 @@
-import { AbstractHostFeature } from '@core/AbstractHostFeature';
-import { AnimationUtils } from '@core/awspack/AnimationUtils';
-import { MathUtils } from '@core/MathUtils';
-import { Deferred } from '@core/Deferred';
-import { HostObject } from '@core/HostObject';
-import { Speech as AbstractSpeech } from '@core/awspack/AbstractSpeech';
-import { TextToSpeechUtils } from '@core/awspack/TextToSpeechUtils';
+import { AbstractHostFeature } from '../../core/AbstractHostFeature';
+import { AnimationUtils } from '../../core/animpack/AnimationUtils';
+import { MathUtils } from '../../core/MathUtils';
+import { Deferred } from '../../core/Deferred';
+import { HostObject } from '../../core/HostObject';
+import { AbstractSpeech } from '../../core/awspack/AbstractSpeech';
+import { Speech } from '../../core/awspack/Speech'
+import { TextToSpeechUtils } from '../../core/awspack/TextToSpeechUtils';
 
 /**
  * The Amazon Polly service object.

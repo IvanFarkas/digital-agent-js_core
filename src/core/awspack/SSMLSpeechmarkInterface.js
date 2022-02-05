@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-empty */
-import { TextToSpeechFeatureDependentInterface } from '@core/awspack/TextToSpeechFeatureDependentInterface';
+import { TextToSpeechFeatureDependentInterface } from '../../core/awspack/TextToSpeechFeatureDependentInterface';
 
 /**
  * Class factory interface for that registers callback method when a ssml speechmark event is emitted.

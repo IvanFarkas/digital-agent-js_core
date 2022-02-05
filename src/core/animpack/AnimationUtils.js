@@ -1,7 +1,7 @@
-import { Deferred } from '@core/Deferred';
-import { Utils } from '@core/Utils';
-import { MathUtils } from '@core/MathUtils';
-import { Linear } from '@core/animpack/Easing';
+import { Deferred } from '../../core/Deferred';
+import { Utils } from '../../core/Utils';
+import { MathUtils } from '../../core/MathUtils';
+import { Linear } from '../../core/animpack/Easing';
 
 /**
  * A collection of useful animation functions.

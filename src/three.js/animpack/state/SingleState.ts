@@ -1,7 +1,7 @@
 import {AnimationAction, NormalAnimationBlendMode, AdditiveAnimationBlendMode, LoopOnce, LoopRepeat} from 'three';
-import {MathUtils} from '@core/MathUtils';
-import {Deferred} from '@core/Deferred';
-import {SingleState as CoreSingleState} from '@core/animpack/state/SingleState';
+import {MathUtils} from '../../../core/MathUtils';
+import {Deferred} from '../../../core/Deferred';
+import {SingleState as CoreSingleState} from '../../../core/animpack/state/SingleState';
 
 /**
  * Threejs AnimationAction object

@@ -1,7 +1,7 @@
-import { AbstractState } from '@core/animpack/state/AbstractState';
-import { StateContainerInterface } from '@core/animpack/state/StateContainerInterface';
-import { AnimationPlayerInterface } from '@core/animpack/AnimationPlayerInterface';
-import { Utils } from '@core/Utils';
+import { AbstractState } from '../../../core/animpack/state/AbstractState';
+import { StateContainerInterface } from '../../../core/animpack/state/StateContainerInterface';
+import { AnimationPlayerInterface } from '../../../core/animpack/AnimationPlayerInterface';
+import { Utils } from '../../../core/Utils';
 
 /**
  * Class for playing random animations at random intervals within this state.

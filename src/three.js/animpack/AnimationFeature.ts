@@ -1,7 +1,7 @@
 import {AnimationMixer} from 'three';
-import {AnimationFeature as CoreAnimationFeature, AnimationTypes} from '@core/animpack/AnimationFeature';
-import {HostObject} from '@core/HostObject';
-import {SingleState} from '@app/animpack/state/SingleState';
+import {AnimationFeature as CoreAnimationFeature, AnimationTypes} from '../../core/animpack/AnimationFeature';
+import {HostObject} from '../../core/HostObject';
+import {SingleState} from '../../three.js/animpack/state/SingleState';
 
 /**
  * Threejs AnimationMixer object

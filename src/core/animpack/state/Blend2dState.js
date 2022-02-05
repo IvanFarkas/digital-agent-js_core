@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import { Deferred } from '@core/Deferred';
-import { MathUtils } from '@core/MathUtils';
-import { AbstractBlendState } from '@core/animpack/AbstractBlendState';
-import { AnimationUtils } from '@core/animpack/AnimationUtils';
+import { Deferred } from '../../../core/Deferred';
+import { MathUtils } from '../../../core/MathUtils';
+import { AbstractBlendState } from '../../../core/animpack/state/AbstractBlendState';
+import { AnimationUtils } from '../../../core/animpack/AnimationUtils';
 
 /**
  * Class for blending N number of blend stGFates based on two paramters.

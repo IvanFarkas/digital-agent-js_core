@@ -1,5 +1,5 @@
 import {Object3D} from 'three';
-import {PointOfInterestFeature as CorePointOfInterestFeature, AxisMap} from '@core/PointOfInterestFeature';
+import {PointOfInterestFeature as CorePointOfInterestFeature, AxisMap} from '../core/PointOfInterestFeature';
 
 export {AxisMap};
 

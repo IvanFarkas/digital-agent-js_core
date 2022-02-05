@@ -1,10 +1,10 @@
-import {ManagedAnimationLayerInterface} from '@core/animpack/ManagedAnimationLayerInterface';
-import {AnimationFeature} from '@core/animpack/AnimationFeature';
-import {SSMLSpeechmarkInterface} from '@core/awspack/SSMLSpeechmarkInterface';
-import {HostObject} from '@core/HostObject';
-import {AbstractHostFeature} from '@core/AbstractHostFeature';
-import {Deferred} from '@core/Deferred';
-import {Utils} from '@core/Utils';
+import {ManagedAnimationLayerInterface} from 'core/animpack/ManagedAnimationLayerInterface';
+import {AnimationFeature} from 'core/animpack/AnimationFeature';
+import {SSMLSpeechmarkInterface} from 'core/awspack/SSMLSpeechmarkInterface';
+import {HostObject} from 'core/HostObject';
+import {AbstractHostFeature} from 'core/AbstractHostFeature';
+import {Deferred} from 'core/Deferred';
+import {Utils} from 'core/Utils';
 
 export const DefaultGestureWords: {
   big: string[];

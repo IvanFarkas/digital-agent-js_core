@@ -1,7 +1,7 @@
 import {Object3D, AudioListener, Audio, PositionalAudio} from 'three';
-import {HostObject} from '@core/HostObject';
-import {TextToSpeechFeature as CoreTextToSpeechFeature} from '@core/awspack/TextToSpeechFeature';
-import {Deferred} from '@core/Deferred';
+import {HostObject} from '../../core/HostObject';
+import {TextToSpeechFeature as CoreTextToSpeechFeature} from '../../core/awspack/TextToSpeechFeature';
+import {Deferred} from '../../core/Deferred';
 
 /**
  * Threejs PositionalAudio object

@@ -1,5 +1,5 @@
-import { Messenger } from '@core/Messenger';
-import { HostObject } from '@core/HostObject';
+import { Messenger } from '../core/Messenger';
+import { HostObject } from '../core/HostObject';
 
 /**
  * Base class for all host features. Keeps a reference to the host object managing the feature.

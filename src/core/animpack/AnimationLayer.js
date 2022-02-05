@@ -1,9 +1,9 @@
-import { AbstractBlendState } from '@core/animpack/state/AbstractBlendState';
-import { AnimationPlayerInterface } from '@core/animpack/AnimationPlayerInterface';
-import { AnimationUtils } from '@core/animpack/AnimationUtils';
-import { MathUtils } from '@core/MathUtils';
-import { Deferred } from '@core/Deferred';
-import { StateContainerInterface } from '@core/animpack/state/StateContainerInterface';
+import { AbstractBlendState } from '../../core/animpack/state/AbstractBlendState';
+import { AnimationPlayerInterface } from '../../core/animpack/AnimationPlayerInterface';
+import { AnimationUtils } from '../../core/animpack/AnimationUtils';
+import { MathUtils } from '../../core/MathUtils';
+import { Deferred } from '../../core/Deferred';
+import { StateContainerInterface } from '../../core/animpack/state/StateContainerInterface';
 
 /**
  * Enum for types of {@link AnimationLayer} blending.

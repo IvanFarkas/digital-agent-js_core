@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
-import { FeatureDependentInterface } from '@core/FeatureDependentInterface';
+import { FeatureDependentInterface } from '../../core/FeatureDependentInterface';
 
 /**
  * Class factory interface for features that are dependent on the AnimationFeature being present on the host. Layer and animation events will automatically be listened for once a AnimationFeature is added to the host and stopped once it is removed.
