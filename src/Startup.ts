@@ -309,6 +309,54 @@ export class Startup {
     }
   }
 
+  async playPreprocessdAudio(name: string, host: any) {
+    /**
+     * Make sure to replace text with a unique string per audioURL and speechJson, you can keep this as the text you used to play but note that it actually won't be played as the preprocessed audio and speechMarks will be played instead.
+     * Make sure to replace speechJson with the preprocessed SpeechMarks JSON Array.
+     * Make sure to replace audioURL with a Blob URL of the preprocessed Audio file
+     */
+    // host.TextToSpeechFeature.play(text, {
+    //   speechJson: speechJson,
+    //   AudioURL: audioURL
+    // });
+
+    console.debug('playPreprocessdAudio', name);
+
+    // Specify local paths
+    // Make sure to update them to where you copy them into under your public/root folder
+    const languageSelect = 'en-US';
+    const speechPath = `./assets/preprocessed/${languageSelect}/speech.json`;
+    const audioPath = `./assets/preprocessed/${languageSelect}/speech.mp3`;
+
+    // Fetch resources
+    const speechJson = await (await fetch(speechPath)).json();
+    const speechText = speechJson.Text.S;
+    // const speechMarks = b64DecodeUnicode(speechJson.SpeechMarks.S);
+    const speechMarks = speechJson.SpeechMarks.Json;
+    const audioBlob = await (await fetch(audioPath)).blob();
+
+    // Create Audio Blob URL
+    const audioURL = URL.createObjectURL(audioBlob);
+
+    // Play speech with local assets
+    host.TextToSpeechFeature.play(speechText, {
+      SpeechMarksJSON: speechMarks,
+      AudioURL: audioURL,
+    });
+  }
+
+  b64DecodeUnicode(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(
+      atob(str)
+        .split('')
+        .map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+  }
+
   // Initialize the host
   createHost(char: ICharacter | undefined): HostObject | undefined {
     try {
@@ -513,7 +561,8 @@ export class Startup {
     }
   }
 
-  control(command: string, param?: string) {
+  async control(command: string, param?: string) {
+    const name = this.currentCharacter.name;
     const host = this.currentCharacter.host;
     const text = this.currentCharacter.text;
     const emot = this.currentCharacter.emot;
@@ -531,9 +580,11 @@ export class Startup {
 
       case 'play':
         console.debug('play audio.');
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        host.TextToSpeechFeature[command](text);
+        // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // // @ts-ignore
+        // host.TextToSpeechFeature[command](text);
+
+        await this.playPreprocessdAudio(name, host);
         break;
 
       case 'pause':

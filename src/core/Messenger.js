@@ -1,24 +1,23 @@
 /* eslint-disable no-underscore-dangle */
-import { Utils } from '../core/Utils';
+import { Utils } from './Utils';
 
 /**
- * Class that can execute functions when local messages are received. Local messages are prefixed with the instance's id.
+ * Class that can execute functions when local messages are received. Local messages
+ * are prefixed with the instance's id.
  *
  * @alias core/Messenger
  *
- * @property {string} _id - Id for the object. If none is provided a new id will be created. Id should be able to be represented as a string.
- * @property {(Window & typeof globalThis)} _dispatcher - Dispatcher.
- * @property {any} _callbacks - Callbacks.
- * @property {any} _eventListeners - Event Listeners.
- * @property {Messenger} GlobalMessenger - A messenger that can be used for global messaging. When using static listen and emit methods they are executed on this messenger.
- *
+ * @property {core/Messenger} GlobalMessenger - A messenger that can be used for
+ * global messaging. When using static listen and emit methods they are executed
+ * on this messenger.
  * @property {Object} EVENTS - Built-in events that the Messenger emits.
  */
 export class Messenger {
   /**
    * @constructor
    *
-   * @param {any=} id - Id for the object. If none is provided a new id will be created. Id should be able to be represented as a string.
+   * @param {any=} id - Id for the object. If none is provided a new id will
+   * be created. Id should be able to be represented as a string.
    */
   constructor(id) {
     this._id = id !== undefined ? id : Utils.createId();
@@ -51,7 +50,8 @@ export class Messenger {
   }
 
   /**
-   * Return a function that will call a callback function and supply the event's detail property as an argument.
+   * Return a function that will call a callback function and supply the event's
+   * detail property as an argument.
    *
    * @private
    *
@@ -60,7 +60,7 @@ export class Messenger {
    * @returns {Function}
    */
   _createListener(callback) {
-    return (e) => {
+    return e => {
       let value;
 
       if (e.detail !== null) {
@@ -94,7 +94,10 @@ export class Messenger {
    * @param {Function} listener - A listener function generated using _createListener.
    */
   _addListener(message, listener) {
-    this._dispatcher.addEventListener(this._createLocalMessage(message), listener);
+    this._dispatcher.addEventListener(
+      this._createLocalMessage(message),
+      listener
+    );
   }
 
   /**
@@ -106,7 +109,10 @@ export class Messenger {
    * @param {Function} listener - A listener function generated using _createListener.
    */
   _removeListener(message, listener) {
-    this._dispatcher.removeEventListener(this._createLocalMessage(message), listener);
+    this._dispatcher.removeEventListener(
+      this._createLocalMessage(message),
+      listener
+    );
   }
 
   /**
@@ -117,7 +123,9 @@ export class Messenger {
    */
   listenTo(message, callback) {
     if (typeof callback !== 'function') {
-      throw new Error(`Cannot add listener for ${message} on ${this.id}. Callback must be a function.`);
+      throw new Error(
+        `Cannot add listener for ${message} on ${this.id}. Callback must be a function.`
+      );
     }
 
     if (this._callbacks[message] === undefined) {
@@ -133,10 +141,12 @@ export class Messenger {
   }
 
   /**
-   * Prevent a function from being executed when a message is received for this object.
+   * Prevent a function from being executed when a message is received for this
+   * object.
    *
    * @param {string} message - The message to stop listening for.
-   * @param {Function=} callback - Optional callback to remove. If none is defined, remove all callbacks for the message.
+   * @param {Function=} callback - Optional callback to remove. If none is defined,
+   * remove all callbacks for the message.
    */
   stopListening(message, callback) {
     if (this._callbacks[message] === undefined) {
@@ -169,21 +179,24 @@ export class Messenger {
   }
 
   /**
-   * De-register callback(s) from being executed when messages matching the given regular expression are received.
+   * De-register callback(s) from being executed when messages matching the given
+   * regular expression are received.
    *
-   * @param {RegExp} regexp - regexp - The regular expression to filter messages with.
-   * @param {Function=} callback - Optional callback to remove. If none is defined, remove all callbacks for messages matching the regular expression.
+   * @param {Regexp} regexp - regexp - The regular expression to filter messages with.
+   * @param {Function=} callback - Optional callback to remove. If none is defined,
+   * remove all callbacks for messages matching the regular expression.
    */
   stopListeningByRegexp(regexp, callback) {
-    const messages = Object.keys(this._callbacks).filter((message) => regexp.test(message));
+    const messages = Object.keys(this._callbacks).filter(message => regexp.test(message));
 
-    messages.forEach((message) => {
+    messages.forEach(message => {
       this.stopListening(message, callback);
     });
   }
 
   /**
-   * Prevent any functions from being executed when any message is received for this object.
+   * Prevent any functions from being executed when any message is received for
+   * this object.
    */
   stopListeningToAll() {
     const messages = Object.keys(this._callbacks);
@@ -194,7 +207,8 @@ export class Messenger {
   }
 
   /**
-   * Send a message, causing listener functions for the message on this object to be executed.
+   * Send a message, causing listener functions for the message on this object
+   * to be executed.
    *
    * @param {string} message - The message to emit.
    * @param {any=} value - Optional argument to pass to listener callbacks.
@@ -222,33 +236,40 @@ export class Messenger {
   }
 
   /**
-   * Prevent a function from being executed when a message is received for the global Messenger instance.
+   * Prevent a function from being executed when a message is received for the
+   * global Messenger instance.
    *
    * @static
    *
    * @param {string} message - The message to stop listening for.
-   * @param {Function=} callback - Optional callback to remove. If none is defined, remove all callbacks for the message.
+   * @param {Function=} callback - Optional callback to remove. If none is defined,
+   * remove all callbacks for the message.
    */
   static stopListening(message, callback) {
     this.GlobalMessenger.stopListening(message, callback);
   }
 
   /**
-   * De-register callback(s) from being executed on the global messengerr instance when messages matching the given regular expression are received.
+   * De-register callback(s) from being executed on the global messengerr instance
+   * when messages matching the given regular expression are received.
    *
-   * @param {RegExp} regexp - regexp - The regular expression to filter messages with.
-   * @param {Function=} callback - Optional callback to remove. If none is defined, remove all callbacks for messages matching the regular expression.
+   * @param {Regexp} regexp - regexp - The regular expression to filter messages with.
+   * @param {Function=} callback - Optional callback to remove. If none is defined,
+   * remove all callbacks for messages matching the regular expression.
    */
   static stopListeningByRegexp(regexp, callback) {
-    const messages = Object.keys(this.GlobalMessenger._callbacks).filter((message) => regexp.test(message));
+    const messages = Object.keys(this.GlobalMessenger._callbacks).filter(
+      message => regexp.test(message)
+    );
 
-    messages.forEach((message) => {
+    messages.forEach(message => {
       this.stopListening(message, callback);
     });
   }
 
   /**
-   * Prevent any functions from being executed when any message is received for the global Messenger instance.
+   * Prevent any functions from being executed when any message is received for
+   * the global Messenger instance.
    *
    * @static
    */
@@ -257,7 +278,8 @@ export class Messenger {
   }
 
   /**
-   * Send a message, causing listener functions for the message on the global Messenger instance to be executed.
+   * Send a message, causing listener functions for the message on the global Messenger
+   * instance to be executed.
    *
    * @static
    *
@@ -269,7 +291,6 @@ export class Messenger {
   }
 }
 
-// TODO: What do we do with this?
 Object.defineProperties(Messenger, {
   GlobalMessenger: {
     value: new Messenger(),

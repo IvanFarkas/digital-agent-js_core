@@ -136,6 +136,8 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
     // Set default options for each speech
     this._voice = options.voice || this.constructor.POLLY_DEFAULTS.VoiceId;
     this._language = options.language || this.constructor.POLLY_DEFAULTS.LanguageName;
+    this._audioURL = null;
+    this._speechMarksJSON = null;
     this._engine = engines.includes(options.engine) ? options.engine : this.constructor.POLLY_DEFAULTS.Engine;
     this._audioFormat = audioFormats.includes(options.audioFormat) ? options.audioFormat : this.constructor.POLLY_DEFAULTS.OutputFormat;
     this._sampleRate = sampleRates[this._audioFormat].rates.includes(options.sampleRate) ? options.sampleRate : this.constructor.POLLY_DEFAULTS.SampleRate;
@@ -429,13 +431,19 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
     }
 
     // Create a config object compatible with Polly
-    return {
+    const config = {
       Engine: this._engine,
       OutputFormat: this._audioFormat,
       SampleRate: this._sampleRate,
       VoiceId: this._voice,
-      LanguageCode: this.constructor.POLLY_LANGUAGES[this._language],
-    };
+      LanguageCode: this.constructor.POLLY_LANGUAGES[this._language]
+    }
+
+    if (this._audioURL && this._speechMarksJSON) {
+      return { ...config, AudioURL: this._audioURL, SpeechMarksJSON: this._speechMarksJSON };
+    }
+
+    return config;
   }
 
   /**
@@ -478,6 +486,9 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
       this._language = config.Language;
     }
 
+    this._audioURL = config.AudioURL;
+    this._speechMarksJSON = config.SpeechMarksJSON;
+
     // Validate the config
     const validConfig = this._getConfig();
 
@@ -488,20 +499,21 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
       return validConfig;
     }
 
+    // Remove this as it unnecessarily creates extra requests for when a speech has been cancelled
     // Update all cached configs
-    Object.entries(this._speechCache).forEach(([text, speech]) => {
-      // Check if this is a skipped speech
-      if (skipSpeeches.includes(text)) {
-        return;
-      }
+    // Object.entries(this._speechCache).forEach(([text, speech]) => {
+    //   // Check if this is a skipped speech
+    //   if (skipSpeeches.includes(text)) {
+    //     return;
+    //   }
 
-      const speechConfigStr = JSON.stringify(speech.config);
+    //   const speechConfigStr = JSON.stringify(speech.config);
 
-      // Update the speech with new parameters
-      if (speechConfigStr !== configStr) {
-        this._updateSpeech(text, validConfig);
-      }
-    });
+    //   // Update the speech with new parameters
+    //   if (speechConfigStr !== configStr) {
+    //     this._updateSpeech(text, validConfig);
+    //   }
+    // });
 
     return validConfig;
   }
@@ -538,9 +550,19 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
 
     // Generate audio and speechmarks
     speech.config = config;
-    speech.promise = Promise.all([this._synthesizeSpeechmarks(speechmarkParams), this._synthesizeAudio(audioParams)]).then((results) => {
-      return this._createSpeech(text, ...results);
-    });
+
+    // Skip Polly if audio and speechmarks are pre-processed
+    if (config.AudioURL && config.SpeechMarksJSON) {
+      speech.promise = this._synthesizeAudio({ UseS3: true, name: text, url: config.AudioURL })
+        .then((result) => this._createSpeech(text, config.SpeechMarksJSON, result));
+    } else {
+      speech.promise = Promise.all([
+        this._synthesizeSpeechmarks(speechmarkParams),
+        this._synthesizeAudio(audioParams),
+      ]).then(results => {
+        return this._createSpeech(text, ...results);
+      });
+    }
     this._speechCache[text] = speech;
 
     return speech;
@@ -572,8 +594,12 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
    * @returns {Deferred} Resolves with an object containing the audio URL.
    */
   _synthesizeAudio(params) {
+    if (params.UseS3) {
+      return Promise.resolve(params);
+    }
+
     return new Deferred((resolve, reject) => {
-      this.constructor.SERVICES.presigner.getSynthesizeSpeechUrl(params, function (error, url) {
+      this.constructor.SERVICES.presigner.getSynthesizeSpeechUrl(params, (error, url) => {
         if (!error) {
           resolve({ url });
         } else {

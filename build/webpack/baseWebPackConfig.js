@@ -36,7 +36,8 @@ function getPlugins(env) {
     new CopyPlugin({
       patterns: [
         { from: 'src/assets/glTF', to: 'assets/glTF' },
-        { from: 'src/assets/images', to: 'assets/images' }
+        { from: 'src/assets/images', to: 'assets/images' },
+        { from: 'src/assets/preprocessed', to: 'assets/preprocessed' }
       ],
     }),
   ];

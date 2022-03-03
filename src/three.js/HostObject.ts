@@ -1,9 +1,3 @@
-/**
- * Threejs Clock object
- *
- * @external "Clock"
- * @see https://threejs.org/docs/#api/en/core/Clock
- */
 import {Group, Clock} from 'three';
 import {HostObject as CoreHostObject} from '../core/HostObject';
 import {Utils} from '../core/Utils';

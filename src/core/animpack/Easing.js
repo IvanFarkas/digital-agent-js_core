@@ -9,7 +9,7 @@
  * Linear Easing
  * @type {EasingObject}
  */
-export const Linear = {
+ export const Linear = {
   None(k) {
     return k;
   },

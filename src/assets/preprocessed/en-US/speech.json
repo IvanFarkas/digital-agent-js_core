@@ -1,0 +1,837 @@
+{
+  "Id": {
+    "S": "8093afe6-3c20-4376-a0de-8abd42df8556"
+  },
+  "VoiceId": {
+    "S": "Matthew"
+  },
+  "Engine": {
+    "S": "neural"
+  },
+  "Region": {
+    "S": "us-east-1"
+  },
+  "IsAdult": {
+    "N": "0"
+  },
+  "Room": {
+    "S": "Kitchen"
+  },
+  "Created": {
+    "S": "2021-12-17T21:46:19.489Z"
+  },
+  "Url": {
+    "S": "https://dsblcupskj2vh.cloudfront.net/PropId_0001/en-US/Kitchen_2.mp3"
+  },
+  "LanguageCode": {
+    "S": "en-US"
+  },
+  "SpeakerId": {
+    "N": "2"
+  },
+  "PropertyId": {
+    "S": "PropId_0001"
+  },
+  "SampleRate": {
+    "S": "24000"
+  },
+  "SpeechMarks": {
+    "Json": [
+      {
+        "time": 0,
+        "type": "sentence",
+        "start": 49,
+        "end": 72,
+        "value": "Hello, my name is Luke.",
+        "duration": 1930
+      },
+      {
+        "time": 125,
+        "type": "word",
+        "start": 49,
+        "end": 54,
+        "value": "Hello",
+        "duration": 375
+      },
+      {
+        "time": 125,
+        "type": "viseme",
+        "value": "k",
+        "duration": 12
+      },
+      {
+        "time": 137,
+        "type": "viseme",
+        "value": "@",
+        "duration": 50
+      },
+      {
+        "time": 187,
+        "type": "viseme",
+        "value": "t",
+        "duration": 63
+      },
+      {
+        "time": 250,
+        "type": "viseme",
+        "value": "o",
+        "duration": 200
+      },
+      {
+        "time": 450,
+        "type": "viseme",
+        "value": "sil",
+        "duration": 50
+      },
+      {
+        "time": 500,
+        "type": "word",
+        "start": 56,
+        "end": 58,
+        "value": "my",
+        "duration": 337
+      },
+      {
+        "time": 500,
+        "type": "viseme",
+        "value": "p",
+        "duration": 125
+      },
+      {
+        "time": 625,
+        "type": "viseme",
+        "value": "a",
+        "duration": 212
+      },
+      {
+        "time": 837,
+        "type": "word",
+        "start": 59,
+        "end": 63,
+        "value": "name",
+        "duration": 200
+      },
+      {
+        "time": 837,
+        "type": "viseme",
+        "value": "t",
+        "duration": 100
+      },
+      {
+        "time": 937,
+        "type": "viseme",
+        "value": "e",
+        "duration": 63
+      },
+      {
+        "time": 1000,
+        "type": "viseme",
+        "value": "p",
+        "duration": 37
+      },
+      {
+        "time": 1037,
+        "type": "word",
+        "start": 64,
+        "end": 66,
+        "value": "is",
+        "duration": 100
+      },
+      {
+        "time": 1037,
+        "type": "viseme",
+        "value": "i",
+        "duration": 25
+      },
+      {
+        "time": 1062,
+        "type": "viseme",
+        "value": "s",
+        "duration": 75
+      },
+      {
+        "time": 1137,
+        "type": "word",
+        "start": 67,
+        "end": 71,
+        "value": "Luke",
+        "duration": 918
+      },
+      {
+        "time": 1137,
+        "type": "viseme",
+        "value": "t",
+        "duration": 113
+      },
+      {
+        "time": 1250,
+        "type": "viseme",
+        "value": "u",
+        "duration": 62
+      },
+      {
+        "time": 1312,
+        "type": "viseme",
+        "value": "k",
+        "duration": 225
+      },
+      {
+        "time": 1537,
+        "type": "viseme",
+        "value": "sil",
+        "duration": 518
+      },
+      {
+        "time": 1930,
+        "type": "sentence",
+        "start": 80,
+        "end": 142,
+        "value": "I am a <lang xml:lang=\"en-US\">Matterport</lang> Digital Agent.",
+        "duration": 2055
+      },
+      {
+        "time": 2055,
+        "type": "word",
+        "start": 80,
+        "end": 81,
+        "value": "I",
+        "duration": 75
+      },
+      {
+        "time": 2055,
+        "type": "viseme",
+        "value": "a",
+        "duration": 75
+      },
+      {
+        "time": 2130,
+        "type": "word",
+        "start": 82,
+        "end": 84,
+        "value": "am",
+        "duration": 112
+      },
+      {
+        "time": 2130,
+        "type": "viseme",
+        "value": "a",
+        "duration": 50
+      },
+      {
+        "time": 2180,
+        "type": "viseme",
+        "value": "p",
+        "duration": 62
+      },
+      {
+        "time": 2242,
+        "type": "word",
+        "start": 85,
+        "end": 86,
+        "value": "a",
+        "duration": 63
+      },
+      {
+        "time": 2242,
+        "type": "viseme",
+        "value": "@",
+        "duration": 63
+      },
+      {
+        "time": 2305,
+        "type": "word",
+        "start": 110,
+        "end": 120,
+        "value": "Matterport",
+        "duration": 537
+      },
+      {
+        "time": 2305,
+        "type": "viseme",
+        "value": "p",
+        "duration": 75
+      },
+      {
+        "time": 2380,
+        "type": "viseme",
+        "value": "a",
+        "duration": 50
+      },
+      {
+        "time": 2430,
+        "type": "viseme",
+        "value": "t",
+        "duration": 62
+      },
+      {
+        "time": 2492,
+        "type": "viseme",
+        "value": "E",
+        "duration": 63
+      },
+      {
+        "time": 2555,
+        "type": "viseme",
+        "value": "p",
+        "duration": 62
+      },
+      {
+        "time": 2617,
+        "type": "viseme",
+        "value": "O",
+        "duration": 63
+      },
+      {
+        "time": 2680,
+        "type": "viseme",
+        "value": "r",
+        "duration": 62
+      },
+      {
+        "time": 2742,
+        "type": "viseme",
+        "value": "t",
+        "duration": 100
+      },
+      {
+        "time": 2842,
+        "type": "word",
+        "start": 128,
+        "end": 135,
+        "value": "Digital",
+        "duration": 338
+      },
+      {
+        "time": 2842,
+        "type": "viseme",
+        "value": "t",
+        "duration": 25
+      },
+      {
+        "time": 2867,
+        "type": "viseme",
+        "value": "i",
+        "duration": 63
+      },
+      {
+        "time": 2930,
+        "type": "viseme",
+        "value": "S",
+        "duration": 62
+      },
+      {
+        "time": 2992,
+        "type": "viseme",
+        "value": "i",
+        "duration": 63
+      },
+      {
+        "time": 3055,
+        "type": "viseme",
+        "value": "t",
+        "duration": 12
+      },
+      {
+        "time": 3067,
+        "type": "viseme",
+        "value": "t",
+        "duration": 113
+      },
+      {
+        "time": 3180,
+        "type": "word",
+        "start": 136,
+        "end": 141,
+        "value": "Agent",
+        "duration": 867
+      },
+      {
+        "time": 3180,
+        "type": "viseme",
+        "value": "e",
+        "duration": 125
+      },
+      {
+        "time": 3305,
+        "type": "viseme",
+        "value": "S",
+        "duration": 62
+      },
+      {
+        "time": 3367,
+        "type": "viseme",
+        "value": "@",
+        "duration": 50
+      },
+      {
+        "time": 3417,
+        "type": "viseme",
+        "value": "t",
+        "duration": 75
+      },
+      {
+        "time": 3492,
+        "type": "viseme",
+        "value": "t",
+        "duration": 63
+      },
+      {
+        "time": 3555,
+        "type": "viseme",
+        "value": "sil",
+        "duration": 492
+      },
+      {
+        "time": 3985,
+        "type": "sentence",
+        "start": 150,
+        "end": 355,
+        "value": "Right now, <mark name='{\"feature\":\"PointOfInterestFeature\",\"method\":\"setTargetByName\",\"args\":[\"chargaze\"]},'/> my friend and I are helping <lang xml:lang=\"en-US\">Ivan</lang> to demonstrate our capabilities.",
+        "duration": 3887
+      },
+      {
+        "time": 4047,
+        "type": "word",
+        "start": 150,
+        "end": 155,
+        "value": "Right",
+        "duration": 250
+      },
+      {
+        "time": 4047,
+        "type": "viseme",
+        "value": "r",
+        "duration": 138
+      },
+      {
+        "time": 4185,
+        "type": "viseme",
+        "value": "a",
+        "duration": 37
+      },
+      {
+        "time": 4222,
+        "type": "viseme",
+        "value": "t",
+        "duration": 75
+      },
+      {
+        "time": 4297,
+        "type": "word",
+        "start": 156,
+        "end": 159,
+        "value": "now",
+        "duration": 375
+      },
+      {
+        "time": 4297,
+        "type": "viseme",
+        "value": "t",
+        "duration": 100
+      },
+      {
+        "time": 4397,
+        "type": "viseme",
+        "value": "a",
+        "duration": 238
+      },
+      {
+        "time": 4635,
+        "type": "ssml",
+        "start": 161,
+        "end": 259,
+        "value": "{\"feature\":\"PointOfInterestFeature\",\"method\":\"setTargetByName\",\"args\":[\"chargaze\"]},",
+        "duration": 0
+      },
+      {
+        "time": 4635,
+        "type": "viseme",
+        "value": "sil",
+        "duration": 37
+      },
+      {
+        "time": 4672,
+        "type": "word",
+        "start": 260,
+        "end": 262,
+        "value": "my",
+        "duration": 313
+      },
+      {
+        "time": 4672,
+        "type": "viseme",
+        "value": "p",
+        "duration": 63
+      },
+      {
+        "time": 4735,
+        "type": "viseme",
+        "value": "a",
+        "duration": 250
+      },
+      {
+        "time": 4985,
+        "type": "word",
+        "start": 263,
+        "end": 269,
+        "value": "friend",
+        "duration": 325
+      },
+      {
+        "time": 4985,
+        "type": "viseme",
+        "value": "f",
+        "duration": 37
+      },
+      {
+        "time": 5022,
+        "type": "viseme",
+        "value": "r",
+        "duration": 88
+      },
+      {
+        "time": 5110,
+        "type": "viseme",
+        "value": "E",
+        "duration": 75
+      },
+      {
+        "time": 5185,
+        "type": "viseme",
+        "value": "t",
+        "duration": 50
+      },
+      {
+        "time": 5235,
+        "type": "viseme",
+        "value": "t",
+        "duration": 75
+      },
+      {
+        "time": 5310,
+        "type": "word",
+        "start": 270,
+        "end": 273,
+        "value": "and",
+        "duration": 112
+      },
+      {
+        "time": 5310,
+        "type": "viseme",
+        "value": "@",
+        "duration": 12
+      },
+      {
+        "time": 5322,
+        "type": "viseme",
+        "value": "t",
+        "duration": 38
+      },
+      {
+        "time": 5360,
+        "type": "viseme",
+        "value": "t",
+        "duration": 62
+      },
+      {
+        "time": 5422,
+        "type": "word",
+        "start": 274,
+        "end": 275,
+        "value": "I",
+        "duration": 125
+      },
+      {
+        "time": 5422,
+        "type": "viseme",
+        "value": "a",
+        "duration": 125
+      },
+      {
+        "time": 5547,
+        "type": "word",
+        "start": 276,
+        "end": 279,
+        "value": "are",
+        "duration": 150
+      },
+      {
+        "time": 5547,
+        "type": "viseme",
+        "value": "a",
+        "duration": 63
+      },
+      {
+        "time": 5610,
+        "type": "viseme",
+        "value": "r",
+        "duration": 87
+      },
+      {
+        "time": 5697,
+        "type": "word",
+        "start": 280,
+        "end": 287,
+        "value": "helping",
+        "duration": 375
+      },
+      {
+        "time": 5697,
+        "type": "viseme",
+        "value": "k",
+        "duration": 38
+      },
+      {
+        "time": 5735,
+        "type": "viseme",
+        "value": "E",
+        "duration": 25
+      },
+      {
+        "time": 5760,
+        "type": "viseme",
+        "value": "t",
+        "duration": 75
+      },
+      {
+        "time": 5835,
+        "type": "viseme",
+        "value": "p",
+        "duration": 25
+      },
+      {
+        "time": 5860,
+        "type": "viseme",
+        "value": "i",
+        "duration": 62
+      },
+      {
+        "time": 5922,
+        "type": "viseme",
+        "value": "k",
+        "duration": 150
+      },
+      {
+        "time": 6072,
+        "type": "word",
+        "start": 311,
+        "end": 315,
+        "value": "Ivan",
+        "duration": 225
+      },
+      {
+        "time": 6072,
+        "type": "viseme",
+        "value": "a",
+        "duration": 38
+      },
+      {
+        "time": 6110,
+        "type": "viseme",
+        "value": "f",
+        "duration": 112
+      },
+      {
+        "time": 6222,
+        "type": "viseme",
+        "value": "t",
+        "duration": 75
+      },
+      {
+        "time": 6297,
+        "type": "word",
+        "start": 323,
+        "end": 325,
+        "value": "to",
+        "duration": 125
+      },
+      {
+        "time": 6297,
+        "type": "viseme",
+        "value": "t",
+        "duration": 63
+      },
+      {
+        "time": 6360,
+        "type": "viseme",
+        "value": "u",
+        "duration": 62
+      },
+      {
+        "time": 6422,
+        "type": "word",
+        "start": 326,
+        "end": 337,
+        "value": "demonstrate",
+        "duration": 513
+      },
+      {
+        "time": 6422,
+        "type": "viseme",
+        "value": "t",
+        "duration": 75
+      },
+      {
+        "time": 6497,
+        "type": "viseme",
+        "value": "E",
+        "duration": 50
+      },
+      {
+        "time": 6547,
+        "type": "viseme",
+        "value": "p",
+        "duration": 75
+      },
+      {
+        "time": 6622,
+        "type": "viseme",
+        "value": "@",
+        "duration": 50
+      },
+      {
+        "time": 6672,
+        "type": "viseme",
+        "value": "t",
+        "duration": 25
+      },
+      {
+        "time": 6697,
+        "type": "viseme",
+        "value": "s",
+        "duration": 38
+      },
+      {
+        "time": 6735,
+        "type": "viseme",
+        "value": "t",
+        "duration": 62
+      },
+      {
+        "time": 6797,
+        "type": "viseme",
+        "value": "r",
+        "duration": 13
+      },
+      {
+        "time": 6810,
+        "type": "viseme",
+        "value": "e",
+        "duration": 62
+      },
+      {
+        "time": 6872,
+        "type": "viseme",
+        "value": "t",
+        "duration": 63
+      },
+      {
+        "time": 6935,
+        "type": "word",
+        "start": 338,
+        "end": 341,
+        "value": "our",
+        "duration": 112
+      },
+      {
+        "time": 6935,
+        "type": "viseme",
+        "value": "a",
+        "duration": 50
+      },
+      {
+        "time": 6985,
+        "type": "viseme",
+        "value": "r",
+        "duration": 62
+      },
+      {
+        "time": 7047,
+        "type": "word",
+        "start": 342,
+        "end": 354,
+        "value": "capabilities",
+        "duration": 825
+      },
+      {
+        "time": 7047,
+        "type": "viseme",
+        "value": "k",
+        "duration": 63
+      },
+      {
+        "time": 7110,
+        "type": "viseme",
+        "value": "e",
+        "duration": 62
+      },
+      {
+        "time": 7172,
+        "type": "viseme",
+        "value": "p",
+        "duration": 75
+      },
+      {
+        "time": 7247,
+        "type": "viseme",
+        "value": "@",
+        "duration": 50
+      },
+      {
+        "time": 7297,
+        "type": "viseme",
+        "value": "p",
+        "duration": 63
+      },
+      {
+        "time": 7360,
+        "type": "viseme",
+        "value": "i",
+        "duration": 62
+      },
+      {
+        "time": 7422,
+        "type": "viseme",
+        "value": "t",
+        "duration": 63
+      },
+      {
+        "time": 7485,
+        "type": "viseme",
+        "value": "@",
+        "duration": 62
+      },
+      {
+        "time": 7547,
+        "type": "viseme",
+        "value": "t",
+        "duration": 25
+      },
+      {
+        "time": 7572,
+        "type": "viseme",
+        "value": "i",
+        "duration": 88
+      },
+      {
+        "time": 7660,
+        "type": "viseme",
+        "value": "s",
+        "duration": 212
+      },
+      {
+        "time": 7872,
+        "type": "viseme",
+        "value": "sil",
+        "duration": 0.05
+      }
+    ],
+    "S": "W3sidGltZSI6MCwidHlwZSI6InNlbnRlbmNlIiwic3RhcnQiOjQ5LCJlbmQiOjcyLCJ2YWx1ZSI6IkhlbGxvLCBteSBuYW1lIGlzIEx1a2UuIiwiZHVyYXRpb24iOjE5MzB9LHsidGltZSI6MTI1LCJ0eXBlIjoid29yZCIsInN0YXJ0Ijo0OSwiZW5kIjo1NCwidmFsdWUiOiJIZWxsbyIsImR1cmF0aW9uIjozNzV9LHsidGltZSI6MTI1LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJrIiwiZHVyYXRpb24iOjEyfSx7InRpbWUiOjEzNywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiQCIsImR1cmF0aW9uIjo1MH0seyJ0aW1lIjoxODcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InQiLCJkdXJhdGlvbiI6NjN9LHsidGltZSI6MjUwLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJvIiwiZHVyYXRpb24iOjIwMH0seyJ0aW1lIjo0NTAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InNpbCIsImR1cmF0aW9uIjo1MH0seyJ0aW1lIjo1MDAsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjU2LCJlbmQiOjU4LCJ2YWx1ZSI6Im15IiwiZHVyYXRpb24iOjMzN30seyJ0aW1lIjo1MDAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InAiLCJkdXJhdGlvbiI6MTI1fSx7InRpbWUiOjYyNSwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiYSIsImR1cmF0aW9uIjoyMTJ9LHsidGltZSI6ODM3LCJ0eXBlIjoid29yZCIsInN0YXJ0Ijo1OSwiZW5kIjo2MywidmFsdWUiOiJuYW1lIiwiZHVyYXRpb24iOjIwMH0seyJ0aW1lIjo4MzcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InQiLCJkdXJhdGlvbiI6MTAwfSx7InRpbWUiOjkzNywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiZSIsImR1cmF0aW9uIjo2M30seyJ0aW1lIjoxMDAwLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJwIiwiZHVyYXRpb24iOjM3fSx7InRpbWUiOjEwMzcsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjY0LCJlbmQiOjY2LCJ2YWx1ZSI6ImlzIiwiZHVyYXRpb24iOjEwMH0seyJ0aW1lIjoxMDM3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJpIiwiZHVyYXRpb24iOjI1fSx7InRpbWUiOjEwNjIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InMiLCJkdXJhdGlvbiI6NzV9LHsidGltZSI6MTEzNywidHlwZSI6IndvcmQiLCJzdGFydCI6NjcsImVuZCI6NzEsInZhbHVlIjoiTHVrZSIsImR1cmF0aW9uIjo5MTh9LHsidGltZSI6MTEzNywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjoxMTN9LHsidGltZSI6MTI1MCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidSIsImR1cmF0aW9uIjo2Mn0seyJ0aW1lIjoxMzEyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJrIiwiZHVyYXRpb24iOjIyNX0seyJ0aW1lIjoxNTM3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJzaWwiLCJkdXJhdGlvbiI6NTE4fSx7InRpbWUiOjE5MzAsInR5cGUiOiJzZW50ZW5jZSIsInN0YXJ0Ijo4MCwiZW5kIjoxNDIsInZhbHVlIjoiSSBhbSBhIFx1MDAzQ2xhbmcgeG1sOmxhbmc9XHUwMDIyZW4tVVNcdTAwMjJcdTAwM0VNYXR0ZXJwb3J0XHUwMDNDL2xhbmdcdTAwM0UgRGlnaXRhbCBBZ2VudC4iLCJkdXJhdGlvbiI6MjA1NX0seyJ0aW1lIjoyMDU1LCJ0eXBlIjoid29yZCIsInN0YXJ0Ijo4MCwiZW5kIjo4MSwidmFsdWUiOiJJIiwiZHVyYXRpb24iOjc1fSx7InRpbWUiOjIwNTUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImEiLCJkdXJhdGlvbiI6NzV9LHsidGltZSI6MjEzMCwidHlwZSI6IndvcmQiLCJzdGFydCI6ODIsImVuZCI6ODQsInZhbHVlIjoiYW0iLCJkdXJhdGlvbiI6MTEyfSx7InRpbWUiOjIxMzAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImEiLCJkdXJhdGlvbiI6NTB9LHsidGltZSI6MjE4MCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoicCIsImR1cmF0aW9uIjo2Mn0seyJ0aW1lIjoyMjQyLCJ0eXBlIjoid29yZCIsInN0YXJ0Ijo4NSwiZW5kIjo4NiwidmFsdWUiOiJhIiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjIyNDIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6IkAiLCJkdXJhdGlvbiI6NjN9LHsidGltZSI6MjMwNSwidHlwZSI6IndvcmQiLCJzdGFydCI6MTEwLCJlbmQiOjEyMCwidmFsdWUiOiJNYXR0ZXJwb3J0IiwiZHVyYXRpb24iOjUzN30seyJ0aW1lIjoyMzA1LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJwIiwiZHVyYXRpb24iOjc1fSx7InRpbWUiOjIzODAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImEiLCJkdXJhdGlvbiI6NTB9LHsidGltZSI6MjQzMCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjo2Mn0seyJ0aW1lIjoyNDkyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJFIiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjI1NTUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InAiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6MjYxNywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiTyIsImR1cmF0aW9uIjo2M30seyJ0aW1lIjoyNjgwLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJyIiwiZHVyYXRpb24iOjYyfSx7InRpbWUiOjI3NDIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InQiLCJkdXJhdGlvbiI6MTAwfSx7InRpbWUiOjI4NDIsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjEyOCwiZW5kIjoxMzUsInZhbHVlIjoiRGlnaXRhbCIsImR1cmF0aW9uIjozMzh9LHsidGltZSI6Mjg0MiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjoyNX0seyJ0aW1lIjoyODY3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJpIiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjI5MzAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6IlMiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6Mjk5MiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiaSIsImR1cmF0aW9uIjo2M30seyJ0aW1lIjozMDU1LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjEyfSx7InRpbWUiOjMwNjcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InQiLCJkdXJhdGlvbiI6MTEzfSx7InRpbWUiOjMxODAsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjEzNiwiZW5kIjoxNDEsInZhbHVlIjoiQWdlbnQiLCJkdXJhdGlvbiI6ODY3fSx7InRpbWUiOjMxODAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImUiLCJkdXJhdGlvbiI6MTI1fSx7InRpbWUiOjMzMDUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6IlMiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6MzM2NywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiQCIsImR1cmF0aW9uIjo1MH0seyJ0aW1lIjozNDE3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjc1fSx7InRpbWUiOjM0OTIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InQiLCJkdXJhdGlvbiI6NjN9LHsidGltZSI6MzU1NSwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoic2lsIiwiZHVyYXRpb24iOjQ5Mn0seyJ0aW1lIjozOTg1LCJ0eXBlIjoic2VudGVuY2UiLCJzdGFydCI6MTUwLCJlbmQiOjM1NSwidmFsdWUiOiJSaWdodCBub3csIFx1MDAzQ21hcmsgbmFtZT1cdTAwMjd7XHUwMDIyZmVhdHVyZVx1MDAyMjpcdTAwMjJQb2ludE9mSW50ZXJlc3RGZWF0dXJlXHUwMDIyLFx1MDAyMm1ldGhvZFx1MDAyMjpcdTAwMjJzZXRUYXJnZXRCeU5hbWVcdTAwMjIsXHUwMDIyYXJnc1x1MDAyMjpbXHUwMDIyY2hhcmdhemVcdTAwMjJdfSxcdTAwMjcvXHUwMDNFIG15IGZyaWVuZCBhbmQgSSBhcmUgaGVscGluZyBcdTAwM0NsYW5nIHhtbDpsYW5nPVx1MDAyMmVuLVVTXHUwMDIyXHUwMDNFSXZhblx1MDAzQy9sYW5nXHUwMDNFIHRvIGRlbW9uc3RyYXRlIG91ciBjYXBhYmlsaXRpZXMuIiwiZHVyYXRpb24iOjM4ODd9LHsidGltZSI6NDA0NywidHlwZSI6IndvcmQiLCJzdGFydCI6MTUwLCJlbmQiOjE1NSwidmFsdWUiOiJSaWdodCIsImR1cmF0aW9uIjoyNTB9LHsidGltZSI6NDA0NywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiciIsImR1cmF0aW9uIjoxMzh9LHsidGltZSI6NDE4NSwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiYSIsImR1cmF0aW9uIjozN30seyJ0aW1lIjo0MjIyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjc1fSx7InRpbWUiOjQyOTcsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjE1NiwiZW5kIjoxNTksInZhbHVlIjoibm93IiwiZHVyYXRpb24iOjM3NX0seyJ0aW1lIjo0Mjk3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjEwMH0seyJ0aW1lIjo0Mzk3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJhIiwiZHVyYXRpb24iOjIzOH0seyJ0aW1lIjo0NjM1LCJ0eXBlIjoic3NtbCIsInN0YXJ0IjoxNjEsImVuZCI6MjU5LCJ2YWx1ZSI6IntcdTAwMjJmZWF0dXJlXHUwMDIyOlx1MDAyMlBvaW50T2ZJbnRlcmVzdEZlYXR1cmVcdTAwMjIsXHUwMDIybWV0aG9kXHUwMDIyOlx1MDAyMnNldFRhcmdldEJ5TmFtZVx1MDAyMixcdTAwMjJhcmdzXHUwMDIyOltcdTAwMjJjaGFyZ2F6ZVx1MDAyMl19LCIsImR1cmF0aW9uIjowfSx7InRpbWUiOjQ2MzUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InNpbCIsImR1cmF0aW9uIjozN30seyJ0aW1lIjo0NjcyLCJ0eXBlIjoid29yZCIsInN0YXJ0IjoyNjAsImVuZCI6MjYyLCJ2YWx1ZSI6Im15IiwiZHVyYXRpb24iOjMxM30seyJ0aW1lIjo0NjcyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJwIiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjQ3MzUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImEiLCJkdXJhdGlvbiI6MjUwfSx7InRpbWUiOjQ5ODUsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjI2MywiZW5kIjoyNjksInZhbHVlIjoiZnJpZW5kIiwiZHVyYXRpb24iOjMyNX0seyJ0aW1lIjo0OTg1LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJmIiwiZHVyYXRpb24iOjM3fSx7InRpbWUiOjUwMjIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InIiLCJkdXJhdGlvbiI6ODh9LHsidGltZSI6NTExMCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiRSIsImR1cmF0aW9uIjo3NX0seyJ0aW1lIjo1MTg1LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjUwfSx7InRpbWUiOjUyMzUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InQiLCJkdXJhdGlvbiI6NzV9LHsidGltZSI6NTMxMCwidHlwZSI6IndvcmQiLCJzdGFydCI6MjcwLCJlbmQiOjI3MywidmFsdWUiOiJhbmQiLCJkdXJhdGlvbiI6MTEyfSx7InRpbWUiOjUzMTAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6IkAiLCJkdXJhdGlvbiI6MTJ9LHsidGltZSI6NTMyMiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjozOH0seyJ0aW1lIjo1MzYwLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjYyfSx7InRpbWUiOjU0MjIsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjI3NCwiZW5kIjoyNzUsInZhbHVlIjoiSSIsImR1cmF0aW9uIjoxMjV9LHsidGltZSI6NTQyMiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiYSIsImR1cmF0aW9uIjoxMjV9LHsidGltZSI6NTU0NywidHlwZSI6IndvcmQiLCJzdGFydCI6Mjc2LCJlbmQiOjI3OSwidmFsdWUiOiJhcmUiLCJkdXJhdGlvbiI6MTUwfSx7InRpbWUiOjU1NDcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImEiLCJkdXJhdGlvbiI6NjN9LHsidGltZSI6NTYxMCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiciIsImR1cmF0aW9uIjo4N30seyJ0aW1lIjo1Njk3LCJ0eXBlIjoid29yZCIsInN0YXJ0IjoyODAsImVuZCI6Mjg3LCJ2YWx1ZSI6ImhlbHBpbmciLCJkdXJhdGlvbiI6Mzc1fSx7InRpbWUiOjU2OTcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImsiLCJkdXJhdGlvbiI6Mzh9LHsidGltZSI6NTczNSwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiRSIsImR1cmF0aW9uIjoyNX0seyJ0aW1lIjo1NzYwLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjc1fSx7InRpbWUiOjU4MzUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InAiLCJkdXJhdGlvbiI6MjV9LHsidGltZSI6NTg2MCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiaSIsImR1cmF0aW9uIjo2Mn0seyJ0aW1lIjo1OTIyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJrIiwiZHVyYXRpb24iOjE1MH0seyJ0aW1lIjo2MDcyLCJ0eXBlIjoid29yZCIsInN0YXJ0IjozMTEsImVuZCI6MzE1LCJ2YWx1ZSI6Ikl2YW4iLCJkdXJhdGlvbiI6MjI1fSx7InRpbWUiOjYwNzIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImEiLCJkdXJhdGlvbiI6Mzh9LHsidGltZSI6NjExMCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiZiIsImR1cmF0aW9uIjoxMTJ9LHsidGltZSI6NjIyMiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjo3NX0seyJ0aW1lIjo2Mjk3LCJ0eXBlIjoid29yZCIsInN0YXJ0IjozMjMsImVuZCI6MzI1LCJ2YWx1ZSI6InRvIiwiZHVyYXRpb24iOjEyNX0seyJ0aW1lIjo2Mjk3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjYzNjAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InUiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6NjQyMiwidHlwZSI6IndvcmQiLCJzdGFydCI6MzI2LCJlbmQiOjMzNywidmFsdWUiOiJkZW1vbnN0cmF0ZSIsImR1cmF0aW9uIjo1MTN9LHsidGltZSI6NjQyMiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjo3NX0seyJ0aW1lIjo2NDk3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJFIiwiZHVyYXRpb24iOjUwfSx7InRpbWUiOjY1NDcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InAiLCJkdXJhdGlvbiI6NzV9LHsidGltZSI6NjYyMiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiQCIsImR1cmF0aW9uIjo1MH0seyJ0aW1lIjo2NjcyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjI1fSx7InRpbWUiOjY2OTcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InMiLCJkdXJhdGlvbiI6Mzh9LHsidGltZSI6NjczNSwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjo2Mn0seyJ0aW1lIjo2Nzk3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJyIiwiZHVyYXRpb24iOjEzfSx7InRpbWUiOjY4MTAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImUiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6Njg3MiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjo2M30seyJ0aW1lIjo2OTM1LCJ0eXBlIjoid29yZCIsInN0YXJ0IjozMzgsImVuZCI6MzQxLCJ2YWx1ZSI6Im91ciIsImR1cmF0aW9uIjoxMTJ9LHsidGltZSI6NjkzNSwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiYSIsImR1cmF0aW9uIjo1MH0seyJ0aW1lIjo2OTg1LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJyIiwiZHVyYXRpb24iOjYyfSx7InRpbWUiOjcwNDcsInR5cGUiOiJ3b3JkIiwic3RhcnQiOjM0MiwiZW5kIjozNTQsInZhbHVlIjoiY2FwYWJpbGl0aWVzIiwiZHVyYXRpb24iOjgyNX0seyJ0aW1lIjo3MDQ3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJrIiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjcxMTAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6ImUiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6NzE3MiwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoicCIsImR1cmF0aW9uIjo3NX0seyJ0aW1lIjo3MjQ3LCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJAIiwiZHVyYXRpb24iOjUwfSx7InRpbWUiOjcyOTcsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InAiLCJkdXJhdGlvbiI6NjN9LHsidGltZSI6NzM2MCwidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoiaSIsImR1cmF0aW9uIjo2Mn0seyJ0aW1lIjo3NDIyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJ0IiwiZHVyYXRpb24iOjYzfSx7InRpbWUiOjc0ODUsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6IkAiLCJkdXJhdGlvbiI6NjJ9LHsidGltZSI6NzU0NywidHlwZSI6InZpc2VtZSIsInN0YXJ0IjpudWxsLCJlbmQiOm51bGwsInZhbHVlIjoidCIsImR1cmF0aW9uIjoyNX0seyJ0aW1lIjo3NTcyLCJ0eXBlIjoidmlzZW1lIiwic3RhcnQiOm51bGwsImVuZCI6bnVsbCwidmFsdWUiOiJpIiwiZHVyYXRpb24iOjg4fSx7InRpbWUiOjc2NjAsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InMiLCJkdXJhdGlvbiI6MjEyfSx7InRpbWUiOjc4NzIsInR5cGUiOiJ2aXNlbWUiLCJzdGFydCI6bnVsbCwiZW5kIjpudWxsLCJ2YWx1ZSI6InNpbCIsImR1cmF0aW9uIjowLjA1fV0="
+  },
+  "Updated": {
+    "S": "2022-02-07T00:16:41.853Z"
+  },
+  "Text": {
+    "S": "<speak> <amazon:domain name=\"conversational\"> <s>Hello, my name is Luke.</s> <s>I am a <lang xml:lang=\"en-US\">Matterport</lang> Digital Agent.</s> <s>Right now, <mark name='{\"feature\":\"PointOfInterestFeature\",\"method\":\"setTargetByName\",\"args\":[\"chargaze\"]}'/> my friend and I are helping <lang xml:lang=\"en-US\">Ivan</lang> to demonstrate our capabilities.</s> </amazon:domain></speak>"
+  }
+}

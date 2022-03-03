@@ -1,11 +1,9 @@
-import { Deferred } from '../core/Deferred';
+import { Deferred } from './Deferred';
 
 /**
  * A collection of useful generic functions.
  *
  * @hideconstructor
- *
- * @property {string} index - Index.
  */
 export class Utils {
   /**
@@ -16,7 +14,7 @@ export class Utils {
    * @returns {String}
    */
   static createId() {
-    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
       const randomNumber = Math.floor((Date.now() + Math.random() * 16) % 16);
       if (c === 'x') {
         return randomNumber.toString(16);
@@ -29,10 +27,12 @@ export class Utils {
   /**
    * @static
    *
-   * Check a name string against an array of strings to determine if it is unique. If it isn't, append incremented trailing integers to the end of the name until it is unique.
+   * Check a name string against an array of strings to determine if it is unique.
+   * If it isn't, append incremented trailing integers to the end of the name
+   * until it is unique.
    *
    * @param {string} name - String name to make unique.
-   * @param {string[]=} nameArray - Array of string names to check agains.
+   * @param {Array.<string>=} nameArray - Array of string names to check agains.
    *
    * @returns {string}
    */
@@ -51,7 +51,7 @@ export class Utils {
     let increment = Number(matchGroup[0]);
 
     // Find the highest trailing number value for the base of the name
-    nameSet.forEach((setName) => {
+    nameSet.forEach(setName => {
       const setMatchGroup = setName.match(/\d*$/);
 
       if (setName.slice(0, setMatchGroup.index) === baseName) {
@@ -68,21 +68,30 @@ export class Utils {
   }
 
   /**
-   * Return a deferred promise that will wait a given number of seconds before resolving. Pass delta time in milliseconds to the deferred promise's execute method in an update loop to progress time.
+   * Return a deferred promise that will wait a given number of seconds before
+   * resolving. Pass delta time in milliseconds to the deferred promise's execute
+   * method in an update loop to progress time.
    *
    * @param {number} [seconds=0] - Number of seconds to wait before resolving.
    * @param {Object=} options - Optional options object
-   * @param {Function} [options.onFinish] - Callback to execute once the wait time is met.
-   * @param {Function=} options.onProgress - Callback to execute each time the wait time progresses towards the target number of seconds. The amount of progress as a 0-1 percentage is passed as an argument.
-   * @param {Function=} options.onCancel - Callback to execute if the user cancels the wait before completion.
-   * @param {Function=} options.onError - Callback to execute if the wait stops because an error is encountered. The error message is passed as a parameter.
+   * @param {Function} [options.onFinish] - Callback to execute once the wait time
+   * is met.
+   * @param {Function=} options.onProgress - Callback to execute each time the wait
+   * time progresses towards the target number of seconds. The amount of progress
+   * as a 0-1 percentage is passed as an argument.
+   * @param {Function=} options.onCancel - Callback to execute if the user cancels
+   * the wait before completion.
+   * @param {Function=} options.onError - Callback to execute if the wait stops
+   * because an error is encountered. The error message is passed as a parameter.
    *
-   * @returns {Promise<void>}
+   * @returns {Deferred}
    */
   static wait(seconds = 0, { onFinish, onProgress, onCancel, onError } = {}) {
     // Make sure seconds is numeric
     if (typeof seconds !== 'number') {
-      console.warn(`Invalid seconds value ${seconds} for wait. Defaulting to 0.`);
+      console.warn(
+        `Invalid seconds value ${seconds} for wait. Defaulting to 0.`
+      );
 
       seconds = 0;
     }
@@ -102,7 +111,9 @@ export class Utils {
     // Executable to pass to Deferred, meant to be run in an update loop
     const onUpdate = (resolve, reject, _cancel, deltaTime = 0) => {
       if (typeof deltaTime !== 'number') {
-        const e = new Error(`Invalid property wait deltaTime. DeltaTime must be a number.`);
+        const e = new Error(
+          `Invalid property wait deltaTime. DeltaTime must be a number.`
+        );
         reject(e);
         return;
       }
@@ -132,23 +143,21 @@ export class Utils {
   }
 
   /**
-   * Get a random float number between a min (inclusive) and max (exclusive) value
-   *
-   * @param {number} min minimum value
-   * @param {number} max maximum value
-   * @returns {float}
-   */
+    * Get a random float number between a min (inclusive) and max (exclusive) value
+    * @param {number} min minimum value
+    * @param {number} max maximum value
+    * @returns {float}
+    */
   static getRandomFloat(min, max) {
     return Math.random() * (max - min) + min;
   }
 
   /**
-   * Get a random integer number between a min (inclusive) and max (exclusive) value
-   *
-   * @param {number} min minimum value
-   * @param {number} max maximum value
-   * @returns {integer}
-   */
+    * Get a random integer number between a min (inclusive) and max (exclusive) value
+    * @param {number} min minimum value
+    * @param {number} max maximum value
+    * @returns {integer}
+    */
   static getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);

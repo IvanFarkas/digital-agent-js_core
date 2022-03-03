@@ -9,10 +9,6 @@ import {Messenger as CoreMessenger} from '@core/Messenger';
  */
 export class Messenger extends CoreMessenger {
   public static GlobalMessenger: any = new Messenger();
-  // Object.defineProperty(Messenger, 'GlobalMessenger', {
-  //   value: new Messenger(),
-  //   writable: false,
-  // });
 
   static _initialize = (() => {
     // TODO: Verify

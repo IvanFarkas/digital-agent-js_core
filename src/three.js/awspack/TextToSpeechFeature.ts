@@ -1,7 +1,5 @@
 import {Object3D, AudioListener, Audio, PositionalAudio} from 'three';
-import {HostObject} from '../../core/HostObject';
 import {TextToSpeechFeature as CoreTextToSpeechFeature} from '../../core/awspack/TextToSpeechFeature';
-import {Deferred} from '../../core/Deferred';
 
 /**
  * Threejs PositionalAudio object
@@ -64,7 +62,7 @@ export class TextToSpeechFeature extends CoreTextToSpeechFeature {
    *
    * @returns {Promise} Resolves with an object containing the audio URL and Audio objects.
    */
-  _synthesizeAudio(params: any): Deferred | Promise<never> {
+  _synthesizeAudio(params: any) {
     // TODO: Validate
     return super._synthesizeAudio(params).then((result: any) => {
       if (this._attachTo !== undefined && !this.isGlobal) {
@@ -79,7 +77,7 @@ export class TextToSpeechFeature extends CoreTextToSpeechFeature {
       // Set Audio object as the source
       result.threeAudio.setMediaElementSource(result.audio);
 
-      return result as Deferred | Promise<never>;
+      return result;
     });
   }
 }
