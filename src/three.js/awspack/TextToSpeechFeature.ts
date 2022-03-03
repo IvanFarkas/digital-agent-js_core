@@ -67,10 +67,16 @@ export class TextToSpeechFeature extends CoreTextToSpeechFeature {
     return super._synthesizeAudio(params).then((result: any) => {
       if (this._attachTo !== undefined && !this.isGlobal) {
         // Create positional audio if there's an attach point
-        result.threeAudio = new PositionalAudio(this._listener);
+        const audio = new PositionalAudio(this._listener);
+
+        audio.setVolume(3);
+        result.threeAudio = audio;
         this._attachTo.add(result.threeAudio);
       } else {
         // Create non-positional audio
+        const audio = new Audio(this._listener);
+
+        audio.setVolume(3);
         result.threeAudio = new Audio(this._listener);
       }
 
