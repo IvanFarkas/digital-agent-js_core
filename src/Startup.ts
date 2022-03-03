@@ -309,7 +309,7 @@ export class Startup {
     }
   }
 
-  async playPreprocessdAudio(name: string, host: any) {
+  async playPreprocessdAudio(name: string, language: string, host: any) {
     /**
      * Make sure to replace text with a unique string per audioURL and speechJson, you can keep this as the text you used to play but note that it actually won't be played as the preprocessed audio and speechMarks will be played instead.
      * Make sure to replace speechJson with the preprocessed SpeechMarks JSON Array.
@@ -322,11 +322,9 @@ export class Startup {
 
     console.debug('playPreprocessdAudio', name);
 
-    // Specify local paths
-    // Make sure to update them to where you copy them into under your public/root folder
-    const languageSelect = 'en-US';
-    const speechPath = `./assets/preprocessed/${languageSelect}/speech.json`;
-    const audioPath = `./assets/preprocessed/${languageSelect}/speech.mp3`;
+    // Specify local paths. Make sure to update them to where you copy them into under your public/root folder
+    const speechPath = `./assets/preprocessed/${language}/speech.json`;
+    const audioPath = `./assets/preprocessed/${language}/speech.mp3`;
 
     // Fetch resources
     const speechJson = await (await fetch(speechPath)).json();
@@ -566,6 +564,7 @@ export class Startup {
     const host = this.currentCharacter.host;
     const text = this.currentCharacter.text;
     const emot = this.currentCharacter.emot;
+    const language = name === 'Luke' ? 'en-US' : 'ru-RU';
 
     switch (command) {
       case 'Luke':
@@ -580,11 +579,14 @@ export class Startup {
 
       case 'play':
         console.debug('play audio.');
-        // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // // @ts-ignore
-        // host.TextToSpeechFeature[command](text);
+        await this.playPreprocessdAudio(name, language, host);
+        break;
 
-        await this.playPreprocessdAudio(name, host);
+      case 'play_text':
+        console.debug('play text to audio.');
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // host.TextToSpeechFeature['play'](text);
         break;
 
       case 'pause':

@@ -32,18 +32,6 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
    */
   _setAudioContext() {
     this._audioContext = new AudioContext();
-    if (this._audioContext) {
-      this._audioContext
-        .resume()
-        .then(() => {
-          this._enabled = true;
-        })
-        .catch((e) => {
-          this._enabled = false;
-        });
-    } else {
-      console.error('_setAudioContext() - _audioContext is undefined!');
-    }
   }
 
   /**
@@ -61,11 +49,7 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
           console.warn('The audio context is not running. Speech will not be able to be played until it is resumed. Use the "TextToSpeechFeature.resumeAudio" method to try to resume it after a user gesture.');
         }
       };
-
       this._audioContext.onstatechange();
-    }
-    else {
-      console.error('_observeAudioContext() - _audioContext is undefined!');
     }
   }
 
@@ -129,27 +113,31 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
   }
 
   /**
+   * Set Audio Context.
+   *
+   * @type {boolean}
+   */
+  set audioContext(audioContext) {
+    this._audioContext = audioContext;
+  }
+
+  /**
    * Try to resume the audio context. This will be automatically executed each time speech is played or resumed. If using manually, it should be called after a user interaction occurs.
    *
    * @returns {Deferred} - Resolves once the audio context has resumed.
    */
   resumeAudio() {
     const promise = new Deferred((resolve, reject) => {
-      if (this._audioContext) {
-        this._audioContext
-          .resume()
-          .then(() => {
-            this._enabled = true;
-            resolve();
-          })
-          .catch((e) => {
-            this._enabled = false;
-            reject(e);
-          });
-      }
-      else {
-        console.error('resumeAudio() - _audioContext is undefined!');
-      }
+      this._audioContext
+        .resume()
+        .then(() => {
+          this._enabled = true;
+          resolve();
+        })
+        .catch((e) => {
+          this._enabled = false;
+          reject(e);
+        });
     });
     return promise;
   }
@@ -182,32 +170,28 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
     this._currentPromise = currentPromise;
 
     // Try to start the audio context
-    if (this._audioContext) {
-      this.resumeAudio().then(() => {
-        // Exit if the promise is no longer pending because of user interaction
-        if (!currentPromise.play.pending) {
-          return;
-        }
-        // Cancel if another call to play has already been made
-        else if (this._currentPromise !== currentPromise) {
-          currentPromise.play.cancel();
-          return;
-        }
+    this.resumeAudio().then(() => {
+      // Exit if the promise is no longer pending because of user interaction
+      if (!currentPromise.play.pending) {
+        return;
+      }
 
-        // The audio context is running so the speech can be played
-        if (this._enabled) {
-          super._startSpeech(text, config, playMethod);
-        }
-        // Reject if the audio context is not running
-        else {
-          currentPromise.reject(new Error(`Cannot ${playMethod} speech on host ${this._host.id}. The audio context is not running. Use the "TextToSpeechFeature.resumeAudio" method to try to resume it after a user gesture.`));
-        }
-      });
-    }
-    else {
-      console.error('_startSpeech() - _audioContext is undefined!');
-      this._setAudioContext();
-    }
+      // Cancel if another call to play has already been made
+      else if (this._currentPromise !== currentPromise) {
+        currentPromise.play.cancel();
+        return;
+      }
+
+      // The audio context is running so the speech can be played
+      if (this._enabled) {
+        super._startSpeech(text, config, playMethod);
+      }
+
+      // Reject if the audio context is not running
+      else {
+        currentPromise.reject(new Error(`Cannot ${playMethod} speech on host ${this._host.id}. The audio context is not running. Use the "TextToSpeechFeature.resumeAudio" method to try to resume it after a user gesture.`));
+      }
+    });
     return currentPromise.play;
   }
 

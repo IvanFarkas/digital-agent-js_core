@@ -175,6 +175,10 @@ export class App {
           }
           break;
 
+        case 'KeyT':
+          this.startup.control('play_text');
+          break;
+
         case 'KeyR':
           this.startup.control('resume');
           break;
