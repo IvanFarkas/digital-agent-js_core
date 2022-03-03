@@ -77,7 +77,8 @@ export function getBaseWebPackConfig(env, argv) {
   };
 
   config.resolve = {
-    extensions: ['.scss', '.ts', '.tsx', '.js', '.jsx'],
+    // modules: [resolve(process.cwd(), 'src'), 'node_modules'],
+    extensions: ['.scss', '.js', '.jsx', '.json', '.ts', '.tsx'],
     plugins: [
       new tsConfigPathPlugin(), // This is the third final piece to using tsConfig as a source of truth for path aliases, it tells webpack to use it to resolve aliases in our actual code during compilation.
     ],
@@ -91,6 +92,8 @@ export function getBaseWebPackConfig(env, argv) {
       resolve.fallback: { "util": false }
     */
     fallback: { util: require.resolve('util/') },
+    symlinks: false,
+    cacheWithContext: false
   };
 
   // Rules tell webpack what to do on specific tests, so we need to tell webpack what to do when it's processing a type script file or a scss file or an image, etc etc etc.
@@ -116,6 +119,8 @@ export function getBaseWebPackConfig(env, argv) {
           },
         ],
       },
+
+      // Fonts
       {
         // This is another webpack 5 feature you don't get with CRA on webpack 4.
         // It can automatically pull any files we reference and spit them out as assets in the output folder.
@@ -123,6 +128,8 @@ export function getBaseWebPackConfig(env, argv) {
         test: /\.(woff(2)?|ttf|eot|svg|jpg|jpeg|png|gif|pdf)(\?v=\d+\.\d+\.\d+)?$/, // Here we tell webpack that all fonts, images, pdfs are are asset/resource
         type: 'asset/resource',
       },
+
+      // scss, sass
       {
         test: /\.(scss|sass)$/, // Tell webpack how to process scss and sass files
         include: [
