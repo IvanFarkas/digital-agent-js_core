@@ -338,6 +338,8 @@ export class Startup {
 
     // Play speech with local assets
     host.TextToSpeechFeature.play(speechText, {
+      isGlobal: true,
+      volume: 3,
       SpeechMarksJSON: speechMarks,
       AudioURL: audioURL,
     });
