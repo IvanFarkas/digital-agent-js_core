@@ -1,10 +1,10 @@
-import {AbstractHostFeature} from '@core/AbstractHostFeature';
-import {AnimationUtils} from '@core/awspack/AnimationUtils';
-import {MathUtils} from '@core/MathUtils';
-import {Deferred} from '@core/Deferred';
-import {HostObject} from '@core/HostObject';
-import {Speech as AbstractSpeech} from '@core/awspack/AbstractSpeech';
-import {TextToSpeechUtils} from '@core/awspack/TextToSpeechUtils';
+import { AbstractHostFeature } from '@core/AbstractHostFeature';
+import { AnimationUtils } from '@core/awspack/AnimationUtils';
+import { MathUtils } from '@core/MathUtils';
+import { Deferred } from '@core/Deferred';
+import { HostObject } from '@core/HostObject';
+import { Speech as AbstractSpeech } from '@core/awspack/AbstractSpeech';
+import { TextToSpeechUtils } from '@core/awspack/TextToSpeechUtils';
 
 /**
  * The Amazon Polly service object.
@@ -160,7 +160,7 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
    * @param {number} [options.volume=1] - The default volume to play speech audio with.
    * @param {boolean} [options.isGlobal=false] - Whether the audio source should default to global regardless of whether or not it is attached to an object.
    */
-  constructor(host?: HostObject, options: any = {voice: undefined, engine: undefined, language: undefined, audioFormat: 'mp3', sampleRate: undefined, speechmarkOffset: 0, minEndMarkDuration: 0.05, volume: 1, isGlobal: false});
+  constructor(host?: HostObject, options: any = { voice: undefined, engine: undefined, language: undefined, audioFormat: 'mp3', sampleRate: undefined, speechmarkOffset: 0, minEndMarkDuration: 0.05, volume: 1, isGlobal: false });
 
   /**
    * Store Polly, Presigner and AWS SDK Version for use across all instances.

@@ -1,5 +1,5 @@
-import {Object3D, AudioListener, Audio, PositionalAudio} from 'three';
-import {TextToSpeechFeature as CoreTextToSpeechFeature} from '../../core/awspack/TextToSpeechFeature';
+import { Object3D, AudioListener, Audio, PositionalAudio } from 'three';
+import { TextToSpeechFeature as CoreTextToSpeechFeature } from '../../core/awspack/TextToSpeechFeature';
 
 /**
  * Threejs PositionalAudio object
@@ -32,8 +32,8 @@ export class TextToSpeechFeature extends CoreTextToSpeechFeature {
    * @param {AudioListener} options.listener - Three audio listener to use with audio.
    * @param {Object3D=} options.attachTo - Optional object to attach the speech audio to.
    */
-  constructor(host: any, {voice, engine, language, audioFormat = 'mp3', sampleRate, listener, attachTo}: any) {
-    const options = {voice, engine, language, audioFormat, sampleRate, listener, attachTo};
+  constructor(host: any, { voice, engine, language, audioFormat = 'mp3', sampleRate, listener, attachTo }: any) {
+    const options = { voice, engine, language, audioFormat, sampleRate, listener, attachTo };
 
     super(host, options);
     this._listener = options.listener;

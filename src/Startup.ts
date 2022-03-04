@@ -12,18 +12,18 @@ import AWS from 'aws-sdk/global';
 import Polly from 'aws-sdk/clients/polly';
 
 // Three.js
-import {Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener} from 'three';
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener } from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-import {HostObject} from './three.js/HostObject';
-import {TextToSpeechFeature} from './three.js/awspack/TextToSpeechFeature';
-import {PointOfInterestFeature} from './three.js/PointOfInterestFeature';
-import {AnimationFeature} from './three.js/animpack/AnimationFeature';
-import {AnimationTypes} from './core/animpack/AnimationFeature';
-import {LayerBlendModes} from './core/animpack/AnimationLayer';
-import {Quadratic} from './core/animpack/Easing';
-import {GestureFeature} from './core/GestureFeature';
-import {LipsyncFeature} from './core/LipsyncFeature';
+import { HostObject } from './three.js/HostObject';
+import { TextToSpeechFeature } from './three.js/awspack/TextToSpeechFeature';
+import { PointOfInterestFeature } from './three.js/PointOfInterestFeature';
+import { AnimationFeature } from './three.js/animpack/AnimationFeature';
+import { AnimationTypes } from './core/animpack/AnimationFeature';
+import { LayerBlendModes } from './core/animpack/AnimationLayer';
+import { Quadratic } from './core/animpack/Easing';
+import { GestureFeature } from './core/GestureFeature';
+import { LipsyncFeature } from './core/LipsyncFeature';
 
 interface ICharacter {
   name: string;
@@ -126,7 +126,7 @@ export class Startup {
     window.AWS.config.region = REGION;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: IDENTITYPOOLID});
+    window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({ IdentityPoolId: IDENTITYPOOLID });
   }
 
   public async initialize() {
@@ -137,7 +137,7 @@ export class Startup {
       const animationFiles = ['stand_idle.glb', 'lipsync.glb', 'gesture.glb', 'emote.glb', 'face_idle.glb', 'blink.glb', 'poi.glb'];
       const gestureConfigFile = 'gesture.json';
       const poiConfigFile = 'poi.json';
-      const polly = new Polly({region: REGION});
+      const polly = new Polly({ region: REGION });
       const presigner = new Polly.Presigner();
       const speechInit = TextToSpeechFeature.initializeService(polly, presigner, VERSION);
       const char1 = this.Characters[0];
@@ -246,7 +246,7 @@ export class Startup {
   }
 
   // Load character model and animations
-  async loadCharacter(scene: Scene, animFiles: string[], char: ICharacter | undefined): Promise<{character: Group; clips: AnimationClip[][]; bindPoseOffset: AnimationClip}> {
+  async loadCharacter(scene: Scene, animFiles: string[], char: ICharacter | undefined): Promise<{ character: Group; clips: AnimationClip[][]; bindPoseOffset: AnimationClip }> {
     try {
       if (!char) {
         throw new Error(`Character is empty!`);
@@ -302,7 +302,7 @@ export class Startup {
       char.character = character;
       char.clips = clips;
       char.bindPoseOffset = bindPoseOffset;
-      return {character, clips, bindPoseOffset};
+      return { character, clips, bindPoseOffset };
     } catch (error) {
       console.debug(error);
       throw new Error(`loadCharacter - ${error}`);
@@ -367,7 +367,7 @@ export class Startup {
       const [idleClips, lipsyncClips, gestureClips, emoteClips, faceIdleClips, blinkClips, poiClips] = char.clips!;
       const idleClip = idleClips[0];
       const faceIdleClip = faceIdleClips[0];
-      const host = new HostObject({owner: char.character, clock: this.clock});
+      const host = new HostObject({ owner: char.character, clock: this.clock });
 
       char.host = host;
 
@@ -379,7 +379,7 @@ export class Startup {
       // Set up text to speech
       const audioListener = new AudioListener();
       this.camera.add(audioListener);
-      host.addFeature(TextToSpeechFeature, false, {listener: audioListener, attachTo: char.audioAttach, voice: char.voice, engine: char.voiceEngine});
+      host.addFeature(TextToSpeechFeature, false, { listener: audioListener, attachTo: char.audioAttach, voice: char.voice, engine: char.voiceEngine });
 
       // Set up animation
       host.addFeature(AnimationFeature);
@@ -393,19 +393,19 @@ export class Startup {
       // Base idle
       console.debug(`createHost(${char.name}) - Animation: Base`);
       animationFeature.addLayer('Base');
-      animationFeature.addAnimation('Base', idleClip.name, AnimationTypes.single, {clip: idleClip});
+      animationFeature.addAnimation('Base', idleClip.name, AnimationTypes.single, { clip: idleClip });
       animationFeature.playAnimation('Base', idleClip.name);
 
       // Face idle
       console.debug(`createHost(${char.name}) - Animation: Face idle`);
-      animationFeature.addLayer('Face', {blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Face', { blendMode: LayerBlendModes.Additive });
       AnimationUtils.makeClipAdditive(faceIdleClip);
-      animationFeature.addAnimation('Face', faceIdleClip.name, AnimationTypes.single, {clip: AnimationUtils.subclip(faceIdleClip, faceIdleClip.name, 1, faceIdleClip.duration * 30, 30)});
+      animationFeature.addAnimation('Face', faceIdleClip.name, AnimationTypes.single, { clip: AnimationUtils.subclip(faceIdleClip, faceIdleClip.name, 1, faceIdleClip.duration * 30, 30) });
       animationFeature.playAnimation('Face', faceIdleClip.name);
 
       // Blink
       console.debug(`createHost(${char.name}) - Animation: Blink`);
-      animationFeature.addLayer('Blink', {blendMode: LayerBlendModes.Additive, transitionTime: 0.075});
+      animationFeature.addLayer('Blink', { blendMode: LayerBlendModes.Additive, transitionTime: 0.075 });
       if (blinkClips) {
         blinkClips.forEach((clip: any) => {
           AnimationUtils.makeClipAdditive(clip);
@@ -427,21 +427,21 @@ export class Startup {
 
       // Talking idle
       console.debug(`createHost(${char.name}) - Animation: Talking idle`);
-      animationFeature.addLayer('Talk', {transitionTime: 0.75, blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Talk', { transitionTime: 0.75, blendMode: LayerBlendModes.Additive });
       animationFeature.setLayerWeight('Talk', 0);
       const talkClip = lipsyncClips.find((clip: any) => clip.name === 'stand_talk');
       if (talkClip) {
         lipsyncClips.splice(lipsyncClips.indexOf(talkClip), 1);
-        animationFeature.addAnimation('Talk', talkClip.name, AnimationTypes.single, {clip: AnimationUtils.makeClipAdditive(talkClip)});
+        animationFeature.addAnimation('Talk', talkClip.name, AnimationTypes.single, { clip: AnimationUtils.makeClipAdditive(talkClip) });
         animationFeature.playAnimation('Talk', talkClip.name);
       }
 
       // Gesture animations
       console.debug(`createHost(${char.name}) - Animation: Gesture animations`);
-      animationFeature.addLayer('Gesture', {transitionTime: 0.5, blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Gesture', { transitionTime: 0.5, blendMode: LayerBlendModes.Additive });
       if (gestureClips) {
         gestureClips.forEach((clip: any) => {
-          const {name} = clip;
+          const { name } = clip;
           const config = char.gestureConfig[name];
 
           AnimationUtils.makeClipAdditive(clip);
@@ -452,7 +452,7 @@ export class Startup {
             });
             animationFeature.addAnimation('Gesture', name, AnimationTypes.queue, config);
           } else {
-            animationFeature.addAnimation('Gesture', name, AnimationTypes.single, {clip});
+            animationFeature.addAnimation('Gesture', name, AnimationTypes.single, { clip });
           }
         });
       } else {
@@ -461,11 +461,11 @@ export class Startup {
 
       // Emote animations
       console.debug(`createHost(${char.name}) - Animation: Emote animations`);
-      animationFeature.addLayer('Emote', {transitionTime: 0.5});
+      animationFeature.addLayer('Emote', { transitionTime: 0.5 });
       if (emoteClips) {
         emoteClips.forEach((clip: any) => {
-          const {name} = clip;
-          animationFeature.addAnimation('Emote', name, AnimationTypes.single, {clip, loopCount: 1});
+          const { name } = clip;
+          animationFeature.addAnimation('Emote', name, AnimationTypes.single, { clip, loopCount: 1 });
         });
       } else {
         console.error('emoteClips is undefined!');
@@ -473,7 +473,7 @@ export class Startup {
 
       // Viseme poses
       console.debug(`createHost(${char.name}) - Animation: Viseme poses`);
-      animationFeature.addLayer('Viseme', {transitionTime: 0.12, blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Viseme', { transitionTime: 0.12, blendMode: LayerBlendModes.Additive });
       animationFeature.setLayerWeight('Viseme', 0);
 
       // Slice off the reference frame
@@ -485,14 +485,14 @@ export class Startup {
           weight: 0,
         };
       });
-      animationFeature.addAnimation('Viseme', 'visemes', AnimationTypes.freeBlend, {blendStateOptions});
+      animationFeature.addAnimation('Viseme', 'visemes', AnimationTypes.freeBlend, { blendStateOptions });
       animationFeature.playAnimation('Viseme', 'visemes');
 
       // POI poses
       console.debug(`createHost(${char.name}) - POI poses`);
       if (char.poiConfig) {
         Object.entries(char.poiConfig).forEach(([key, config]: [string, any]) => {
-          animationFeature.addLayer(config.name, {blendMode: LayerBlendModes.Additive});
+          animationFeature.addLayer(config.name, { blendMode: LayerBlendModes.Additive });
 
           if (config.blendStateOptions) {
             // Find each pose clip and make it additive
@@ -507,7 +507,7 @@ export class Startup {
             console.error('config.blendStateOptions is undefined!');
           }
 
-          animationFeature.addAnimation(config.name, config.animation, AnimationTypes.blend2d, {...config});
+          animationFeature.addAnimation(config.name, config.animation, AnimationTypes.blend2d, { ...config });
           animationFeature.playAnimation(config.name, config.animation);
 
           // Find and store reference objects
@@ -519,20 +519,20 @@ export class Startup {
 
       // Apply bindPoseOffset clip if it exists
       if (char.bindPoseOffset !== undefined) {
-        animationFeature.addLayer('BindPoseOffset', {blendMode: LayerBlendModes.Additive});
-        animationFeature.addAnimation('BindPoseOffset', char.bindPoseOffset.name, AnimationTypes.single, {clip: AnimationUtils.subclip(char.bindPoseOffset, char.bindPoseOffset.name, 1, 2, 30)});
+        animationFeature.addLayer('BindPoseOffset', { blendMode: LayerBlendModes.Additive });
+        animationFeature.addAnimation('BindPoseOffset', char.bindPoseOffset.name, AnimationTypes.single, { clip: AnimationUtils.subclip(char.bindPoseOffset, char.bindPoseOffset.name, 1, 2, 30) });
         animationFeature.playAnimation('BindPoseOffset', char.bindPoseOffset.name);
       }
 
       // Set up Lipsync
       console.debug(`createHost(${char.name}) - Set up Lipsync`);
-      const visemeOptions = {layers: [{name: 'Viseme', animation: 'visemes'}]};
-      const talkingOptions = {layers: [{name: 'Talk', animation: 'stand_talk', blendTime: 0.75, easingFn: Quadratic.InOut}]};
+      const visemeOptions = { layers: [{ name: 'Viseme', animation: 'visemes' }] };
+      const talkingOptions = { layers: [{ name: 'Talk', animation: 'stand_talk', blendTime: 0.75, easingFn: Quadratic.InOut }] };
       host.addFeature(LipsyncFeature, false, visemeOptions, talkingOptions);
 
       // Set up Gestures
       console.debug(`createHost(${char.name}) - Set up Gestures`);
-      host.addFeature(GestureFeature, false, {layers: {Gesture: {minimumInterval: 3}, Emote: {blendTime: 0.5, easingFn: Quadratic.InOut}}});
+      host.addFeature(GestureFeature, false, { layers: { Gesture: { minimumInterval: 3 }, Emote: { blendTime: 0.5, easingFn: Quadratic.InOut } } });
 
       // Set up Point of Interest (POI)
       console.debug(`createHost(${char.name}) - Set up POI`);
@@ -548,7 +548,7 @@ export class Startup {
           layers: char.poiConfig,
         },
         {
-          layers: [{name: 'Blink'}],
+          layers: [{ name: 'Blink' }],
         }
       );
 

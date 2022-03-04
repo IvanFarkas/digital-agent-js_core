@@ -25,7 +25,7 @@ export class Deferred extends Promise {
    * @param {Function=} onReject - Optional function to execute once the promise is rejected.
    * @param {Function=} onCancel - Optional function to execute if the user cancels the promise. Canceling results in the promise having a status of 'resolved'.
    */
-  constructor(executable = () => { }, onResolve, onReject, onCancel) {
+  constructor(executable = () => {}, onResolve, onReject, onCancel) {
     if (typeof executable !== 'function') {
       throw new Error(`Cannot create new Deferred. Executable must be a function.`);
     }

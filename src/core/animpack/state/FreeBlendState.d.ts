@@ -1,4 +1,4 @@
-import {AbstractBlendState} from '@core/animpack/state/AbstractBlendState';
+import { AbstractBlendState } from '@core/animpack/state/AbstractBlendState';
 
 /**
  * Class for blending N number of blend states.

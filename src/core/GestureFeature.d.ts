@@ -1,10 +1,10 @@
-import {ManagedAnimationLayerInterface} from 'core/animpack/ManagedAnimationLayerInterface';
-import {AnimationFeature} from 'core/animpack/AnimationFeature';
-import {SSMLSpeechmarkInterface} from 'core/awspack/SSMLSpeechmarkInterface';
-import {HostObject} from 'core/HostObject';
-import {AbstractHostFeature} from 'core/AbstractHostFeature';
-import {Deferred} from 'core/Deferred';
-import {Utils} from 'core/Utils';
+import { ManagedAnimationLayerInterface } from 'core/animpack/ManagedAnimationLayerInterface';
+import { AnimationFeature } from 'core/animpack/AnimationFeature';
+import { SSMLSpeechmarkInterface } from 'core/awspack/SSMLSpeechmarkInterface';
+import { HostObject } from 'core/HostObject';
+import { AbstractHostFeature } from 'core/AbstractHostFeature';
+import { Deferred } from 'core/Deferred';
+import { Utils } from 'core/Utils';
 
 export const DefaultGestureWords: {
   big: string[];
@@ -65,7 +65,7 @@ export class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterf
    * @param {number} [options.minimumInterval=1] - The minimum amount of time in seconds that must elapse before another gesture can be played.
    * @param {Object} [options.layers={}] - An object that maps layer names to layer options. These are the layers that will be registered as tracked gesture layers. See {@link ManagedAnimationLayer#registerLayer} for more information on expected format for each layer options object.
    */
-  constructor(host?: any, {holdTime = 3, minimumInterval = 1, layers}: {holdTime: number; minimumInterval: number; layers: any} = {holdTime: 3, minimumInterval: 1, layers: {}});
+  constructor(host?: any, { holdTime = 3, minimumInterval = 1, layers }: { holdTime: number; minimumInterval: number; layers: any } = { holdTime: 3, minimumInterval: 1, layers: {} });
 
   /**
    * Return a valid hold time value. If hold time isn't defined for the animation, try to use the hold time for the layer. If that's not defined, fall back to the hold time for the feature.
@@ -101,7 +101,7 @@ export class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterf
    * @param {boolean} canAdvance - Whether or not the current state in the queue can advance on its own.
    * @param {boolean} isQueueEnd - Whether the current state in the queue is the last state in the queue.
    */
-  _onNext({layerName, animationName, canAdvance, isQueueEnd}: {layerName: string; animationName: string; canAdvance: boolean; isQueueEnd: boolean});
+  _onNext({ layerName, animationName, canAdvance, isQueueEnd }: { layerName: string; animationName: string; canAdvance: boolean; isQueueEnd: boolean });
 
   /**
    * Callback for {@link AnimationFeature#stopAnimation} event. If the event is emitted for a managed animation cancel the layer's stored timers. If the layer is set to auto-disable set its weight to 0.
@@ -111,7 +111,7 @@ export class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterf
    * @param {string} layerName - Name of the layer that owns the stopped animation.
    * @param {string} animationName - Name of the animation that was stopped.
    */
-  _onStop({layerName, animationName}: {layerName?: string; animationName?: string} = {});
+  _onStop({ layerName, animationName }: { layerName?: string; animationName?: string } = {});
 
   /**
    * Callback for {@link AnimationFeature#addAnimation} event. If the event is emitted for a managed animation cancel the layer's stored timers. If the layer is set to auto-disable set its weight to 0.
@@ -121,7 +121,7 @@ export class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterf
    * @param {string} layerName - Name of the layer that owns the stopped animation.
    * @param {string} animationName - Name of the animation that was stopped.
    */
-  _onAnimationAdded({layerName, animationName}: {layerName: string; animationName: string});
+  _onAnimationAdded({ layerName, animationName }: { layerName: string; animationName: string });
 
   /**
    * Register Layer
@@ -167,7 +167,7 @@ export class GestureFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterf
    * @param {number=} options.transitionTime - Transition Time.
    * @param {boolean=} [options.force=false] - Force.
    */
-  playGesture(layerName: string, animationName: string, {holdTime, minimumInterval, transitionTime, force = false}: any = {}): any;
+  playGesture(layerName: string, animationName: string, { holdTime, minimumInterval, transitionTime, force = false }: any = {}): any;
 
   /**
    * Executes each time the host is updated.

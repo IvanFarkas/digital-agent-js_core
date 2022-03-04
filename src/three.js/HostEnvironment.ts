@@ -1,4 +1,4 @@
-import {Env} from '@core/Utils';
+import { Env } from '@core/Utils';
 /**
  * Indicates the type of host build.
  *

@@ -1,4 +1,4 @@
-import {Deferred} from '@core/Deferred';
+import { Deferred } from '@core/Deferred';
 
 export enum Env {
   Core = 'core',
@@ -48,7 +48,7 @@ export class Utils {
    *
    * @returns { Promise<void>}
    */
-  static wait(seconds: number = 0, {onFinish, onProgress, onCancel, onError}: any = {}): any; // Deferred | Promise<void>;
+  static wait(seconds: number = 0, { onFinish, onProgress, onCancel, onError }: any = {}): any; // Deferred | Promise<void>;
 
   /**
    * Get a random float number between a min (inclusive) and max (exclusive) value

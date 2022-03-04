@@ -4,7 +4,7 @@ import { MathUtils } from '../../core/MathUtils';
 import { Deferred } from '../../core/Deferred';
 import { HostObject } from '../../core/HostObject';
 import { AbstractSpeech } from '../../core/awspack/AbstractSpeech';
-import { Speech } from '../../core/awspack/Speech'
+import { Speech } from '../../core/awspack/Speech';
 import { TextToSpeechUtils } from '../../core/awspack/TextToSpeechUtils';
 
 /**
@@ -117,7 +117,7 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
    * @param {number} [options.volume=1] - The default volume to play speech audio with.
    * @param {boolean} [options.isGlobal=false] - Whether the audio source should default to global regardless of whether or not it is attached to an object.
    */
-  constructor(host, options = { voice: undefined, engine: undefined, language: undefined, audioFormat: 'mp3', sampleRate: undefined, speechmarkOffset: 0, minEndMarkDuration: 0.05, volume: 1, isGlobal: false, }) {
+  constructor(host, options = { voice: undefined, engine: undefined, language: undefined, audioFormat: 'mp3', sampleRate: undefined, speechmarkOffset: 0, minEndMarkDuration: 0.05, volume: 1, isGlobal: false }) {
     super(host);
 
     this._speechCache = {};
@@ -436,8 +436,8 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
       OutputFormat: this._audioFormat,
       SampleRate: this._sampleRate,
       VoiceId: this._voice,
-      LanguageCode: this.constructor.POLLY_LANGUAGES[this._language]
-    }
+      LanguageCode: this.constructor.POLLY_LANGUAGES[this._language],
+    };
 
     if (this._audioURL && this._speechMarksJSON) {
       return { ...config, AudioURL: this._audioURL, SpeechMarksJSON: this._speechMarksJSON };
@@ -499,7 +499,7 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
       return validConfig;
     }
 
-    // Remove this as it unnecessarily creates extra requests for when a speech has been cancelled
+    // Remove this as it's unnecessarily creates extra requests for when a speech has been cancelled
     // Update all cached configs
     // Object.entries(this._speechCache).forEach(([text, speech]) => {
     //   // Check if this is a skipped speech
@@ -553,13 +553,9 @@ export class AbstractTextToSpeechFeature extends AbstractHostFeature {
 
     // Skip Polly if audio and speechmarks are pre-processed
     if (config.AudioURL && config.SpeechMarksJSON) {
-      speech.promise = this._synthesizeAudio({ UseS3: true, name: text, url: config.AudioURL })
-        .then((result) => this._createSpeech(text, config.SpeechMarksJSON, result));
+      speech.promise = this._synthesizeAudio({ UseS3: true, name: text, url: config.AudioURL }).then((result) => this._createSpeech(text, config.SpeechMarksJSON, result));
     } else {
-      speech.promise = Promise.all([
-        this._synthesizeSpeechmarks(speechmarkParams),
-        this._synthesizeAudio(audioParams),
-      ]).then(results => {
+      speech.promise = Promise.all([this._synthesizeSpeechmarks(speechmarkParams), this._synthesizeAudio(audioParams)]).then((results) => {
         return this._createSpeech(text, ...results);
       });
     }

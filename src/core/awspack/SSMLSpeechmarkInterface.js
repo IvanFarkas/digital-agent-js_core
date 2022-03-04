@@ -19,7 +19,7 @@ export class SSMLSpeechmarkInterface extends TextToSpeechFeatureDependentInterfa
    * @param {Object} event - Event data passed from the speech.
    * @param {Object} event.mark - Speechmark object.
    */
-  _onSsml({ mark }) { }
+  _onSsml({ mark }) {}
 
   /**
    * Creates a class that implements {@link SSMLSpeechmarkInterface} and extends a specified base class.
@@ -42,7 +42,7 @@ export class SSMLSpeechmarkInterface extends TextToSpeechFeatureDependentInterfa
               console.warn(`Function ${method} does not exist within feature ${feature}`);
             }
           }
-        } catch (e) { }
+        } catch (e) {}
       }
     };
 

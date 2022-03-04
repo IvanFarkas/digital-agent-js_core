@@ -1,11 +1,11 @@
-import {ManagedAnimationLayerInterface} from '@core/animpack/ManagedAnimationLayerInterface';
-import {AnimationTypes} from '@core/animpack/AnimationFeature';
-import {SSMLSpeechmarkInterface} from '@core/awspack/SSMLSpeechmarkInterface';
-import {HostObject} from '@core/HostObject';
-import {AbstractHostFeature} from '@core/AbstractHostFeature';
-import {Quadratic} from '@core/animpack/Easing';
-import {MathUtils} from '@core/MathUtils';
-import {Utils} from '@core/Utils';
+import { ManagedAnimationLayerInterface } from '@core/animpack/ManagedAnimationLayerInterface';
+import { AnimationTypes } from '@core/animpack/AnimationFeature';
+import { SSMLSpeechmarkInterface } from '@core/awspack/SSMLSpeechmarkInterface';
+import { HostObject } from '@core/HostObject';
+import { AbstractHostFeature } from '@core/AbstractHostFeature';
+import { Quadratic } from '@core/animpack/Easing';
+import { MathUtils } from '@core/MathUtils';
+import { Utils } from '@core/Utils';
 
 export interface IAxisMap {
   PositiveX: number[];
@@ -84,7 +84,7 @@ export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechma
    * @param {number} [blinkOptions.easingFn=Quadratic.InOut] - Default easing function to use when manipulating blink layer weights.
    * @param {Array.<Object>} [blinkOptions.layers=[]] - An array of layer options objects to register as blink layers.
    */
-  constructor(host: any, {target, lookTracker, scene}: any = {}, {blendTime: lookBlendTime = 0.1, easingFn: lookEasingFn = Quadratic.InOut, layers: lookLayers = []}: any = {}, {blendTime: blinkBlendTime = 0.075, easingFn: blinkEasingFn = Quadratic.InOut, layers: blinkLayers = []}: any = {});
+  constructor(host: any, { target, lookTracker, scene }: any = {}, { blendTime: lookBlendTime = 0.1, easingFn: lookEasingFn = Quadratic.InOut, layers: lookLayers = [] }: any = {}, { blendTime: blinkBlendTime = 0.075, easingFn: blinkEasingFn = Quadratic.InOut, layers: blinkLayers = [] }: any = {});
 
   /**
    * Get the scene.
@@ -151,7 +151,7 @@ export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechma
    *
    * @returns {Object} - An object with the signature {h: number, v: number} where h represents horizontal rotation in degrees and v represents vertical rotation in degrees.
    */
-  static _sphericalToBlendValue(theta, phi): {h: number; v: number};
+  static _sphericalToBlendValue(theta, phi): { h: number; v: number };
 
   /**
    * If the added layer is LookLayer, register Look Animation.
@@ -161,7 +161,7 @@ export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechma
    * @param {Object} event - Event data passed from the speech.
    * @param {Object} event.name - Look Layer object.
    */
-  _onLayerAdded({name}: {name: string});
+  _onLayerAdded({ name }: { name: string });
 
   /**
    * If the added layer is LookLayer, register Look Animation.
@@ -172,7 +172,7 @@ export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechma
    * @param {Object} event.layerName - Look Layer name.
    * @param {Object} event.animationName - Look Animation name.
    */
-  _onAnimationAdded({layerName, animationName}: {layerName: string; animationName: string});
+  _onAnimationAdded({ layerName, animationName }: { layerName: string; animationName: string });
 
   /**
    * Ensure that registered look animations are Blend2dStates.
@@ -325,7 +325,7 @@ export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechma
    * @param {number=} [options.blendTime=[PointOfInterestFeature.DEFAULT_LAYER_OPTIONS.blendTime]{@link PointOfInterestFeature#DEFAULT_LAYER_OPTIONS#blendTime}] - Default amount of time to use when manipulating layer weight.
    * @param {Function=} options.easingFn - Default easing function to use when manipulating layer weight.
    */
-  registerLookLayer(layerName: string, {animation = 'look', maxSpeed = 25, reference, forwardAxis = 'PositiveZ', hasSaccade = false, blendTime = PointOfInterestFeature.DEFAULT_LAYER_OPTIONS.blendTime, easingFn}: any = {});
+  registerLookLayer(layerName: string, { animation = 'look', maxSpeed = 25, reference, forwardAxis = 'PositiveZ', hasSaccade = false, blendTime = PointOfInterestFeature.DEFAULT_LAYER_OPTIONS.blendTime, easingFn }: any = {});
 
   /**
    * Start keeping track of an animation layer that owns a blink animation. Blink animations can be of any type, but if it is of type randomAnimation then a it will be randomized each time a blink is called.
@@ -336,7 +336,7 @@ export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechma
    * @param {number} [options.blendTime=[PointOfInterestFeature.DEFAULT_LAYER_OPTIONS.blendTime]{@link PointOfInterestFeature#DEFAULT_LAYER_OPTIONS#blendTime}] - Default amount of time to use when manipulating the layer's weight.
    * @param {Function=} options.easingFn - Default easing function to use when manipulating the layer's weight.
    */
-  registerBlinkLayer(layerName: string, {animation = 'blink', blendTime = PointOfInterestFeature.DEFAULT_LAYER_OPTIONS.blendTime, easingFn}: any = {});
+  registerBlinkLayer(layerName: string, { animation = 'blink', blendTime = PointOfInterestFeature.DEFAULT_LAYER_OPTIONS.blendTime, easingFn }: any = {});
 
   /**
    * Executes each time the host is updated.

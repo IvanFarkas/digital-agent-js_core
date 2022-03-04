@@ -3,8 +3,8 @@
 /* eslint-disable no-empty-function */
 /* eslint-disable getter-return */
 /* eslint-disable no-useless-constructor */
-import {TransitionState} from '@core/animpack/state/TransitionState';
-import {Deferred} from '@core/Deferred';
+import { TransitionState } from '@core/animpack/state/TransitionState';
+import { Deferred } from '@core/Deferred';
 
 /**
  * Class factory interface for controlling playback of a collection of animations. One animation can be played at any given time, crossfading between animations will result in playing a {@link TransitionState}.

@@ -1,7 +1,7 @@
-import {AnimationAction, NormalAnimationBlendMode, AdditiveAnimationBlendMode, LoopOnce, LoopRepeat} from 'three';
-import {MathUtils} from '../../../core/MathUtils';
-import {Deferred} from '../../../core/Deferred';
-import {SingleState as CoreSingleState} from '../../../core/animpack/state/SingleState';
+import { AnimationAction, NormalAnimationBlendMode, AdditiveAnimationBlendMode, LoopOnce, LoopRepeat } from 'three';
+import { MathUtils } from '../../../core/MathUtils';
+import { Deferred } from '../../../core/Deferred';
+import { SingleState as CoreSingleState } from '../../../core/animpack/state/SingleState';
 
 /**
  * Threejs AnimationAction object
@@ -36,7 +36,7 @@ export class SingleState extends CoreSingleState {
     super(options);
 
     // Callback to catch THREE animation action completion
-    this._onFinishedEvent = ({type, action}: {type: string; action: AnimationAction}) => {
+    this._onFinishedEvent = ({ type, action }: { type: string; action: AnimationAction }) => {
       // Exit if this isn't the finish event for this animation
       if (type !== 'finished' || action !== this.threeAction) {
         return;

@@ -793,7 +793,7 @@ export class AnimationFeature extends AbstractHostFeature {
     const name = layer.addState(state, debug);
 
     // Notify that an animation has been added to the feature
-    this.emit(this.constructor.EVENTS.addAnimation, { layerName, animationName: name, });
+    this.emit(this.constructor.EVENTS.addAnimation, { layerName, animationName: name });
 
     return name;
   }

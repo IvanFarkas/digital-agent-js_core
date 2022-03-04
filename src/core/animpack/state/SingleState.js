@@ -47,7 +47,7 @@ export class SingleState extends AbstractState {
    *
    * @type {number}
    */
-  set normalizedTime(time) { }
+  set normalizedTime(time) {}
 
   /**
    * Gets the a factor to scale animation playback speed with.

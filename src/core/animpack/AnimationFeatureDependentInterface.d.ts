@@ -1,4 +1,4 @@
-import {FeatureDependentInterface} from '@core/FeatureDependentInterface';
+import { FeatureDependentInterface } from '@core/FeatureDependentInterface';
 
 /**
  * Class factory interface for features that are dependent on the AnimationFeature being present on the host. Layer and animation events will automatically be listened for once a AnimationFeature is added to the host and stopped once it is removed.
@@ -23,7 +23,7 @@ export class AnimationFeatureDependentInterface extends FeatureDependentInterfac
    *
    * @param {string} name - Name of the layer that was added.
    */
-  _onLayerAdded({name}: {name: string});
+  _onLayerAdded({ name }: { name: string });
 
   /**
    * Executed when animation layer removed events are caught.
@@ -32,7 +32,7 @@ export class AnimationFeatureDependentInterface extends FeatureDependentInterfac
    *
    * @param {string} name - Name of the layer that was removed.
    */
-  _onLayerRemoved({name}: {name: string});
+  _onLayerRemoved({ name }: { name: string });
 
   /**
    * Executed when animation layer renamed events are caught.
@@ -42,7 +42,7 @@ export class AnimationFeatureDependentInterface extends FeatureDependentInterfac
    * @param {string} oldName - Name of the layer that was renamed.
    * @param {string} newName - New name of the layer.
    */
-  _onLayerRenamed({oldName, newName}: {oldName: string; newName: string});
+  _onLayerRenamed({ oldName, newName }: { oldName: string; newName: string });
 
   /**
    * Executed when animation added events are caught.
@@ -52,7 +52,7 @@ export class AnimationFeatureDependentInterface extends FeatureDependentInterfac
    * @param {string} layerName - Name of the layer that an animation was added to.
    * @param {string} animationName - Name of the animation that was added.
    */
-  _onAnimationAdded({layerName, animationName}: {layerName: string; animationName: string});
+  _onAnimationAdded({ layerName, animationName }: { layerName: string; animationName: string });
 
   /**
    * Executed when animation removed events are caught.
@@ -62,7 +62,7 @@ export class AnimationFeatureDependentInterface extends FeatureDependentInterfac
    * @param {string} layerName - Name of the layer that an animation was removed from.
    * @param {string} animationName - Name of the animation that was removed.
    */
-  _onAnimationRemoved({layerName, animationName}: {layerName: string; animationName: string});
+  _onAnimationRemoved({ layerName, animationName }: { layerName: string; animationName: string });
 
   /**
    * Executed when animation renamed events are caught.
@@ -73,7 +73,7 @@ export class AnimationFeatureDependentInterface extends FeatureDependentInterfac
    * @param {string} oldName - Name of the animation that was renamed.
    * @param {string} newName - New name of the animation.
    */
-  _onAnimationRenamed({layerName, oldName, newName}: {layerName: string; oldName: string; newName: string});
+  _onAnimationRenamed({ layerName, oldName, newName }: { layerName: string; oldName: string; newName: string });
 
   /**
    * Creates a class that implements {@link AnimationFeatureDependentInterface} and extends a specified base class.

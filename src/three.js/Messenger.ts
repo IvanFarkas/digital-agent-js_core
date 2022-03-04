@@ -1,5 +1,5 @@
-import {EventDispatcher} from 'three';
-import {Messenger as CoreMessenger} from '@core/Messenger';
+import { EventDispatcher } from 'three';
+import { Messenger as CoreMessenger } from '@core/Messenger';
 
 /**
  * @extends core/Messenger
@@ -31,6 +31,6 @@ export class Messenger extends CoreMessenger {
   }
 
   _createEvent(message: any, value: any): any {
-    return {detail: value, type: message};
+    return { detail: value, type: message };
   }
 }

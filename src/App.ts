@@ -1,8 +1,8 @@
-import {AxesHelper, BoxGeometry, Color, DirectionalLight, Fog, HemisphereLight, MathUtils, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PlaneBufferGeometry, PMREMGenerator, Scene, sRGBEncoding, TextureLoader, Vector3, WebGLRenderer} from 'three';
-import {Startup} from 'Startup';
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import { AxesHelper, BoxGeometry, Color, DirectionalLight, Fog, HemisphereLight, MathUtils, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PlaneBufferGeometry, PMREMGenerator, Scene, sRGBEncoding, TextureLoader, Vector3, WebGLRenderer } from 'three';
+import { Startup } from 'Startup';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
-import {GUI} from 'dat.gui';
+import { GUI } from 'dat.gui';
 
 export class App {
   private scene: Scene;
@@ -20,7 +20,7 @@ export class App {
     this.scene = new Scene();
 
     // Renderer
-    this.renderer = new WebGLRenderer({antialias: true, alpha: true});
+    this.renderer = new WebGLRenderer({ antialias: true, alpha: true });
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -102,7 +102,7 @@ export class App {
       dirLight.target = dirLightTarget;
 
       // Environment
-      const groundMat = new MeshStandardMaterial({color: 0x808080, depthWrite: false});
+      const groundMat = new MeshStandardMaterial({ color: 0x808080, depthWrite: false });
 
       groundMat.metalness = 0;
       groundMat.refractionRatio = 0;
@@ -130,7 +130,7 @@ export class App {
     // Crate
     const texture = new TextureLoader().load('assets/images/textures/crate.gif');
     const geometry = new BoxGeometry(0.2, 0.2, 0.2);
-    const material = new MeshBasicMaterial({map: texture});
+    const material = new MeshBasicMaterial({ map: texture });
 
     this.crate = new Mesh(geometry, material);
     this.crate.position.set(0, 1, 0.2);

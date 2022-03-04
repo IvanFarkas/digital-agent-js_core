@@ -1,6 +1,6 @@
-import {Group, Clock} from 'three';
-import {HostObject as CoreHostObject} from '../core/HostObject';
-import {Utils} from '../core/Utils';
+import { Group, Clock } from 'three';
+import { HostObject as CoreHostObject } from '../core/HostObject';
+import { Utils } from '../core/Utils';
 
 /**
  * @alias three.js/HostObject

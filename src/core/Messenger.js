@@ -60,7 +60,7 @@ export class Messenger {
    * @returns {Function}
    */
   _createListener(callback) {
-    return e => {
+    return (e) => {
       let value;
 
       if (e.detail !== null) {
@@ -94,10 +94,7 @@ export class Messenger {
    * @param {Function} listener - A listener function generated using _createListener.
    */
   _addListener(message, listener) {
-    this._dispatcher.addEventListener(
-      this._createLocalMessage(message),
-      listener
-    );
+    this._dispatcher.addEventListener(this._createLocalMessage(message), listener);
   }
 
   /**
@@ -109,10 +106,7 @@ export class Messenger {
    * @param {Function} listener - A listener function generated using _createListener.
    */
   _removeListener(message, listener) {
-    this._dispatcher.removeEventListener(
-      this._createLocalMessage(message),
-      listener
-    );
+    this._dispatcher.removeEventListener(this._createLocalMessage(message), listener);
   }
 
   /**
@@ -123,9 +117,7 @@ export class Messenger {
    */
   listenTo(message, callback) {
     if (typeof callback !== 'function') {
-      throw new Error(
-        `Cannot add listener for ${message} on ${this.id}. Callback must be a function.`
-      );
+      throw new Error(`Cannot add listener for ${message} on ${this.id}. Callback must be a function.`);
     }
 
     if (this._callbacks[message] === undefined) {
@@ -187,9 +179,9 @@ export class Messenger {
    * remove all callbacks for messages matching the regular expression.
    */
   stopListeningByRegexp(regexp, callback) {
-    const messages = Object.keys(this._callbacks).filter(message => regexp.test(message));
+    const messages = Object.keys(this._callbacks).filter((message) => regexp.test(message));
 
-    messages.forEach(message => {
+    messages.forEach((message) => {
       this.stopListening(message, callback);
     });
   }
@@ -258,11 +250,9 @@ export class Messenger {
    * remove all callbacks for messages matching the regular expression.
    */
   static stopListeningByRegexp(regexp, callback) {
-    const messages = Object.keys(this.GlobalMessenger._callbacks).filter(
-      message => regexp.test(message)
-    );
+    const messages = Object.keys(this.GlobalMessenger._callbacks).filter((message) => regexp.test(message));
 
-    messages.forEach(message => {
+    messages.forEach((message) => {
       this.stopListening(message, callback);
     });
   }

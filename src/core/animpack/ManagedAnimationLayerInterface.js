@@ -32,7 +32,7 @@ export class ManagedAnimationLayerInterface extends AnimationFeatureDependentInt
    * @param {Function=} options.easingFn - Default easing function to use when manipulating layer weights on this layer.
    * @param {Object=} options.animations - Animations to keep track of on the layer. Animations are represented as key/value pairs of animation names and their options.
    */
-  registerLayer(name, options = {}) { }
+  registerLayer(name, options = {}) {}
 
   /**
    * Start tracking keeping track of whether an animation with the given name is present on the host.
@@ -41,7 +41,7 @@ export class ManagedAnimationLayerInterface extends AnimationFeatureDependentInt
    * @param {string} animationName - Name of the animation to keep track of.
    * @param {Object=} options - Options for the animation.
    */
-  registerAnimation(layerName, animationName, options = {}) { }
+  registerAnimation(layerName, animationName, options = {}) {}
 
   /**
    * Set layer weights on tracked layers.
@@ -51,7 +51,7 @@ export class ManagedAnimationLayerInterface extends AnimationFeatureDependentInt
    * @param {number=} seconds - Number of seconds it will take to reach the weight on each layer. If undefined, each layers' blendTime option is used.
    * @param {Function=} easingFn - Easing function to use when setting weight on each layer. If undefined, each layers' easingFn option is used.
    */
-  setLayerWeights(nameFilter = () => true, weight, seconds, easingFn) { }
+  setLayerWeights(nameFilter = () => true, weight, seconds, easingFn) {}
 
   /**
    * Set all tracked layers' weights to 1.
@@ -59,7 +59,7 @@ export class ManagedAnimationLayerInterface extends AnimationFeatureDependentInt
    * @param {number=} seconds - Number of seconds it will take to reach the weight on each layer. If undefined, each layers' blendTime option is used.
    * @param {Function=} easingFn - Easing function to use when setting weight on each layer. If undefined, each layers' easingFn option is used.
    */
-  enable(seconds, easingFn) { }
+  enable(seconds, easingFn) {}
 
   /**
    * Set all tracked layers' weights to 0.
@@ -67,7 +67,7 @@ export class ManagedAnimationLayerInterface extends AnimationFeatureDependentInt
    * @param {number=} seconds - Number of seconds it will take to reach the weight on each layer. If undefined, each layers' blendTime option is used.
    * @param {Function=} easingFn - Easing function to use when setting weight on each layer. If undefined, each layers' easingFn option is used.
    */
-  disable(seconds, easingFn) { }
+  disable(seconds, easingFn) {}
 
   /**
    * Creates a class that implements {@link ManagedAnimationLayerInterface} and extends a specified base class.

@@ -14,7 +14,7 @@ export class Utils {
    * @returns {String}
    */
   static createId() {
-    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       const randomNumber = Math.floor((Date.now() + Math.random() * 16) % 16);
       if (c === 'x') {
         return randomNumber.toString(16);
@@ -51,7 +51,7 @@ export class Utils {
     let increment = Number(matchGroup[0]);
 
     // Find the highest trailing number value for the base of the name
-    nameSet.forEach(setName => {
+    nameSet.forEach((setName) => {
       const setMatchGroup = setName.match(/\d*$/);
 
       if (setName.slice(0, setMatchGroup.index) === baseName) {
@@ -89,9 +89,7 @@ export class Utils {
   static wait(seconds = 0, { onFinish, onProgress, onCancel, onError } = {}) {
     // Make sure seconds is numeric
     if (typeof seconds !== 'number') {
-      console.warn(
-        `Invalid seconds value ${seconds} for wait. Defaulting to 0.`
-      );
+      console.warn(`Invalid seconds value ${seconds} for wait. Defaulting to 0.`);
 
       seconds = 0;
     }
@@ -111,9 +109,7 @@ export class Utils {
     // Executable to pass to Deferred, meant to be run in an update loop
     const onUpdate = (resolve, reject, _cancel, deltaTime = 0) => {
       if (typeof deltaTime !== 'number') {
-        const e = new Error(
-          `Invalid property wait deltaTime. DeltaTime must be a number.`
-        );
+        const e = new Error(`Invalid property wait deltaTime. DeltaTime must be a number.`);
         reject(e);
         return;
       }
@@ -143,21 +139,21 @@ export class Utils {
   }
 
   /**
-    * Get a random float number between a min (inclusive) and max (exclusive) value
-    * @param {number} min minimum value
-    * @param {number} max maximum value
-    * @returns {float}
-    */
+   * Get a random float number between a min (inclusive) and max (exclusive) value
+   * @param {number} min minimum value
+   * @param {number} max maximum value
+   * @returns {float}
+   */
   static getRandomFloat(min, max) {
     return Math.random() * (max - min) + min;
   }
 
   /**
-    * Get a random integer number between a min (inclusive) and max (exclusive) value
-    * @param {number} min minimum value
-    * @param {number} max maximum value
-    * @returns {integer}
-    */
+   * Get a random integer number between a min (inclusive) and max (exclusive) value
+   * @param {number} min minimum value
+   * @param {number} max maximum value
+   * @returns {integer}
+   */
   static getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -178,7 +174,6 @@ export class Utils {
     }
     return undefined;
   }
-
 
   static getParents(obj, isClass = false) {
     const parents = [];

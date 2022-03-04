@@ -26,56 +26,56 @@ export class TextToSpeechFeatureDependentInterface extends FeatureDependentInter
    *
    * @private
    */
-  _onPlay() { }
+  _onPlay() {}
 
   /**
    * Executed when speech pause events are caught.
    *
    * @private
    */
-  _onPause() { }
+  _onPause() {}
 
   /**
    * Executed when speech resume events are caught.
    *
    * @private
    */
-  _onResume() { }
+  _onResume() {}
 
   /**
    * Executed when speech stop events are caught.
    *
    * @private
    */
-  _onStop() { }
+  _onStop() {}
 
   /**
    * Executed when speech sentence events are caught.
    *
    * @private
    */
-  _onSentence() { }
+  _onSentence() {}
 
   /**
    * Executed when speech word events are caught.
    *
    * @private
    */
-  _onWord() { }
+  _onWord() {}
 
   /**
    * Executed when speech viseme events are caught.
    *
    * @private
    */
-  _onViseme() { }
+  _onViseme() {}
 
   /**
    * Executed when speech ssml events are caught.
    *
    * @private
    */
-  _onSsml() { }
+  _onSsml() {}
 
   /**
    * Creates a class that implements {@link TextToSpeechFeatureDependentInterface}
@@ -88,14 +88,14 @@ export class TextToSpeechFeatureDependentInterface extends FeatureDependentInter
   static Mixin(BaseClass) {
     const ParentClass = FeatureDependentInterface.Mixin(BaseClass);
     const TextToSpeechFeatureDependentMixin = class extends ParentClass {
-      _onPlay() { }
-      _onPause() { }
-      _onResume() { }
-      _onStop() { }
-      _onSentence() { }
-      _onWord() { }
-      _onViseme() { }
-      _onSsml() { }
+      _onPlay() {}
+      _onPause() {}
+      _onResume() {}
+      _onStop() {}
+      _onSentence() {}
+      _onWord() {}
+      _onViseme() {}
+      _onSsml() {}
     };
 
     // TODO: What do we do with this?

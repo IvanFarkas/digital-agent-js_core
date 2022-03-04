@@ -5,10 +5,10 @@
 import Utils from './Utils';
 import MathUtils from './MathUtils';
 import Deferred from './Deferred';
-import {env} from './HostEnvironment';
+import { env } from './HostEnvironment';
 import Messenger from './Messenger';
 import HostObject from './HostObject';
-import LipsyncFeature, {DefaultVisemeMap} from './LipsyncFeature';
+import LipsyncFeature, { DefaultVisemeMap } from './LipsyncFeature';
 import GestureFeature, { DefaultGestureWords } from './GestureFeature';
 import PointOfInterestFeature, { AxisMap } from './PointOfInterestFeature';
 

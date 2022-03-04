@@ -19,7 +19,7 @@ export class FeatureDependentInterface {
    *
    * @param {string} typeName - type of feature to listen for.
    */
-  _onFeatureAdded(typeName) { }
+  _onFeatureAdded(typeName) {}
 
   /**
    * Stop listening for event dependencies that match the given feature type.
@@ -28,12 +28,12 @@ export class FeatureDependentInterface {
    *
    * @param {string} typeName - type of feature to stop listening for.
    */
-  _onFeatureRemoved(typeName) { }
+  _onFeatureRemoved(typeName) {}
 
   /**
    * @augments {@link AbstractHostFeature#discard}
    */
-  discard() { }
+  discard() {}
 
   /**
    * Creates a class that implements {@link FeatureDependentInterface} and extends a specified base class.
