@@ -123,10 +123,10 @@ export class Startup {
     console.debug('Initialize AWS and create Polly service objects');
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    window.AWS.config.region = REGION;
+    AWS.config.region = REGION;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({ IdentityPoolId: IDENTITYPOOLID });
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({ IdentityPoolId: IDENTITYPOOLID });
   }
 
   public async initialize() {
