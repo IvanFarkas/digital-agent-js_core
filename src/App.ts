@@ -39,7 +39,7 @@ export class App {
 
       // Base scene
       this.scene.background = new Color(0x33334d);
-      this.scene.fog = new Fog(0x33334d, 0, 10);
+      // this.scene.fog = new Fog(0x33334d, 0, 10);
 
       // Renderer
       this.renderer.setPixelRatio(window.devicePixelRatio);

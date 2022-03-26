@@ -335,14 +335,15 @@ export class Startup {
 
     // Create Audio Blob URL
     const audioURL = URL.createObjectURL(audioBlob);
-
-    // Play speech with local assets
-    host.TextToSpeechFeature.play(speechText, {
+    const config = {
       isGlobal: true,
-      volume: 3,
+      // volume: 5,
       SpeechMarksJSON: speechMarks,
       AudioURL: audioURL,
-    });
+    };
+
+    // Play speech with local assets
+    host.TextToSpeechFeature.play(speechText, config);
   }
 
   b64DecodeUnicode(str) {
@@ -350,7 +351,7 @@ export class Startup {
     return decodeURIComponent(
       atob(str)
         .split('')
-        .map(function (c) {
+        .map((c) => {
           return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         })
         .join('')
@@ -381,7 +382,7 @@ export class Startup {
       // Set up text to speech
       const audioListener = new AudioListener();
       this.camera.add(audioListener);
-      host.addFeature(TextToSpeechFeature, false, { listener: audioListener, attachTo: char.audioAttach, voice: char.voice, engine: char.voiceEngine });
+      host.addFeature(TextToSpeechFeature, false, { listener: audioListener, attachTo: char.audioAttach, voice: char.voice, engine: char.voiceEngine, isGlobal: true /* , volume: 5 */ });
 
       // Set up animation
       host.addFeature(AnimationFeature);
