@@ -12,7 +12,7 @@ import AWS from 'aws-sdk/global';
 import Polly from 'aws-sdk/clients/polly';
 
 // Three.js
-import { Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener } from 'three';
+import { Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener, WebGLRenderer, sRGBEncoding } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import { HostObject } from './three.js/HostObject';
@@ -24,6 +24,8 @@ import { LayerBlendModes } from './core/animpack/AnimationLayer';
 import { Quadratic } from './core/animpack/Easing';
 import { GestureFeature } from './core/GestureFeature';
 import { LipsyncFeature } from './core/LipsyncFeature';
+
+// import * from 'hcap/holovideoobject-min';
 
 interface ICharacter {
   name: string;
@@ -50,10 +52,13 @@ interface ICharacter {
 const REGION = 'us-east-1';
 const IDENTITYPOOLID = 'us-east-1:be0bcebf-7d62-45f9-8257-55894003beb7';
 const VERSION = '2.1048.0';
+const hcapVv01 = 'assets/video/Bodybuilder_4K60FPSNoNormals.mp4';
+const hcapVv02 = 'assets/hcap/soccer_web/soccer.hcap';
 
 export class Startup {
   private scene: Scene;
   private camera: PerspectiveCamera;
+  private renderer: WebGLRenderer;
   private clock: Clock;
   private renderFn: any[] = [];
   private speakers: Map<string, HostObject> = new Map<string, HostObject>();
@@ -66,8 +71,8 @@ export class Startup {
       lookJoint: 'charjx_c_look', // Name of the joint to use for point of interest target tracking
       voice: 'Matthew', // Polly voice. Full list of available voices at: https://docs.aws.amazon.com/polly/latest/dg/voicelist.html:
       voiceEngine: 'neural', // Neural engine is not available for all voices in all regions: https://docs.aws.amazon.com/polly/latest/dg/NTTS-main.html
-      position: new Vector3(0.5, 0, 0), // 1.25, 0, 0
-      rotate: new Vector3(0, -0.3, 0), // 0, -0.5, 0
+      position: new Vector3(0.5, 0, 0),
+      rotate: new Vector3(0, -0.3, 0),
       host: undefined,
       character: undefined,
       lookTracker: undefined,
@@ -93,8 +98,8 @@ export class Startup {
       lookJoint: 'chargaze',
       voice: 'Ivy',
       voiceEngine: 'neural',
-      position: new Vector3(-0.5, 0, 0), // -0.5, 0, 0
-      rotate: new Vector3(0, 0.3, 0), // 0, 0.5, 0
+      position: new Vector3(-0.5, 0, 0),
+      rotate: new Vector3(0, 0.3, 0),
       host: undefined,
       character: undefined,
       lookTracker: undefined,
@@ -111,12 +116,34 @@ export class Startup {
     </speak>`,
       emot: 'angry',
     },
+    {
+      name: 'Camila',
+      characterFile: 'assets/glTF/characters/adult_female/camila/camila.glb',
+      animationPath: 'assets/glTF/animations/adult_female',
+      audioAttachJoint: '',
+      lookJoint: '',
+      voice: 'Ivy',
+      voiceEngine: 'neural',
+      position: new Vector3(1.3, 0, 0),
+      rotate: new Vector3(0, -0.5, 0),
+      host: undefined,
+      character: undefined,
+      lookTracker: undefined,
+      clips: undefined,
+      bindPoseOffset: undefined,
+      audioAttach: undefined,
+      gestureConfig: undefined,
+      poiConfig: undefined,
+      text: `<speak>Hi there! I am Camila.</speak>`,
+      emot: 'cheer',
+    },
   ];
   private currentCharacter: ICharacter = this.Characters[0];
 
-  constructor(scene: Scene, camera: PerspectiveCamera) {
+  constructor(scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer) {
     this.scene = scene;
     this.camera = camera;
+    this.renderer = renderer;
     this.clock = new Clock();
 
     // Initialize AWS and create Polly service objects
@@ -127,6 +154,9 @@ export class Startup {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({ IdentityPoolId: IDENTITYPOOLID });
+
+    // Photorealistic render comparison - https://discourse.threejs.org/t/photorealistic-render-comparison-why-does-three-js-look-so-bad/25617/1
+    renderer.outputEncoding = sRGBEncoding;
   }
 
   public async initialize() {
@@ -142,9 +172,11 @@ export class Startup {
       const speechInit = TextToSpeechFeature.initializeService(polly, presigner, VERSION);
       const char1 = this.Characters[0];
       const char2 = this.Characters[1];
+      // const char3 = this.Characters[2];
 
       await this.loadCharacter(this.scene, animationFiles, char1);
       await this.loadCharacter(this.scene, animationFiles, char2);
+      // await this.loadCharacter(this.scene, animationFiles, char3);
 
       // Find the joints defined by name
       char1.audioAttach = char1?.character?.getObjectByName(char1.audioAttachJoint);
@@ -152,18 +184,28 @@ export class Startup {
       char1.lookTracker = char1?.character?.getObjectByName(char1.lookJoint);
       char2.lookTracker = char2?.character?.getObjectByName(char2.lookJoint);
 
+      // if (char3.audioAttachJoint) {
+      //   char3.audioAttach = char2?.character?.getObjectByName(char3.audioAttachJoint);
+      // }
+
+      // if (char3.lookJoint) {
+      //   char3.lookTracker = char2?.character?.getObjectByName(char3.lookJoint);
+      // }
       // Read the gesture config file.
       // This file contains options for splitting up each animation in gestures.glb into 3 sub-animations and initializing them as a QueueState animation.
       char1.gestureConfig = await fetch(`${char1.animationPath}/${gestureConfigFile}`).then((response) => response.json());
       char2.gestureConfig = await fetch(`${char2.animationPath}/${gestureConfigFile}`).then((response) => response.json());
+      // char3.gestureConfig = await fetch(`${char3.animationPath}/${gestureConfigFile}`).then((response) => response.json());
 
       // Read the point of interest config file.
       // This file contains options for creating Blend2dStates from look pose clips and initializing look layers on the PointOfInterestFeature.
       char1.poiConfig = await fetch(`${char1.animationPath}/${poiConfigFile}`).then((response) => response.json());
       char2.poiConfig = await fetch(`${char2.animationPath}/${poiConfigFile}`).then((response) => response.json());
+      // char3.poiConfig = await fetch(`${char3.animationPath}/${poiConfigFile}`).then((response) => response.json());
 
       const host1 = this.createHost(char1);
       const host2 = this.createHost(char2);
+      // const host3 = this.createHost(char3);
 
       // Set up each host to look at the other when the other speaks and at the this.camera when speech ends
       this.initializePoI(host1, char1, host2, char2);
@@ -174,13 +216,21 @@ export class Startup {
         this.speakers.set('Luke', host1);
         this.speakers.set('Alien', host2);
       }
+
+      // // Holo Video
+      // const hvo = new HoloVideoObjectThreeJS(this.renderer, (mesh) => {
+      //   mesh.position.set(-100, 300, 600);
+      //   mesh.scale.set(0.2, 0.2, 0.2);
+      //   this.scene.add(mesh);
+      // });
+      // hvo.open(hcapVv02, { autoloop: true, audioEnabled: true });
     } catch (error) {
       console.debug(error);
       throw new Error(`initialize - ${error}`);
     }
   }
 
-  initializePoI(host1: HostObject | undefined, char1: ICharacter | undefined, host2: HostObject | undefined, char2: ICharacter | undefined) {
+  private initializePoI(host1: HostObject | undefined, char1: ICharacter | undefined, host2: HostObject | undefined, char2: ICharacter | undefined) {
     try {
       if (!host1 || !host2) {
         throw new Error(`Hosts are empty!`);
@@ -309,7 +359,7 @@ export class Startup {
     }
   }
 
-  async playPreprocessdAudio(name: string, language: string, host: any) {
+  private async playPreprocessdAudio(name: string, language: string, host: any) {
     /**
      * Make sure to replace text with a unique string per audioURL and speechJson, you can keep this as the text you used to play but note that it actually won't be played as the preprocessed audio and speechMarks will be played instead.
      * Make sure to replace speechJson with the preprocessed SpeechMarks JSON Array.
@@ -346,7 +396,7 @@ export class Startup {
     host.TextToSpeechFeature.play(speechText, config);
   }
 
-  b64DecodeUnicode(str) {
+  private b64DecodeUnicode(str) {
     // Going backwards: from bytestream, to percent-encoding, to original string.
     return decodeURIComponent(
       atob(str)
@@ -359,7 +409,7 @@ export class Startup {
   }
 
   // Initialize the host
-  createHost(char: ICharacter | undefined): HostObject | undefined {
+  private createHost(char: ICharacter | undefined): HostObject | undefined {
     try {
       if (!char) {
         throw new Error(`Character is empty!`);
@@ -562,7 +612,7 @@ export class Startup {
     }
   }
 
-  async control(command: string, param?: string) {
+  private async control(command: string, param?: string) {
     const name = this.currentCharacter.name;
     const host = this.currentCharacter.host;
     const text = this.currentCharacter.text;
@@ -625,7 +675,7 @@ export class Startup {
     }
   }
 
-  update() {
+  private update() {
     this.renderFn.forEach((fn: any) => {
       fn();
     });

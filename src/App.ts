@@ -22,6 +22,20 @@ export class App {
     // Renderer
     this.renderer = new WebGLRenderer({ antialias: true, alpha: true });
 
+    // // *** Setup HCap VV ***
+    // // Try to create WebGL2 context
+    // const context = canvas.getContext('webgl2');
+
+    // // WebGL2 not available, fall back to WebGL1
+    // if (!context) {
+    //   context = canvas.getContext('webgl');
+    //   if (!context) {
+    //     alert('Unable to initialize WebGL. Your browser or machine may not support it.');
+    //   }
+    // }
+    // // Construct THREE.WebGLRenderer using our new context:
+    // const renderer = new WebGLRenderer({ antialias: true, canvas: canvas, context: context });
+
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
     this.createScene();
@@ -118,7 +132,7 @@ export class App {
 
   private async initialize() {
     try {
-      this.startup = new Startup(this.scene, this.camera);
+      this.startup = new Startup(this.scene, this.camera, this.renderer);
       await this.startup.initialize();
     } catch (error) {
       console.debug(error);
@@ -127,13 +141,13 @@ export class App {
   }
 
   private initializeCrate() {
-    // Crate
+    // Create
     const texture = new TextureLoader().load('assets/images/textures/crate.gif');
     const geometry = new BoxGeometry(0.2, 0.2, 0.2);
     const material = new MeshBasicMaterial({ map: texture });
 
     this.crate = new Mesh(geometry, material);
-    this.crate.position.set(0, 1, 0.2);
+    this.crate.position.set(0, .5, .2);
     this.scene.add(this.crate);
 
     this.createUI();
