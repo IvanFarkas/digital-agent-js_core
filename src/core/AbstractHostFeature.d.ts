@@ -1,5 +1,5 @@
-import {Messenger} from '@core/Messenger';
-import {HostObject} from '@core/HostObject';
+import { Messenger } from '@core/Messenger';
+import { HostObject } from '@core/HostObject';
 
 /**
  * Creates a class that implements {@link HostFeatureMixin} and extends a specified base class.

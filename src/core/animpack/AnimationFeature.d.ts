@@ -1,16 +1,16 @@
 /*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
-import {AbstractHostFeature} from '@core/AbstractHostFeature';
-import {Utils} from '@core/Utils';
-import {QueueState} from '@core/animpack/state/QueueState';
-import {FreeBlendState} from '@core/animpack/state/FreeBlendState';
-import {Blend1dState} from '@core/animpack/state/Blend1dState';
-import {Blend2dState} from '@core/animpack/state/Blend2dState';
-import {SingleState} from '@core/animpack/state/SingleState';
-import {RandomAnimationState} from '@core/animpack/state/RandomAnimationState';
-import {AnimationLayer, LayerBlendModes} from '@core/animpack/AnimationLayer';
-import {Deferred} from '@core/Deferred';
-import {HostObject} from '@core/HostObject';
-import {stringList} from 'aws-sdk/clients/datapipeline';
+import { AbstractHostFeature } from '@core/AbstractHostFeature';
+import { Utils } from '@core/Utils';
+import { QueueState } from '@core/animpack/state/QueueState';
+import { FreeBlendState } from '@core/animpack/state/FreeBlendState';
+import { Blend1dState } from '@core/animpack/state/Blend1dState';
+import { Blend2dState } from '@core/animpack/state/Blend2dState';
+import { SingleState } from '@core/animpack/state/SingleState';
+import { RandomAnimationState } from '@core/animpack/state/RandomAnimationState';
+import { AnimationLayer, LayerBlendModes } from '@core/animpack/AnimationLayer';
+import { Deferred } from '@core/Deferred';
+import { HostObject } from '@core/HostObject';
+import { stringList } from 'aws-sdk/clients/datapipeline';
 
 // TODO: Fix P2. Convert to Enum.
 /**
@@ -247,7 +247,7 @@ export declare class AnimationFeature extends AbstractHostFeature {
    *
    * @returns {number} Index of the new layer.
    */
-  addLayer(name: string = 'NewLayer', options: any = {}, index?: number): {name: string; index: any};
+  addLayer(name: string = 'NewLayer', options: any = {}, index?: number): { name: string; index: any };
 
   /**
    * Remove an animation layer from the stack. Animations on this layer will no longer be evaluated.
@@ -500,7 +500,7 @@ export declare class AnimationFeature extends AbstractHostFeature {
    * @returns {boolean} Whether or not an animation was successfully stopped.
    */
   stopAnimation(name: string): boolean {
-    const {item} = this._layerList.get(name);
+    const { item } = this._layerList.get(name);
     const layer = item;
 
     if (layer === undefined || layer === null) {

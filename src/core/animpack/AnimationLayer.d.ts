@@ -1,10 +1,10 @@
-import {MathUtils} from '@core/MathUtils';
-import {AbstractBlendState} from '@core/animpack/state/AbstractBlendState';
-import {AnimationPlayerMixin} from '@core/animpack/AnimationPlayerMixin';
-import {AnimationUtils} from '@core/animpack/AnimationUtils';
-import {Deferred} from '@core/Deferred';
-import {StateContainerMixin} from '@core/animpack/state/StateContainerMixin';
-import {MixinBase} from '@core/MixinBase';
+import { MathUtils } from '@core/MathUtils';
+import { AbstractBlendState } from '@core/animpack/state/AbstractBlendState';
+import { AnimationPlayerMixin } from '@core/animpack/AnimationPlayerMixin';
+import { AnimationUtils } from '@core/animpack/AnimationUtils';
+import { Deferred } from '@core/Deferred';
+import { StateContainerMixin } from '@core/animpack/state/StateContainerMixin';
+import { MixinBase } from '@core/MixinBase';
 
 /**
  * Enum for types of {@link AnimationLayer} blending.

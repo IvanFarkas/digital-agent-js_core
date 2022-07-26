@@ -1,7 +1,7 @@
-import {Deferred} from '@core/Deferred';
-import {AbstractState} from '@core/animpack/state/AbstractState';
-import {validateBlendMode} from '@core/animpack/AnimationLayer';
-import {AnimationUtils} from '@core/animpack/AnimationUtils';
+import { Deferred } from '@core/Deferred';
+import { AbstractState } from '@core/animpack/state/AbstractState';
+import { validateBlendMode } from '@core/animpack/AnimationLayer';
+import { AnimationUtils } from '@core/animpack/AnimationUtils';
 
 /**
  * Class for playing a single animation clip.

@@ -12,18 +12,20 @@ import AWS from 'aws-sdk/global';
 import Polly from 'aws-sdk/clients/polly';
 
 // Three.js
-import {Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener} from 'three';
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { Scene, Clock, Group, Event, PerspectiveCamera, Vector3, Object3D, AnimationClip, AnimationUtils, AudioListener, WebGLRenderer, sRGBEncoding } from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-import {HostObject} from './three.js/HostObject';
-import {TextToSpeechFeature} from './three.js/awspack/TextToSpeechFeature';
-import {PointOfInterestFeature} from './three.js/PointOfInterestFeature';
-import {AnimationFeature} from './three.js/animpack/AnimationFeature';
-import {AnimationTypes} from './core/animpack/AnimationFeature';
-import {LayerBlendModes} from './core/animpack/AnimationLayer';
-import {Quadratic} from './core/animpack/Easing';
-import {GestureFeature} from './core/GestureFeature';
-import {LipsyncFeature} from './core/LipsyncFeature';
+import { HostObject } from './three.js/HostObject';
+import { TextToSpeechFeature } from './three.js/awspack/TextToSpeechFeature';
+import { PointOfInterestFeature } from './three.js/PointOfInterestFeature';
+import { AnimationFeature } from './three.js/animpack/AnimationFeature';
+import { AnimationTypes } from './core/animpack/AnimationFeature';
+import { LayerBlendModes } from './core/animpack/AnimationLayer';
+import { Quadratic } from './core/animpack/Easing';
+import { GestureFeature } from './core/GestureFeature';
+import { LipsyncFeature } from './core/LipsyncFeature';
+
+// import * from 'hcap/holovideoobject-min';
 
 interface ICharacter {
   name: string;
@@ -50,10 +52,13 @@ interface ICharacter {
 const REGION = 'us-east-1';
 const IDENTITYPOOLID = 'us-east-1:be0bcebf-7d62-45f9-8257-55894003beb7';
 const VERSION = '2.1048.0';
+const hcapVv01 = 'assets/video/Bodybuilder_4K60FPSNoNormals.mp4';
+const hcapVv02 = 'assets/hcap/soccer_web/soccer.hcap';
 
 export class Startup {
   private scene: Scene;
   private camera: PerspectiveCamera;
+  private renderer: WebGLRenderer;
   private clock: Clock;
   private renderFn: any[] = [];
   private speakers: Map<string, HostObject> = new Map<string, HostObject>();
@@ -66,8 +71,8 @@ export class Startup {
       lookJoint: 'charjx_c_look', // Name of the joint to use for point of interest target tracking
       voice: 'Matthew', // Polly voice. Full list of available voices at: https://docs.aws.amazon.com/polly/latest/dg/voicelist.html:
       voiceEngine: 'neural', // Neural engine is not available for all voices in all regions: https://docs.aws.amazon.com/polly/latest/dg/NTTS-main.html
-      position: new Vector3(0.5, 0, 0), // 1.25, 0, 0
-      rotate: new Vector3(0, -0.3, 0), // 0, -0.5, 0
+      position: new Vector3(0.5, 0, 0),
+      rotate: new Vector3(0, -0.3, 0),
       host: undefined,
       character: undefined,
       lookTracker: undefined,
@@ -93,8 +98,8 @@ export class Startup {
       lookJoint: 'chargaze',
       voice: 'Ivy',
       voiceEngine: 'neural',
-      position: new Vector3(-0.5, 0, 0), // -0.5, 0, 0
-      rotate: new Vector3(0, 0.3, 0), // 0, 0.5, 0
+      position: new Vector3(-0.5, 0, 0),
+      rotate: new Vector3(0, 0.3, 0),
       host: undefined,
       character: undefined,
       lookTracker: undefined,
@@ -111,22 +116,47 @@ export class Startup {
     </speak>`,
       emot: 'angry',
     },
+    {
+      name: 'Camila',
+      characterFile: 'assets/glTF/characters/adult_female/camila/camila.glb',
+      animationPath: 'assets/glTF/animations/adult_female',
+      audioAttachJoint: '',
+      lookJoint: '',
+      voice: 'Ivy',
+      voiceEngine: 'neural',
+      position: new Vector3(1.3, 0, 0),
+      rotate: new Vector3(0, -0.5, 0),
+      host: undefined,
+      character: undefined,
+      lookTracker: undefined,
+      clips: undefined,
+      bindPoseOffset: undefined,
+      audioAttach: undefined,
+      gestureConfig: undefined,
+      poiConfig: undefined,
+      text: `<speak>Hi there! I am Camila.</speak>`,
+      emot: 'cheer',
+    },
   ];
   private currentCharacter: ICharacter = this.Characters[0];
 
-  constructor(scene: Scene, camera: PerspectiveCamera) {
+  constructor(scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer) {
     this.scene = scene;
     this.camera = camera;
+    this.renderer = renderer;
     this.clock = new Clock();
 
     // Initialize AWS and create Polly service objects
     console.debug('Initialize AWS and create Polly service objects');
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    window.AWS.config.region = REGION;
+    AWS.config.region = REGION;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: IDENTITYPOOLID});
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({ IdentityPoolId: IDENTITYPOOLID });
+
+    // Photorealistic render comparison - https://discourse.threejs.org/t/photorealistic-render-comparison-why-does-three-js-look-so-bad/25617/1
+    renderer.outputEncoding = sRGBEncoding;
   }
 
   public async initialize() {
@@ -137,14 +167,16 @@ export class Startup {
       const animationFiles = ['stand_idle.glb', 'lipsync.glb', 'gesture.glb', 'emote.glb', 'face_idle.glb', 'blink.glb', 'poi.glb'];
       const gestureConfigFile = 'gesture.json';
       const poiConfigFile = 'poi.json';
-      const polly = new Polly({region: REGION});
+      const polly = new Polly({ region: REGION });
       const presigner = new Polly.Presigner();
       const speechInit = TextToSpeechFeature.initializeService(polly, presigner, VERSION);
       const char1 = this.Characters[0];
       const char2 = this.Characters[1];
+      // const char3 = this.Characters[2];
 
       await this.loadCharacter(this.scene, animationFiles, char1);
       await this.loadCharacter(this.scene, animationFiles, char2);
+      // await this.loadCharacter(this.scene, animationFiles, char3);
 
       // Find the joints defined by name
       char1.audioAttach = char1?.character?.getObjectByName(char1.audioAttachJoint);
@@ -152,18 +184,28 @@ export class Startup {
       char1.lookTracker = char1?.character?.getObjectByName(char1.lookJoint);
       char2.lookTracker = char2?.character?.getObjectByName(char2.lookJoint);
 
+      // if (char3.audioAttachJoint) {
+      //   char3.audioAttach = char2?.character?.getObjectByName(char3.audioAttachJoint);
+      // }
+
+      // if (char3.lookJoint) {
+      //   char3.lookTracker = char2?.character?.getObjectByName(char3.lookJoint);
+      // }
       // Read the gesture config file.
       // This file contains options for splitting up each animation in gestures.glb into 3 sub-animations and initializing them as a QueueState animation.
       char1.gestureConfig = await fetch(`${char1.animationPath}/${gestureConfigFile}`).then((response) => response.json());
       char2.gestureConfig = await fetch(`${char2.animationPath}/${gestureConfigFile}`).then((response) => response.json());
+      // char3.gestureConfig = await fetch(`${char3.animationPath}/${gestureConfigFile}`).then((response) => response.json());
 
       // Read the point of interest config file.
       // This file contains options for creating Blend2dStates from look pose clips and initializing look layers on the PointOfInterestFeature.
       char1.poiConfig = await fetch(`${char1.animationPath}/${poiConfigFile}`).then((response) => response.json());
       char2.poiConfig = await fetch(`${char2.animationPath}/${poiConfigFile}`).then((response) => response.json());
+      // char3.poiConfig = await fetch(`${char3.animationPath}/${poiConfigFile}`).then((response) => response.json());
 
       const host1 = this.createHost(char1);
       const host2 = this.createHost(char2);
+      // const host3 = this.createHost(char3);
 
       // Set up each host to look at the other when the other speaks and at the this.camera when speech ends
       this.initializePoI(host1, char1, host2, char2);
@@ -174,13 +216,21 @@ export class Startup {
         this.speakers.set('Luke', host1);
         this.speakers.set('Alien', host2);
       }
+
+      // // Holo Video
+      // const hvo = new HoloVideoObjectThreeJS(this.renderer, (mesh) => {
+      //   mesh.position.set(-100, 300, 600);
+      //   mesh.scale.set(0.2, 0.2, 0.2);
+      //   this.scene.add(mesh);
+      // });
+      // hvo.open(hcapVv02, { autoloop: true, audioEnabled: true });
     } catch (error) {
       console.debug(error);
       throw new Error(`initialize - ${error}`);
     }
   }
 
-  initializePoI(host1: HostObject | undefined, char1: ICharacter | undefined, host2: HostObject | undefined, char2: ICharacter | undefined) {
+  private initializePoI(host1: HostObject | undefined, char1: ICharacter | undefined, host2: HostObject | undefined, char2: ICharacter | undefined) {
     try {
       if (!host1 || !host2) {
         throw new Error(`Hosts are empty!`);
@@ -246,7 +296,7 @@ export class Startup {
   }
 
   // Load character model and animations
-  async loadCharacter(scene: Scene, animFiles: string[], char: ICharacter | undefined): Promise<{character: Group; clips: AnimationClip[][]; bindPoseOffset: AnimationClip}> {
+  async loadCharacter(scene: Scene, animFiles: string[], char: ICharacter | undefined): Promise<{ character: Group; clips: AnimationClip[][]; bindPoseOffset: AnimationClip }> {
     try {
       if (!char) {
         throw new Error(`Character is empty!`);
@@ -302,15 +352,64 @@ export class Startup {
       char.character = character;
       char.clips = clips;
       char.bindPoseOffset = bindPoseOffset;
-      return {character, clips, bindPoseOffset};
+      return { character, clips, bindPoseOffset };
     } catch (error) {
       console.debug(error);
       throw new Error(`loadCharacter - ${error}`);
     }
   }
 
+  private async playPreprocessdAudio(name: string, language: string, host: any) {
+    /**
+     * Make sure to replace text with a unique string per audioURL and speechJson, you can keep this as the text you used to play but note that it actually won't be played as the preprocessed audio and speechMarks will be played instead.
+     * Make sure to replace speechJson with the preprocessed SpeechMarks JSON Array.
+     * Make sure to replace audioURL with a Blob URL of the preprocessed Audio file
+     */
+    // host.TextToSpeechFeature.play(text, {
+    //   speechJson: speechJson,
+    //   AudioURL: audioURL
+    // });
+
+    console.debug('playPreprocessdAudio', name);
+
+    // Specify local paths. Make sure to update them to where you copy them into under your public/root folder
+    const speechPath = `./assets/preprocessed/${language}/speech.json`;
+    const audioPath = `./assets/preprocessed/${language}/speech.mp3`;
+
+    // Fetch resources
+    const speechJson = await (await fetch(speechPath)).json();
+    const speechText = speechJson.Text.S;
+    // const speechMarks = b64DecodeUnicode(speechJson.SpeechMarks.S);
+    const speechMarks = speechJson.SpeechMarks.Json;
+    const audioBlob = await (await fetch(audioPath)).blob();
+
+    // Create Audio Blob URL
+    const audioURL = URL.createObjectURL(audioBlob);
+    const config = {
+      isGlobal: true,
+      // volume: 5,
+      SpeechMarksJSON: speechMarks,
+      AudioURL: audioURL,
+    };
+
+    // Play speech with local assets
+    host.TextToSpeechFeature.play(speechText, config);
+  }
+
+  private b64DecodeUnicode(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(
+      atob(str)
+        .split('')
+        .map((c) => {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+  }
+
   // Initialize the host
-  createHost(char: ICharacter | undefined): HostObject | undefined {
+  private createHost(char: ICharacter | undefined): HostObject | undefined {
     try {
       if (!char) {
         throw new Error(`Character is empty!`);
@@ -321,7 +420,7 @@ export class Startup {
       const [idleClips, lipsyncClips, gestureClips, emoteClips, faceIdleClips, blinkClips, poiClips] = char.clips!;
       const idleClip = idleClips[0];
       const faceIdleClip = faceIdleClips[0];
-      const host = new HostObject({owner: char.character, clock: this.clock});
+      const host = new HostObject({ owner: char.character, clock: this.clock });
 
       char.host = host;
 
@@ -333,7 +432,7 @@ export class Startup {
       // Set up text to speech
       const audioListener = new AudioListener();
       this.camera.add(audioListener);
-      host.addFeature(TextToSpeechFeature, false, {listener: audioListener, attachTo: char.audioAttach, voice: char.voice, engine: char.voiceEngine});
+      host.addFeature(TextToSpeechFeature, false, { listener: audioListener, attachTo: char.audioAttach, voice: char.voice, engine: char.voiceEngine, isGlobal: true /* , volume: 5 */ });
 
       // Set up animation
       host.addFeature(AnimationFeature);
@@ -347,19 +446,19 @@ export class Startup {
       // Base idle
       console.debug(`createHost(${char.name}) - Animation: Base`);
       animationFeature.addLayer('Base');
-      animationFeature.addAnimation('Base', idleClip.name, AnimationTypes.single, {clip: idleClip});
+      animationFeature.addAnimation('Base', idleClip.name, AnimationTypes.single, { clip: idleClip });
       animationFeature.playAnimation('Base', idleClip.name);
 
       // Face idle
       console.debug(`createHost(${char.name}) - Animation: Face idle`);
-      animationFeature.addLayer('Face', {blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Face', { blendMode: LayerBlendModes.Additive });
       AnimationUtils.makeClipAdditive(faceIdleClip);
-      animationFeature.addAnimation('Face', faceIdleClip.name, AnimationTypes.single, {clip: AnimationUtils.subclip(faceIdleClip, faceIdleClip.name, 1, faceIdleClip.duration * 30, 30)});
+      animationFeature.addAnimation('Face', faceIdleClip.name, AnimationTypes.single, { clip: AnimationUtils.subclip(faceIdleClip, faceIdleClip.name, 1, faceIdleClip.duration * 30, 30) });
       animationFeature.playAnimation('Face', faceIdleClip.name);
 
       // Blink
       console.debug(`createHost(${char.name}) - Animation: Blink`);
-      animationFeature.addLayer('Blink', {blendMode: LayerBlendModes.Additive, transitionTime: 0.075});
+      animationFeature.addLayer('Blink', { blendMode: LayerBlendModes.Additive, transitionTime: 0.075 });
       if (blinkClips) {
         blinkClips.forEach((clip: any) => {
           AnimationUtils.makeClipAdditive(clip);
@@ -381,21 +480,21 @@ export class Startup {
 
       // Talking idle
       console.debug(`createHost(${char.name}) - Animation: Talking idle`);
-      animationFeature.addLayer('Talk', {transitionTime: 0.75, blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Talk', { transitionTime: 0.75, blendMode: LayerBlendModes.Additive });
       animationFeature.setLayerWeight('Talk', 0);
       const talkClip = lipsyncClips.find((clip: any) => clip.name === 'stand_talk');
       if (talkClip) {
         lipsyncClips.splice(lipsyncClips.indexOf(talkClip), 1);
-        animationFeature.addAnimation('Talk', talkClip.name, AnimationTypes.single, {clip: AnimationUtils.makeClipAdditive(talkClip)});
+        animationFeature.addAnimation('Talk', talkClip.name, AnimationTypes.single, { clip: AnimationUtils.makeClipAdditive(talkClip) });
         animationFeature.playAnimation('Talk', talkClip.name);
       }
 
       // Gesture animations
       console.debug(`createHost(${char.name}) - Animation: Gesture animations`);
-      animationFeature.addLayer('Gesture', {transitionTime: 0.5, blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Gesture', { transitionTime: 0.5, blendMode: LayerBlendModes.Additive });
       if (gestureClips) {
         gestureClips.forEach((clip: any) => {
-          const {name} = clip;
+          const { name } = clip;
           const config = char.gestureConfig[name];
 
           AnimationUtils.makeClipAdditive(clip);
@@ -406,7 +505,7 @@ export class Startup {
             });
             animationFeature.addAnimation('Gesture', name, AnimationTypes.queue, config);
           } else {
-            animationFeature.addAnimation('Gesture', name, AnimationTypes.single, {clip});
+            animationFeature.addAnimation('Gesture', name, AnimationTypes.single, { clip });
           }
         });
       } else {
@@ -415,11 +514,11 @@ export class Startup {
 
       // Emote animations
       console.debug(`createHost(${char.name}) - Animation: Emote animations`);
-      animationFeature.addLayer('Emote', {transitionTime: 0.5});
+      animationFeature.addLayer('Emote', { transitionTime: 0.5 });
       if (emoteClips) {
         emoteClips.forEach((clip: any) => {
-          const {name} = clip;
-          animationFeature.addAnimation('Emote', name, AnimationTypes.single, {clip, loopCount: 1});
+          const { name } = clip;
+          animationFeature.addAnimation('Emote', name, AnimationTypes.single, { clip, loopCount: 1 });
         });
       } else {
         console.error('emoteClips is undefined!');
@@ -427,7 +526,7 @@ export class Startup {
 
       // Viseme poses
       console.debug(`createHost(${char.name}) - Animation: Viseme poses`);
-      animationFeature.addLayer('Viseme', {transitionTime: 0.12, blendMode: LayerBlendModes.Additive});
+      animationFeature.addLayer('Viseme', { transitionTime: 0.12, blendMode: LayerBlendModes.Additive });
       animationFeature.setLayerWeight('Viseme', 0);
 
       // Slice off the reference frame
@@ -439,14 +538,14 @@ export class Startup {
           weight: 0,
         };
       });
-      animationFeature.addAnimation('Viseme', 'visemes', AnimationTypes.freeBlend, {blendStateOptions});
+      animationFeature.addAnimation('Viseme', 'visemes', AnimationTypes.freeBlend, { blendStateOptions });
       animationFeature.playAnimation('Viseme', 'visemes');
 
       // POI poses
       console.debug(`createHost(${char.name}) - POI poses`);
       if (char.poiConfig) {
         Object.entries(char.poiConfig).forEach(([key, config]: [string, any]) => {
-          animationFeature.addLayer(config.name, {blendMode: LayerBlendModes.Additive});
+          animationFeature.addLayer(config.name, { blendMode: LayerBlendModes.Additive });
 
           if (config.blendStateOptions) {
             // Find each pose clip and make it additive
@@ -461,7 +560,7 @@ export class Startup {
             console.error('config.blendStateOptions is undefined!');
           }
 
-          animationFeature.addAnimation(config.name, config.animation, AnimationTypes.blend2d, {...config});
+          animationFeature.addAnimation(config.name, config.animation, AnimationTypes.blend2d, { ...config });
           animationFeature.playAnimation(config.name, config.animation);
 
           // Find and store reference objects
@@ -473,20 +572,20 @@ export class Startup {
 
       // Apply bindPoseOffset clip if it exists
       if (char.bindPoseOffset !== undefined) {
-        animationFeature.addLayer('BindPoseOffset', {blendMode: LayerBlendModes.Additive});
-        animationFeature.addAnimation('BindPoseOffset', char.bindPoseOffset.name, AnimationTypes.single, {clip: AnimationUtils.subclip(char.bindPoseOffset, char.bindPoseOffset.name, 1, 2, 30)});
+        animationFeature.addLayer('BindPoseOffset', { blendMode: LayerBlendModes.Additive });
+        animationFeature.addAnimation('BindPoseOffset', char.bindPoseOffset.name, AnimationTypes.single, { clip: AnimationUtils.subclip(char.bindPoseOffset, char.bindPoseOffset.name, 1, 2, 30) });
         animationFeature.playAnimation('BindPoseOffset', char.bindPoseOffset.name);
       }
 
       // Set up Lipsync
       console.debug(`createHost(${char.name}) - Set up Lipsync`);
-      const visemeOptions = {layers: [{name: 'Viseme', animation: 'visemes'}]};
-      const talkingOptions = {layers: [{name: 'Talk', animation: 'stand_talk', blendTime: 0.75, easingFn: Quadratic.InOut}]};
+      const visemeOptions = { layers: [{ name: 'Viseme', animation: 'visemes' }] };
+      const talkingOptions = { layers: [{ name: 'Talk', animation: 'stand_talk', blendTime: 0.75, easingFn: Quadratic.InOut }] };
       host.addFeature(LipsyncFeature, false, visemeOptions, talkingOptions);
 
       // Set up Gestures
       console.debug(`createHost(${char.name}) - Set up Gestures`);
-      host.addFeature(GestureFeature, false, {layers: {Gesture: {minimumInterval: 3}, Emote: {blendTime: 0.5, easingFn: Quadratic.InOut}}});
+      host.addFeature(GestureFeature, false, { layers: { Gesture: { minimumInterval: 3 }, Emote: { blendTime: 0.5, easingFn: Quadratic.InOut } } });
 
       // Set up Point of Interest (POI)
       console.debug(`createHost(${char.name}) - Set up POI`);
@@ -502,7 +601,7 @@ export class Startup {
           layers: char.poiConfig,
         },
         {
-          layers: [{name: 'Blink'}],
+          layers: [{ name: 'Blink' }],
         }
       );
 
@@ -513,10 +612,12 @@ export class Startup {
     }
   }
 
-  control(command: string, param?: string) {
+  private async control(command: string, param?: string) {
+    const name = this.currentCharacter.name;
     const host = this.currentCharacter.host;
     const text = this.currentCharacter.text;
     const emot = this.currentCharacter.emot;
+    const language = name === 'Luke' ? 'en-US' : 'ru-RU';
 
     switch (command) {
       case 'Luke':
@@ -531,9 +632,14 @@ export class Startup {
 
       case 'play':
         console.debug('play audio.');
+        await this.playPreprocessdAudio(name, language, host);
+        break;
+
+      case 'play_text':
+        console.debug('play text to audio.');
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        host.TextToSpeechFeature[command](text);
+        // host.TextToSpeechFeature['play'](text);
         break;
 
       case 'pause':
@@ -569,7 +675,7 @@ export class Startup {
     }
   }
 
-  update() {
+  private update() {
     this.renderFn.forEach((fn: any) => {
       fn();
     });

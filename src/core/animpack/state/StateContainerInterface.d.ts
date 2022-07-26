@@ -1,5 +1,5 @@
-import {AbstractState} from '@core/animpack/state/AbstractState';
-import {Utils} from '@core/Utils';
+import { AbstractState } from '@core/animpack/state/AbstractState';
+import { Utils } from '@core/Utils';
 
 /**
  * Class factory interface for manipulating a collection of {@link AbstractState}.

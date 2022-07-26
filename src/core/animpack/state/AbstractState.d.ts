@@ -1,6 +1,6 @@
-import {MathUtils} from '@core/MathUtils';
-import {Deferred} from '@core/Deferred';
-import {AnimationUtils} from '@core/animpack/AnimationUtils';
+import { MathUtils } from '@core/MathUtils';
+import { Deferred } from '@core/Deferred';
+import { AnimationUtils } from '@core/animpack/AnimationUtils';
 
 /**
  * Base class for a state in our animation system.

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
-import {AnimationFeatureDependentInterface} from '@core/animpack/AnimationFeatureDependentInterface';
-import {HostObject} from '@core/HostObject';
+import { AnimationFeatureDependentInterface } from '@core/animpack/AnimationFeatureDependentInterface';
+import { HostObject } from '@core/HostObject';
 
 /**
  * Class factory interface for that keeps track of layers and animations on a host.

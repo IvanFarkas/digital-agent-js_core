@@ -31,5 +31,8 @@ yarn start
 
 ## Test
 
-1. Click **P** to play audio by Luke.
-2. Click **E** to play an emot.
+1. Click **l** to select Luke.
+1. Click **a** to select Alien.
+1. Click **p** to play audio.
+1. Click **s** to stop audio.
+1. Click **e** to play an emot.

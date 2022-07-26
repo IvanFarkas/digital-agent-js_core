@@ -1,6 +1,6 @@
-import { TextToSpeechFeature } from '@core/awspack/TextToSpeechFeature';
-import { TextToSpeechUtils } from '@core/awspack/TextToSpeechUtils';
-import { Speech } from '@core/awspack/Speech';
+import TextToSpeechFeature from './TextToSpeechFeature';
+import TextToSpeechUtils from './TextToSpeechUtils';
+import Speech from './Speech';
 
 /**
  * @module core/awspack

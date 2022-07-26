@@ -1,11 +1,9 @@
-import { Deferred } from '../core/Deferred';
+import { Deferred } from './Deferred';
 
 /**
  * A collection of useful generic functions.
  *
  * @hideconstructor
- *
- * @property {string} index - Index.
  */
 export class Utils {
   /**
@@ -29,10 +27,12 @@ export class Utils {
   /**
    * @static
    *
-   * Check a name string against an array of strings to determine if it is unique. If it isn't, append incremented trailing integers to the end of the name until it is unique.
+   * Check a name string against an array of strings to determine if it is unique.
+   * If it isn't, append incremented trailing integers to the end of the name
+   * until it is unique.
    *
    * @param {string} name - String name to make unique.
-   * @param {string[]=} nameArray - Array of string names to check agains.
+   * @param {Array.<string>=} nameArray - Array of string names to check agains.
    *
    * @returns {string}
    */
@@ -68,16 +68,23 @@ export class Utils {
   }
 
   /**
-   * Return a deferred promise that will wait a given number of seconds before resolving. Pass delta time in milliseconds to the deferred promise's execute method in an update loop to progress time.
+   * Return a deferred promise that will wait a given number of seconds before
+   * resolving. Pass delta time in milliseconds to the deferred promise's execute
+   * method in an update loop to progress time.
    *
    * @param {number} [seconds=0] - Number of seconds to wait before resolving.
    * @param {Object=} options - Optional options object
-   * @param {Function} [options.onFinish] - Callback to execute once the wait time is met.
-   * @param {Function=} options.onProgress - Callback to execute each time the wait time progresses towards the target number of seconds. The amount of progress as a 0-1 percentage is passed as an argument.
-   * @param {Function=} options.onCancel - Callback to execute if the user cancels the wait before completion.
-   * @param {Function=} options.onError - Callback to execute if the wait stops because an error is encountered. The error message is passed as a parameter.
+   * @param {Function} [options.onFinish] - Callback to execute once the wait time
+   * is met.
+   * @param {Function=} options.onProgress - Callback to execute each time the wait
+   * time progresses towards the target number of seconds. The amount of progress
+   * as a 0-1 percentage is passed as an argument.
+   * @param {Function=} options.onCancel - Callback to execute if the user cancels
+   * the wait before completion.
+   * @param {Function=} options.onError - Callback to execute if the wait stops
+   * because an error is encountered. The error message is passed as a parameter.
    *
-   * @returns {Promise<void>}
+   * @returns {Deferred}
    */
   static wait(seconds = 0, { onFinish, onProgress, onCancel, onError } = {}) {
     // Make sure seconds is numeric
@@ -133,7 +140,6 @@ export class Utils {
 
   /**
    * Get a random float number between a min (inclusive) and max (exclusive) value
-   *
    * @param {number} min minimum value
    * @param {number} max maximum value
    * @returns {float}
@@ -144,7 +150,6 @@ export class Utils {
 
   /**
    * Get a random integer number between a min (inclusive) and max (exclusive) value
-   *
    * @param {number} min minimum value
    * @param {number} max maximum value
    * @returns {integer}
@@ -169,7 +174,6 @@ export class Utils {
     }
     return undefined;
   }
-
 
   static getParents(obj, isClass = false) {
     const parents = [];

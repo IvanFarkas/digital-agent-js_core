@@ -1,6 +1,6 @@
-import {Audio, PositionalAudio} from 'three';
-import {Speech as CoreSpeech} from '@core/awspack/Speech';
-import {TextToSpeechFeature} from '@core/awspack/TextToSpeechFeature.js';
+import { Audio, PositionalAudio } from 'three';
+import { Speech as CoreSpeech } from '@core/awspack/Speech';
+import { TextToSpeechFeature } from '@core/awspack/TextToSpeechFeature.js';
 
 /**
  * Threejs Audio object

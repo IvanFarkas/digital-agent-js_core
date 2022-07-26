@@ -1,5 +1,5 @@
-import {HostObject} from '@core/HostObject';
-import {Utils} from '@core/Utils';
+import { HostObject } from '@core/HostObject';
+import { Utils } from '@core/Utils';
 
 /**
  * Class factory interface for features that are dependent on other features being present on the host. Event dependencies will be listened for when a feature of matching type is added to the host and will stop being listened for when one is removed. If the feature is already present when constructed, events will be listened for right away.

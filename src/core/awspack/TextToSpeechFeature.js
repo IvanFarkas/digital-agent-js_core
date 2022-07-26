@@ -49,7 +49,6 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
           console.warn('The audio context is not running. Speech will not be able to be played until it is resumed. Use the "TextToSpeechFeature.resumeAudio" method to try to resume it after a user gesture.');
         }
       };
-
       this._audioContext.onstatechange();
     }
   }
@@ -114,6 +113,15 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
   }
 
   /**
+   * Set Audio Context.
+   *
+   * @type {boolean}
+   */
+  set audioContext(audioContext) {
+    this._audioContext = audioContext;
+  }
+
+  /**
    * Try to resume the audio context. This will be automatically executed each time speech is played or resumed. If using manually, it should be called after a user interaction occurs.
    *
    * @returns {Deferred} - Resolves once the audio context has resumed.
@@ -167,6 +175,7 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
       if (!currentPromise.play.pending) {
         return;
       }
+
       // Cancel if another call to play has already been made
       else if (this._currentPromise !== currentPromise) {
         currentPromise.play.cancel();
@@ -177,12 +186,12 @@ export class TextToSpeechFeature extends AbstractTextToSpeechFeature {
       if (this._enabled) {
         super._startSpeech(text, config, playMethod);
       }
+
       // Reject if the audio context is not running
       else {
         currentPromise.reject(new Error(`Cannot ${playMethod} speech on host ${this._host.id}. The audio context is not running. Use the "TextToSpeechFeature.resumeAudio" method to try to resume it after a user gesture.`));
       }
     });
-
     return currentPromise.play;
   }
 

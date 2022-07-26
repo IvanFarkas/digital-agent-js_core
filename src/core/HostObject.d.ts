@@ -1,7 +1,7 @@
-import {Messenger} from '@core/Messenger';
-import {AbstractHostFeature} from '@core/AbstractHostFeature';
-import {Deferred} from '@core/Deferred';
-import {Utils} from '@core/Utils';
+import { Messenger } from '@core/Messenger';
+import { AbstractHostFeature } from '@core/AbstractHostFeature';
+import { Deferred } from '@core/Deferred';
+import { Utils } from '@core/Utils';
 
 /**
  * Object that manages access to all Host features. Contains a reference to engine-specific visuals if applicable.
@@ -44,7 +44,7 @@ export declare class HostObject extends Messenger {
    * @param {Object=} options - Options for the host.
    * @param {Object=} options.owner - Optional engine-specific owner of the host.
    */
-  constructor({owner = {}}: {owner?: any} = {});
+  constructor({ owner = {} }: { owner?: any } = {});
 
   /**
    * Get the engine owner object of the host.
@@ -94,7 +94,7 @@ export declare class HostObject extends Messenger {
    *
    * @returns {Deferred | Promise<void>}
    */
-  wait(seconds: number, {onFinish, onProgress, onCancel, onError}: any = {}): any; // Deferred | Promise<never>;
+  wait(seconds: number, { onFinish, onProgress, onCancel, onError }: any = {}): any; // Deferred | Promise<never>;
 
   /**
    * Instantiate a new Host feature and store it. Features must inherit from HostFeature.

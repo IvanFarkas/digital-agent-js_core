@@ -1,5 +1,5 @@
-import {EventDispatcher} from 'three';
-import {Messenger as CoreMessenger} from '@core/Messenger';
+import { EventDispatcher } from 'three';
+import { Messenger as CoreMessenger } from '@core/Messenger';
 
 /**
  * @extends core/Messenger
@@ -9,10 +9,6 @@ import {Messenger as CoreMessenger} from '@core/Messenger';
  */
 export class Messenger extends CoreMessenger {
   public static GlobalMessenger: any = new Messenger();
-  // Object.defineProperty(Messenger, 'GlobalMessenger', {
-  //   value: new Messenger(),
-  //   writable: false,
-  // });
 
   static _initialize = (() => {
     // TODO: Verify
@@ -35,6 +31,6 @@ export class Messenger extends CoreMessenger {
   }
 
   _createEvent(message: any, value: any): any {
-    return {detail: value, type: message};
+    return { detail: value, type: message };
   }
 }

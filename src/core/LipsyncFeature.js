@@ -88,26 +88,6 @@ export class LipsyncFeature extends AbstractHostFeature.mix(TextToSpeechFeatureD
    * @param {number} [visemeLeadTime=.067] - The amount of time to instruct the TextToSpeechFeature to emit speechmarks before each one's actual timestamp is reached. This will set the 'speechMarkOffset' variable on the TextToSpeechFeature.
    */
   constructor(host, /* visemeOptions= */ { blendTime: visemeBlendTime = 0.15, decayRate: { amount = 0.5, seconds = 0.5 } = {}, easingFn: visemeEasingFn = Quadratic.InOut, layers: visemeLayers = [] }, /* talkingOptions= */ { blendTime: talkingBlendTime = 0.75, easingFn: talkingEasingFn = Quadratic.InOut, layers: talkingLayers = [] }, visemeLeadTime = 0.067) {
-    /*
-    Smart function parameters - https://javascript.info/destructuring-assignment#smart-function-parameters
-    Javascript Destructuring assignment - Setting a function parameters default value - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-
-    let options = {
-      p1: 'P1',
-      p2: 12,
-      p3: {
-        p21: 'P21',
-        p22: {
-          p31: 'P31',
-        },
-      },
-    };
-
-    function smartFunctionParameters(value, { p1 = "P1", p2 = 12, p3 = { p21: "P21", p22: { p31: "P31" } } } = {}) {}
-
-    smartFunctionParameters(options);
-   */
-
     super(host);
 
     this._visemeLayers = {};
@@ -153,7 +133,10 @@ export class LipsyncFeature extends AbstractHostFeature.mix(TextToSpeechFeatureD
       if (animationType !== 'freeBlend') {
         // Warn and deactivate if the registered state is not freeBlend
         console.warn(`Cannot register Lipsync viseme animation ${animationName} on layer ${layerName} for host ${this._host.id}. Viseme animations must be of type 'freeBlend'.`);
-        animation.isActive = false;
+        this._managedLayers[layerName].animations[animationName].isActive = false;
+
+        // TODO: Test if it does as above statement
+        // animation.isActive = false;
       } else {
         const animationBlendNames = this._host.AnimationFeature.getAnimationBlendNames(layerName, animationName);
 

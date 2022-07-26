@@ -2,17 +2,17 @@
  * @module core/animpack
  */
 
-import {Linear, Quadratic, Cubic, Quartic, Quintic, Sinusoidal, Exponential, Circular, Elastic, Back, Bounce} from '@core/animpack/Easing';
-import {AnimationFeature, AnimationTypes} from '@core/animpack/AnimationFeature';
-import {AnimationLayer, LayerBlendModes, DefaultLayerBlendMode} from '@core/animpack/AnimationLayer';
-import {SingleState} from '@core/animpack/state/SingleState';
-import {TransitionState} from '@core/animpack/state/TransitionState';
-import {FreeBlendState} from '@core/animpack/state/FreeBlendState';
-import {QueueState} from '@core/animpack/state/QueueState';
-import {RandomAnimationState} from '@core/animpack/state/RandomAnimationState';
-import {Blend1dState} from '@core/animpack/state/Blend1dState';
-import {Blend2dState} from '@core/animpack/state/Blend2dState';
-import {AnimationUtils} from '@core/animpack/AnimationUtils';
+import { Linear, Quadratic, Cubic, Quartic, Quintic, Sinusoidal, Exponential, Circular, Elastic, Back, Bounce } from '@core/animpack/Easing';
+import { AnimationFeature, AnimationTypes } from '@core/animpack/AnimationFeature';
+import { AnimationLayer, LayerBlendModes, DefaultLayerBlendMode } from '@core/animpack/AnimationLayer';
+import { SingleState } from '@core/animpack/state/SingleState';
+import { TransitionState } from '@core/animpack/state/TransitionState';
+import { FreeBlendState } from '@core/animpack/state/FreeBlendState';
+import { QueueState } from '@core/animpack/state/QueueState';
+import { RandomAnimationState } from '@core/animpack/state/RandomAnimationState';
+import { Blend1dState } from '@core/animpack/state/Blend1dState';
+import { Blend2dState } from '@core/animpack/state/Blend2dState';
+import { AnimationUtils } from '@core/animpack/AnimationUtils';
 
 /**
  * @namespace

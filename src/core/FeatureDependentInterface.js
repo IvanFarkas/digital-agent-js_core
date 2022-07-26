@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
 import { HostObject } from '../core/HostObject';
-import { Utils } from '../core/Utils';
 
 /**
  * Class factory interface for features that are dependent on other features being present on the host. Event dependencies will be listened for when a feature of matching type is added to the host and will stop being listened for when one is removed. If the feature is already present when constructed, events will be listened for right away.
@@ -20,7 +19,7 @@ export class FeatureDependentInterface {
    *
    * @param {string} typeName - type of feature to listen for.
    */
-  _onFeatureAdded(typeName) { }
+  _onFeatureAdded(typeName) {}
 
   /**
    * Stop listening for event dependencies that match the given feature type.
@@ -29,12 +28,12 @@ export class FeatureDependentInterface {
    *
    * @param {string} typeName - type of feature to stop listening for.
    */
-  _onFeatureRemoved(typeName) { }
+  _onFeatureRemoved(typeName) {}
 
   /**
    * @augments {@link AbstractHostFeature#discard}
    */
-  discard() { }
+  discard() {}
 
   /**
    * Creates a class that implements {@link FeatureDependentInterface} and extends a specified base class.
@@ -48,8 +47,6 @@ export class FeatureDependentInterface {
       constructor(host) {
         super(host);
         this._host = host;
-
-        const parents = Utils.getParents(this);
 
         // No need to listen for events if the mixin is in the prototype chain multiple times
         if (!this._initialized) {

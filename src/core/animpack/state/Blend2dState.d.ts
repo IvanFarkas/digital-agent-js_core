@@ -1,8 +1,8 @@
-import {Vector2, Vector3, MathUtils as math} from 'three';
-import {Deferred} from '@core/Deferred';
-import {MathUtils, getVector3Array} from '@core/MathUtils';
-import {AbstractBlendState, IState} from '@core/animpack/state/AbstractBlendState';
-import {AnimationUtils} from '@core/animpack/AnimationUtils';
+import { Vector2, Vector3, MathUtils as math } from 'three';
+import { Deferred } from '@core/Deferred';
+import { MathUtils, getVector3Array } from '@core/MathUtils';
+import { AbstractBlendState, IState } from '@core/animpack/state/AbstractBlendState';
+import { AnimationUtils } from '@core/animpack/AnimationUtils';
 
 /**
  * Class for blending N number of blend states based on two paramters.

@@ -1,6 +1,6 @@
-import {Speech} from '@core/awspack/Speech';
-import {Deferred} from '@core/Deferred';
-import {AbstractTextToSpeechFeature} from '@core/awspack/AbstractTextToSpeechFeature';
+import { Speech } from '@core/awspack/Speech';
+import { Deferred } from '@core/Deferred';
+import { AbstractTextToSpeechFeature } from '@core/awspack/AbstractTextToSpeechFeature';
 
 /**
  * @extends AbstractTextToSpeechFeature

@@ -4,15 +4,15 @@
 
 import aws from './awspack';
 import anim from './animpack';
-import {env} from './HostEnvironment';
-import {Utils} from '@core/Utils';
-import {MathUtils} from '@core/MathUtils';
-import {Deferred} from '@core/Deferred';
-import {Messenger} from '@core/Messenger';
-import {HostObject} from '@core/HostObject';
-import {LipsyncFeature, DefaultVisemeMap} from './LipsyncFeature';
-import {GestureFeature, DefaultGestureWords} from './GestureFeature';
-import {PointOfInterestFeature, AxisMap} from './PointOfInterestFeature';
+import { env } from './HostEnvironment';
+import { Utils } from '@core/Utils';
+import { MathUtils } from '@core/MathUtils';
+import { Deferred } from '@core/Deferred';
+import { Messenger } from '@core/Messenger';
+import { HostObject } from '@core/HostObject';
+import { LipsyncFeature, DefaultVisemeMap } from './LipsyncFeature';
+import { GestureFeature, DefaultGestureWords } from './GestureFeature';
+import { PointOfInterestFeature, AxisMap } from './PointOfInterestFeature';
 
 export default {
   /**

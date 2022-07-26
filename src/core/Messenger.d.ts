@@ -1,4 +1,4 @@
-import {Utils} from '@core/Utils';
+import { Utils } from '@core/Utils';
 
 /**
  * Class that can execute functions when local messages are received. Local messages are prefixed with the instance's id.

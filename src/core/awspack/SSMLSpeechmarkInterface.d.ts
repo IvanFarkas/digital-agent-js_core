@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-empty */
-import {TextToSpeechFeatureDependentInterface} from '@core/awspack/TextToSpeechFeatureDependentInterface';
+import { TextToSpeechFeatureDependentInterface } from '@core/awspack/TextToSpeechFeatureDependentInterface';
 
 /**
  * Class factory interface for that registers callback method when a ssml speechmark event is emitted.
@@ -19,7 +19,7 @@ export declare class SSMLSpeechmarkInterface extends TextToSpeechFeatureDependen
    * @param {Object} event - Event data passed from the speech.
    * @param {Object} event.mark - Speechmark object.
    */
-  _onSsml({mark}: {mark: any});
+  _onSsml({ mark }: { mark: any });
 
   /**
    * Creates a class that implements {@link SSMLSpeechmarkInterface} and extends a specified base class.

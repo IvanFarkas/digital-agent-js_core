@@ -1,8 +1,8 @@
-import {AxesHelper, BoxGeometry, Color, DirectionalLight, Fog, HemisphereLight, MathUtils, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PlaneBufferGeometry, PMREMGenerator, Scene, sRGBEncoding, TextureLoader, Vector3, WebGLRenderer} from 'three';
-import {Startup} from 'Startup';
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import { AxesHelper, BoxGeometry, Color, DirectionalLight, Fog, HemisphereLight, MathUtils, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PlaneBufferGeometry, PMREMGenerator, Scene, sRGBEncoding, TextureLoader, Vector3, WebGLRenderer } from 'three';
+import { Startup } from 'Startup';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
-import {GUI} from 'dat.gui';
+import { GUI } from 'dat.gui';
 
 export class App {
   private scene: Scene;
@@ -20,7 +20,21 @@ export class App {
     this.scene = new Scene();
 
     // Renderer
-    this.renderer = new WebGLRenderer({antialias: true, alpha: true});
+    this.renderer = new WebGLRenderer({ antialias: true, alpha: true });
+
+    // // *** Setup HCap VV ***
+    // // Try to create WebGL2 context
+    // const context = canvas.getContext('webgl2');
+
+    // // WebGL2 not available, fall back to WebGL1
+    // if (!context) {
+    //   context = canvas.getContext('webgl');
+    //   if (!context) {
+    //     alert('Unable to initialize WebGL. Your browser or machine may not support it.');
+    //   }
+    // }
+    // // Construct THREE.WebGLRenderer using our new context:
+    // const renderer = new WebGLRenderer({ antialias: true, canvas: canvas, context: context });
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -39,7 +53,7 @@ export class App {
 
       // Base scene
       this.scene.background = new Color(0x33334d);
-      this.scene.fog = new Fog(0x33334d, 0, 10);
+      // this.scene.fog = new Fog(0x33334d, 0, 10);
 
       // Renderer
       this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -102,7 +116,7 @@ export class App {
       dirLight.target = dirLightTarget;
 
       // Environment
-      const groundMat = new MeshStandardMaterial({color: 0x808080, depthWrite: false});
+      const groundMat = new MeshStandardMaterial({ color: 0x808080, depthWrite: false });
 
       groundMat.metalness = 0;
       groundMat.refractionRatio = 0;
@@ -118,7 +132,7 @@ export class App {
 
   private async initialize() {
     try {
-      this.startup = new Startup(this.scene, this.camera);
+      this.startup = new Startup(this.scene, this.camera, this.renderer);
       await this.startup.initialize();
     } catch (error) {
       console.debug(error);
@@ -127,13 +141,13 @@ export class App {
   }
 
   private initializeCrate() {
-    // Crate
+    // Create
     const texture = new TextureLoader().load('assets/images/textures/crate.gif');
     const geometry = new BoxGeometry(0.2, 0.2, 0.2);
-    const material = new MeshBasicMaterial({map: texture});
+    const material = new MeshBasicMaterial({ map: texture });
 
     this.crate = new Mesh(geometry, material);
-    this.crate.position.set(0, 1, 0.2);
+    this.crate.position.set(0, .5, .2);
     this.scene.add(this.crate);
 
     this.createUI();
@@ -173,6 +187,10 @@ export class App {
           } else {
             this.startup.control('play');
           }
+          break;
+
+        case 'KeyT':
+          this.startup.control('play_text');
           break;
 
         case 'KeyR':

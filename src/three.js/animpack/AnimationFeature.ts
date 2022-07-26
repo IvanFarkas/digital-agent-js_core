@@ -1,7 +1,7 @@
-import {AnimationMixer} from 'three';
-import {AnimationFeature as CoreAnimationFeature, AnimationTypes} from '../../core/animpack/AnimationFeature';
-import {HostObject} from '../../core/HostObject';
-import {SingleState} from '../../three.js/animpack/state/SingleState';
+import { AnimationMixer } from 'three';
+import { AnimationFeature as CoreAnimationFeature, AnimationTypes } from '../../core/animpack/AnimationFeature';
+import { HostObject } from '../../core/HostObject';
+import { SingleState } from '../../three.js/animpack/state/SingleState';
 
 /**
  * Threejs AnimationMixer object
@@ -10,7 +10,7 @@ import {SingleState} from '../../three.js/animpack/state/SingleState';
  */
 // TODO: Do we need this? AnimationTypes are set up in core/animpack/AnimationFeature
 // AnimationTypes.single = SingleState;
-export {AnimationTypes};
+export { AnimationTypes };
 
 /**
  * @extends core/AnimationFeature
@@ -41,7 +41,7 @@ export class AnimationFeature extends CoreAnimationFeature {
    */
   _createSingleState(options: any) {
     // Duplicate the clip if it is already in use by another three action
-    let {clip} = options;
+    let { clip } = options;
 
     if (this._mixer.existingAction(clip)) {
       clip = clip.clone();

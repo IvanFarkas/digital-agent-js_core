@@ -1,6 +1,6 @@
-import {Deferred} from '@core/Deferred';
-import {AbstractBlendState} from '@core/animpack/state/AbstractBlendState';
-import {AnimationUtils} from '@core/animpack/AnimationUtils';
+import { Deferred } from '@core/Deferred';
+import { AbstractBlendState } from '@core/animpack/state/AbstractBlendState';
+import { AnimationUtils } from '@core/animpack/AnimationUtils';
 
 /**
  * Class for blending N number of blend states based on a single parameter.

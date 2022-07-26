@@ -1,7 +1,5 @@
-import {Object3D, AudioListener, Audio, PositionalAudio} from 'three';
-import {HostObject} from '../../core/HostObject';
-import {TextToSpeechFeature as CoreTextToSpeechFeature} from '../../core/awspack/TextToSpeechFeature';
-import {Deferred} from '../../core/Deferred';
+import { Object3D, AudioListener, Audio, PositionalAudio } from 'three';
+import { TextToSpeechFeature as CoreTextToSpeechFeature } from '../../core/awspack/TextToSpeechFeature';
 
 /**
  * Threejs PositionalAudio object
@@ -34,8 +32,8 @@ export class TextToSpeechFeature extends CoreTextToSpeechFeature {
    * @param {AudioListener} options.listener - Three audio listener to use with audio.
    * @param {Object3D=} options.attachTo - Optional object to attach the speech audio to.
    */
-  constructor(host: any, {voice, engine, language, audioFormat = 'mp3', sampleRate, listener, attachTo}: any) {
-    const options = {voice, engine, language, audioFormat, sampleRate, listener, attachTo};
+  constructor(host: any, { voice, engine, language, audioFormat = 'mp3', sampleRate, listener, attachTo }: any) {
+    const options = { voice, engine, language, audioFormat, sampleRate, listener, attachTo };
 
     super(host, options);
     this._listener = options.listener;
@@ -64,22 +62,28 @@ export class TextToSpeechFeature extends CoreTextToSpeechFeature {
    *
    * @returns {Promise} Resolves with an object containing the audio URL and Audio objects.
    */
-  _synthesizeAudio(params: any): Deferred | Promise<never> {
+  _synthesizeAudio(params: any) {
     // TODO: Validate
     return super._synthesizeAudio(params).then((result: any) => {
       if (this._attachTo !== undefined && !this.isGlobal) {
         // Create positional audio if there's an attach point
-        result.threeAudio = new PositionalAudio(this._listener);
+        const audio = new PositionalAudio(this._listener);
+
+        audio.setVolume(this.volume);
+        result.threeAudio = audio;
         this._attachTo.add(result.threeAudio);
       } else {
         // Create non-positional audio
-        result.threeAudio = new Audio(this._listener);
+        const audio = new Audio(this._listener);
+
+        audio.setVolume(this.volume);
+        result.threeAudio = audio;
       }
 
       // Set Audio object as the source
       result.threeAudio.setMediaElementSource(result.audio);
 
-      return result as Deferred | Promise<never>;
+      return result;
     });
   }
 }

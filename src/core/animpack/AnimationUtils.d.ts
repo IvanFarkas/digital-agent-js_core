@@ -1,7 +1,7 @@
-import {Deferred} from '@core/Deferred';
-import {Utils} from '@core/Utils';
-import {MathUtils} from '@core/MathUtils';
-import {Linear} from '@core/animpack/Easing';
+import { Deferred } from '@core/Deferred';
+import { Utils } from '@core/Utils';
+import { MathUtils } from '@core/MathUtils';
+import { Linear } from '@core/animpack/Easing';
 
 /**
  * A collection of useful animation functions.
@@ -47,5 +47,5 @@ export declare class AnimationUtils {
    *
    * @returns {Deferred} Resolves with the property's value once it reaches the target value.
    */
-  static interpolateProperty(propertyOwner?: any, propertyName?: string, targetValue?: number, {seconds = 0, easingFn, onFinish, onProgress, onCancel, onError}: any = {}): any; // Deferred | Promise<void | number>;
+  static interpolateProperty(propertyOwner?: any, propertyName?: string, targetValue?: number, { seconds = 0, easingFn, onFinish, onProgress, onCancel, onError }: any = {}): any; // Deferred | Promise<void | number>;
 }

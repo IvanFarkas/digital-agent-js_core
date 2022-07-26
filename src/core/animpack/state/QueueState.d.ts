@@ -1,7 +1,7 @@
-import {AbstractState} from '@core/animpack/state/AbstractState';
-import {AnimationPlayerMixin} from '@core/animpack/AnimationPlayerMixin';
-import {StateContainerMixin} from '@core/animpack/state/StateContainerMixin';
-import {Deferred} from '@core/Deferred';
+import { AbstractState } from '@core/animpack/state/AbstractState';
+import { AnimationPlayerMixin } from '@core/animpack/AnimationPlayerMixin';
+import { StateContainerMixin } from '@core/animpack/state/StateContainerMixin';
+import { Deferred } from '@core/Deferred';
 
 /**
  * Class for playing an ordered array of animation states in sequence.
