@@ -10,7 +10,7 @@ import { TextToSpeechFeatureDependentInterface } from '@core/awspack/TextToSpeec
  * @extends TextToSpeechFeatureDependentInterface
  *
  */
-export class SSMLSpeechmarkInterface extends TextToSpeechFeatureDependentInterface {
+export declare class SSMLSpeechmarkInterface extends TextToSpeechFeatureDependentInterface {
   /**
    * When ssml events are caught, this will try to parse the speech mark value and execute any function which meets criteria defined in the value. Speech mark value will be treated as stringified json format containing required feature name, function name and argument array to pass in. Example speech mark value might look like: '{"feature":"GestureFeature", "method":"switchToGesture", "args":["genricA", 0.5]}'
    *

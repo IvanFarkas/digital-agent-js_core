@@ -12,7 +12,7 @@ export enum Env {
  *
  * @property {string} index - Index.
  */
-export class Utils {
+export declare class Utils {
   /**
    * @static
    *

@@ -12,7 +12,7 @@ import { MixinBase } from '@core/MixinBase';
  * @readonly
  * @enum {string}
  */
-export const LayerBlendModes: { Override: string; Additive: string };
+export declare const LayerBlendModes: {Override: string; Additive: string};
 
 /**
  * The default blending mode {@link AnimationLayer}.
@@ -20,7 +20,7 @@ export const LayerBlendModes: { Override: string; Additive: string };
  * @readonly
  * @type {string}
  */
-export const DefaultLayerBlendMode: string;
+export declare const DefaultLayerBlendMode: string;
 
 /**
  * Checks if a given blendMode is present in the values of {@link LayerBlendModes}.
@@ -44,7 +44,7 @@ export function validateBlendMode(blendMode: string);
  * @property {number} _weight - Weight.
  * @property {string} name - Name.
  */
-export class AnimationLayer extends AnimationPlayerInterface.Mixin(StateContainerInterface.Mixin()) {
+export declare class AnimationLayer extends AnimationPlayerInterface.Mixin(StateContainerInterface.Mixin()) {
   // TODO: Make it private, add getter
   public _blendMode: LayerBlendMode;
   public _promises: any;

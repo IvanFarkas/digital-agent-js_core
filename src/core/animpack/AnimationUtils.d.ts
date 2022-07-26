@@ -8,7 +8,7 @@ import { Linear } from '@core/animpack/Easing';
  *
  * @hideconstructor
  */
-export class AnimationUtils {
+export declare class AnimationUtils {
   /**
    * Clamp a number between 2 values.
    *

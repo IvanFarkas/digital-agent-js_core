@@ -22,9 +22,9 @@ export interface IAxisMap {
  * @readonly
  * @enum {Class}
  */
-export const AxisMap: IAxisMap;
+export declare const AxisMap: IAxisMap;
 
-export const FaceTargetTypes: {
+export declare const FaceTargetTypes: {
   EyeCenter: number;
   EyeLeft: number;
   EyeRight: number;
@@ -54,7 +54,7 @@ export const FaceTargetTypes: {
  * @property {number} h - Movements horizontal.
  * @property {number} v - Movements vertical.
  */
-export class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterface.Mixin, ManagedAnimationLayerInterface.Mixin) {
+export declare class PointOfInterestFeature extends AbstractHostFeature.mix(SSMLSpeechmarkInterface.Mixin, ManagedAnimationLayerInterface.Mixin) {
   // TODO: Make private, add getters
   private _scene: any;
   public _target: any;

@@ -9,7 +9,7 @@ import { Utils } from '@core/Utils';
  * @property {AbstractState[]} _states - _states.
  * @property {string} name - Name of the state.
  */
-export class StateContainerInterface {
+export declare class StateContainerInterface {
   /**
    * Return the state with the given name.
    *

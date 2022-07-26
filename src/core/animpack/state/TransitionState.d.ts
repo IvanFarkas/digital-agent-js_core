@@ -10,7 +10,7 @@ import { AbstractState } from '@core/animpack/state/AbstractState';
  * @property {any[]} _from - From state.
  * @property {any} _weightPromise - Weight Promise.
  */
-export class TransitionState extends AbstractState {
+export declare class TransitionState extends AbstractState {
   // TODO: Fix P2. Make properties starting with '_' private
   public _to: any;
   public _from: any[];

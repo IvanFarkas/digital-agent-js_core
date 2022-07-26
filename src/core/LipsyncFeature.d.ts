@@ -26,7 +26,7 @@ import { AbstractHostFeature } from 'core/AbstractHostFeature';
  * @property {Object} [o={name: 'o'}]
  * @property {Object} [O={name: 'O'}]
  */
-export const DefaultVisemeMap: {
+export declare const DefaultVisemeMap: {
   sil: { name: string };
   p: { name: string; overrideWeight: number };
   t: { name: string; blendTime: number };
@@ -58,7 +58,7 @@ export const DefaultVisemeMap: {
  * @property {Object} _talkingLayers - Talking Layers
  * @property {any} _visemeLeadTime - The amount of time to instruct the TextToSpeechFeature to emit speechmarks before each one's actual timestamp is reached. This will set the 'speechMarkOffset' variable on the TextToSpeechFeature.
  */
-export class LipsyncFeature extends AbstractHostFeature.mix(TextToSpeechFeatureDependentInterface.Mixin, ManagedAnimationLayerInterface.Mixin) {
+export declare class LipsyncFeature extends AbstractHostFeature.mix(TextToSpeechFeatureDependentInterface.Mixin, ManagedAnimationLayerInterface.Mixin) {
   // TODO: Make private, add getters
   public _visemeLayers: any;
   public _talkingLayers: any;

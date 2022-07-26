@@ -19,7 +19,7 @@ import { HostObject } from '@core/HostObject';
  * @property {string} [EVENTS.update=onUpdate] - Message that is emitted after each call to [update]{@link HostFeatureMixin#update}.
  * @property {Object} SERVICES - Any AWS services that are necessary for the feature to function.
  */
-export class AbstractHostFeature {
+export declare class AbstractHostFeature {
   public _host: HostObject;
   public _discarded: boolean;
 

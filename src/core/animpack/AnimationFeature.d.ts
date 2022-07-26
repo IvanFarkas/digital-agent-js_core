@@ -19,7 +19,7 @@ import { stringList } from 'aws-sdk/clients/datapipeline';
  * @readonly
  * @enum {Class}
  */
-export const AnimationTypes = {
+export declare const AnimationTypes = {
   single: SingleState,
   freeBlend: FreeBlendState,
   queue: QueueState,
@@ -56,7 +56,7 @@ export const AnimationTypes = {
  * @property {string} [EVENTS.interrupt=onInterruptEvent] - Message that is emitted if there is a current speech in progress and [play]{@link core/AnimationFeature#playAnimation} or [resume]{@link core/AnimationFeature#resumeAnimation} are executed for a new speech. An object representing the name of the layer contains the animation that was interrupted and the name of the animation that was interrupted with the signature {layerName: string, animationName: string} is supplied as an argument to listener functions.
  * @property {string} [EVENTS.stop=onStopEvent] - Message that is emitted after each call to [stop]{@link core/AnimationFeature#stopAnimation} and when a speech reaches the end of playback. An object representing the name of the layer contains the animation that was stopped and the name of the animation that was stopped with the signature {layerName: string, animationName: string} is supplied as an argument to listener functions.
  */
-export class AnimationFeature extends AbstractHostFeature {
+export declare class AnimationFeature extends AbstractHostFeature {
   // TODO: Fix P2. Make properties starting with '_' private
   private _layers: any;
   private _layerMap: any;

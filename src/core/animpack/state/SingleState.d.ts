@@ -9,7 +9,7 @@ import { AnimationUtils } from '@core/animpack/AnimationUtils';
  * @extends AbstractState
  * @alias core/SingleState
  */
-export class SingleState extends AbstractState {
+export declare class SingleState extends AbstractState {
   private _timeScale: number;
   private _loopCount: number;
   private _blendMode: string;

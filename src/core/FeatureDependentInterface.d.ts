@@ -10,7 +10,7 @@ import { Utils } from '@core/Utils';
  * @property {boolean} _initialized - Is it initialized.
  * @property {Object} EVENT_DEPENDENCIES - Events that the feature should start/stop listening for when a feature of type FeatureName is added/removed from the host. Event dependencies should follow the signature: { FeatureName: { eventName: callbackName, ... }, ... }
  */
-export class FeatureDependentInterface {
+export declare class FeatureDependentInterface {
   /**
    * Start listening for event dependencies that match the given feature type.
    *

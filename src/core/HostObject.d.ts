@@ -19,7 +19,7 @@ import { Utils } from '@core/Utils';
  * @property {string} [EVENTS.addFeature='onAddFeature'] - Message that is emitted after each call to [addFeature]{@link core/HostObject#addFeature}.
  * @property {string} [EVENTS.removeFeature='onRemoveFeature'] - Message that is emitted after each call to [removeFeature]{@link core/HostObject#removeFeature}.
  */
-export class HostObject extends Messenger {
+export declare class HostObject extends Messenger {
   private _owner: any;
 
   // TODO: Make private, add getters

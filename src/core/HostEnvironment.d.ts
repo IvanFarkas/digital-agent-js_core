@@ -3,4 +3,4 @@
  *
  * @type {Env}
  */
-export const env: string;
+export declare const env: string;

@@ -42,7 +42,7 @@
 		// "noResolve": true,                                /* Disallow `import`s, `require`s or `<reference>`s from expanding the number of files TypeScript should add to a project. */
 
 		/* JavaScript Support */
-		"allowJs": true,                                     /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */
+		"allowJs": false,                                    /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */
 		// "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
 		// "maxNodeModuleJsDepth": 1,                        /* Specify the maximum folder depth used for checking JavaScript files from `node_modules`. Only applicable with `allowJs`. */
 
@@ -102,6 +102,11 @@
 		/* Completeness */
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
 		"skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
+
+    /* Output Formatting */
+    "pretty": true,                                      /* Stylize errors and messages using color and context, this is on by default — offers you a chance to have less terse, single colored messages from the compiler. */
+    "noErrorTruncation": false,                          /* Do not truncate error messages. */
+    "preserveWatchOutput": false                         /* Whether to keep outdated console output in watch mode instead of clearing the screen every time a change happened. */
 	},
   "references": [    /* this is how we declare a dependency from */
     {

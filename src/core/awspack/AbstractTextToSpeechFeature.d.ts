@@ -91,7 +91,7 @@ export interface IMarkTypes {
  *
  * @property {(number|undefined)} AWS_VERSION - Gets the version of AWS SDK being used. Will be undefined until [initializeService]{@link AbstractTextToSpeechFeature.initializeService} has been successfully executed.
  */
-export class AbstractTextToSpeechFeature extends AbstractHostFeature {
+export declare class AbstractTextToSpeechFeature extends AbstractHostFeature {
   // export abstract class AbstractTextToSpeechFeature extends HostFeatureMixin(MixinBase) {
   public _speechCache: any;
   public _currentSpeech: any;

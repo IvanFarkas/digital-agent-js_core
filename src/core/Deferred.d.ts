@@ -22,7 +22,7 @@ export interface IStatus {
  * @property {Function=} _reject -  Optional function to execute once the promise is rejected.
  * @property {Function=} _cancel - Optional function to execute if the user cancels the promise. Canceling results in the promise having a status of 'resolved'.
  */
-export class Deferred extends Promise<never> {
+export declare class Deferred extends Promise<never> {
   // TODO: Fix P2. Make them private and add getters
   public _status: IStatus;
   public _resolve: any;

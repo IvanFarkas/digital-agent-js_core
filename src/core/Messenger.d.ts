@@ -13,7 +13,7 @@ import { Utils } from '@core/Utils';
  *
  * @property {Object} EVENTS - Built-in events that the Messenger emits.
  */
-export class Messenger {
+export declare class Messenger {
   private _id: string;
   private _dispatcher: any;
   private _callbacks: object;

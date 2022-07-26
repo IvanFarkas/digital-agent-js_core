@@ -19,7 +19,7 @@ import { Deferred } from '@core/Deferred';
  * @property {Function} _easingFn - Easing Fn.
  * @property {number} _internalWeight - Internal Weight.
  */
-export class AnimationPlayerInterface {
+export declare class AnimationPlayerInterface {
   /**
    * Gets whether or not the player is updating states.
    *

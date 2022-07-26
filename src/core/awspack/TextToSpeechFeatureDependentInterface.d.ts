@@ -20,7 +20,7 @@ import { FeatureDependentInterface } from '@core/FeatureDependentInterface';
  * @property {string} [EVENT_DEPENDENCIES.TextToSpeechFeature.viseme='_onViseme'] - The name of the method that will be executed when TextToSpeechFeature viseme events are emitted.
  * @property {string} [EVENT_DEPENDENCIES.TextToSpeechFeature.ssml='_onSsml'] - The name of the method that will be executed when TextToSpeechFeature ssml events are emitted.
  */
-export class TextToSpeechFeatureDependentInterface extends FeatureDependentInterface {
+export declare class TextToSpeechFeatureDependentInterface extends FeatureDependentInterface {
   /**
    * Executed when speech play events are caught.
    *
